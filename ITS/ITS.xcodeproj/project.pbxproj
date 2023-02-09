@@ -17,6 +17,8 @@
 		D560D7E929573E2900C2BE5E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D560D7E829573E2900C2BE5E /* ProfileViewController.swift */; };
 		D5E4A516293C85F400F0E9F8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5E4A515293C85F400F0E9F8 /* GoogleService-Info.plist */; };
 		D5E4A518293C954B00F0E9F8 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E4A517293C954B00F0E9F8 /* RegistrationController.swift */; };
+		D5FDF91A29630B5600CC5E57 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FDF91929630B5600CC5E57 /* AuthorizationViewController.swift */; };
+		D5FDF91C2963104600CC5E57 /* ChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FDF91B2963104600CC5E57 /* ChangePassword.swift */; };
 		E10A716D2931E88400653EA3 /* DeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10A716C2931E88400653EA3 /* DeviceCell.swift */; };
 		E10A716F2931E90100653EA3 /* DeviceCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10A716E2931E90100653EA3 /* DeviceCellModel.swift */; };
 		E10A71712931E93700653EA3 /* DeviceCellDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10A71702931E93700653EA3 /* DeviceCellDataModel.swift */; };
@@ -54,6 +56,8 @@
 		D560D7E829573E2900C2BE5E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D5E4A515293C85F400F0E9F8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D5E4A517293C954B00F0E9F8 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		D5FDF91929630B5600CC5E57 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		D5FDF91B2963104600CC5E57 /* ChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassword.swift; sourceTree = "<group>"; };
 		E10A716C2931E88400653EA3 /* DeviceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCell.swift; sourceTree = "<group>"; };
 		E10A716E2931E90100653EA3 /* DeviceCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCellModel.swift; sourceTree = "<group>"; };
 		E10A71702931E93700653EA3 /* DeviceCellDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCellDataModel.swift; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 				E158EB6929375E4500597A08 /* CustomTabBar.swift */,
 				D5E4A517293C954B00F0E9F8 /* RegistrationController.swift */,
 				D560D7E829573E2900C2BE5E /* ProfileViewController.swift */,
+				D5FDF91929630B5600CC5E57 /* AuthorizationViewController.swift */,
+				D5FDF91B2963104600CC5E57 /* ChangePassword.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -346,6 +352,8 @@
 				D5E4A518293C954B00F0E9F8 /* RegistrationController.swift in Sources */,
 				A04FFF2D2913034400BC96A7 /* SceneDelegate.swift in Sources */,
 				E1178E9629489DFB00DE42CB /* DatabaseManager.swift in Sources */,
+				D5FDF91A29630B5600CC5E57 /* AuthorizationViewController.swift in Sources */,
+				D5FDF91C2963104600CC5E57 /* ChangePassword.swift in Sources */,
 				E15DC1DD292A050300FE1818 /* DeviceViewController.swift in Sources */,
 				E10A71712931E93700653EA3 /* DeviceCellDataModel.swift in Sources */,
 				E15DC1D5292A04A000FE1818 /* GroupCell.swift in Sources */,

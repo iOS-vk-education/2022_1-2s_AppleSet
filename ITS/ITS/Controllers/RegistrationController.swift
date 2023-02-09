@@ -69,14 +69,6 @@ class RegistrationController: UIViewController {
     }()
 
     
-    private let Regbutton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .customBlue
-        button.setTitleColor(.black, for: .normal)
-        button.setTitle("Registrated", for: .normal)
-        return button
-    }()
-    
         private let ShowCreateAccount: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
@@ -93,6 +85,22 @@ class RegistrationController: UIViewController {
         return button
     }()
     
+    private let ResetPassword: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .white
+        button.setTitleColor(.black, for: .normal)
+        button.setTitle("Fogot password?", for: .normal)
+        return button
+    }()
+    
+    private let ResetPasswordButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .customBlue
+        button.setTitleColor(.black, for: .normal)
+        button.setTitle("Change password", for: .normal)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(label)
@@ -101,22 +109,24 @@ class RegistrationController: UIViewController {
         view.addSubview(button)
         view.addSubview(ShowCreateAccount)
         view.addSubview(userName)
-        view.addSubview(Regbutton)
         view.addSubview(SinginButton)
+        view.addSubview(ResetPassword)
+        view.addSubview(ResetPasswordButton)
 
         
         view.backgroundColor = .white
         
         
         userName.isHidden = true
-        Regbutton.isHidden = true
         SinginButton.isHidden = true
+        ResetPasswordButton.isHidden = true
         
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         ShowCreateAccount.addTarget(self, action: #selector(showCreateAccount), for: .touchUpInside)
-        Regbutton.addTarget(self, action: #selector(RegistrationButton), for: .touchUpInside)
         
         SinginButton.addTarget(self, action: #selector(SinginButtonTap), for: .touchUpInside)
+        ResetPassword.addTarget(self, action: #selector(ResetPasswordTap), for: .touchUpInside)
+       
 
     }
     
@@ -156,11 +166,14 @@ class RegistrationController: UIViewController {
         
         button.frame = CGRect(x: 20, y:  passwordField.frame.origin.y+passwordField.frame.size.height+30,
                               width: view.frame.size.width-40, height: 50)
-        
-        Regbutton.frame = CGRect(x: 20, y:  passwordField.frame.origin.y+passwordField.frame.size.height+30,
-                              width: view.frame.size.width-40, height: 50)
+       
+        ResetPasswordButton.frame = CGRect(x: 20, y: emailField.frame.origin.y+emailField.frame.size.height+10,
+                                           width: view.frame.size.width-40, height: 50)
         
         ShowCreateAccount.frame = CGRect(x: 20, y:  button.frame.origin.y+passwordField.frame.size.height+30,
+                                    width: view.frame.size.width-40, height: 50)
+        
+        ResetPassword.frame = CGRect(x: 20, y:  ShowCreateAccount.frame.origin.y+passwordField.frame.size.height+180,
                                     width: view.frame.size.width-40, height: 50)
       
         SinginButton.frame = CGRect(x: 20, y:  button.frame.origin.y+ShowCreateAccount.frame.size.height+10,
@@ -174,6 +187,14 @@ class RegistrationController: UIViewController {
         }
        
     }
+    
+    @objc private func ResetPasswordTap(){
+        let toChangeController = ChangePassword()
+        let navigationController = UINavigationController(rootViewController: toChangeController)
+        navigationController.modalPresentationStyle = .fullScreen
+        self.present(navigationController, animated: true)
+    }
+    
     
     @objc private func didTapButton(){
         guard let email = emailField.text, !email.isEmpty,
@@ -227,97 +248,21 @@ class RegistrationController: UIViewController {
     
     
     @objc private func showCreateAccount(){ //должна быть кнопкой, пока отсылается на кнопку входа
-        ShowCreateAccount.isHidden = true
-        userName.isHidden = false
-        button.isHidden = true
-        Regbutton.isHidden = false
         
-        
+        let toCreateController = AuthorizationViewController()
+        let navigationController = UINavigationController(rootViewController: toCreateController)
+        navigationController.modalPresentationStyle = .fullScreen
+        self.present(navigationController, animated: true)
     }
                                
     @objc private func SinginButtonTap(){ // обратный переход на вход если почта существует
-            userName.isHidden = true
-            Regbutton.isHidden = true
+        userName.isHidden = true
         button.isHidden = false
         SinginButton.isHidden = true
         label.text = "Log In"
         label.textColor = .black
         passwordField.text = ""
     }
-    
-    @objc private func RegistrationButton(){
-        guard let email = emailField.text, !email.isEmpty,
-              let password = passwordField.text, !password.isEmpty,
-              let username = userName.text, !username.isEmpty  else  {
-            print("Missing field data")
-            return
-        }
-            
-          
-        
-        let alert = UIAlertController(title: "Create account",
-                                      message: "Would you like to create an account",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Continue",
-                                      style: .default,
-                                      handler: {_ in
-            Auth.auth().createUser(withEmail: email,
-                                                password: password,
-                                                completion: {[weak self]result, error in
-                guard let strongSelf = self else{
-                    
-                    return
-                }
-                guard error == nil else {
-                    if error?._code == AuthErrorCode.invalidEmail.rawValue{
-                        self?.label.text = "Mail is in the wrong format"
-                        self?.label.textColor = .red
-                    }
-                    else if error?._code == 17007 {
-                        self?.label.text = "This email is already registered"
-                        self?.label.textColor = .red
-                        self?.SinginButton.isHidden = false
-                    }
-                    else if error?._code == AuthErrorCode.weakPassword.rawValue{
-                        self?.label.text = "Password too weak"
-                        self?.label.textColor = .red
-                    }
-                    
-                    return
-                }
-                let db = Firestore.firestore()
-                db.collection("users").document(email).setData(["username": username, "email": email, "uid":result!.user.uid, "avatarImageName": "avatar"])
-                
 
-                strongSelf.label.isHidden = true
-                strongSelf.button.isHidden = true
-                strongSelf.emailField.isHidden = true
-                strongSelf.passwordField.isHidden = true
-                strongSelf.Regbutton.isHidden = true
-                strongSelf.userName.isHidden = true
-                
-
-                strongSelf.emailField.resignFirstResponder()
-                strongSelf.passwordField.resignFirstResponder()
-                
-                let toMainController = RootTabBarViewController()
-                
-                let navigationController = UINavigationController(rootViewController: toMainController)
-                
-                let safeAreaInsets = toMainController.tabBar.safeAreaInsets
-                let safeAreaCompensation = UIEdgeInsets(top: -100,
-                                                        left: -safeAreaInsets.left,
-                                                        bottom: -safeAreaInsets.bottom,
-                                                        right: -safeAreaInsets.right)
-                
-                navigationController.additionalSafeAreaInsets = safeAreaCompensation
-                
-                navigationController.modalPresentationStyle = .fullScreen
-                self?.present(navigationController, animated: true)
-            })
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {_ in }))
-        present(alert, animated: true)
-    }
 }
 

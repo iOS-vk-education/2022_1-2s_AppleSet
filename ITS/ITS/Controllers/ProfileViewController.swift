@@ -17,7 +17,7 @@ final class ProfileViewController: UIViewController
     private let mail: UILabel = UILabel()
     private let username: UILabel = UILabel()
     private let logOutButton: UIButton = UIButton()
-    private let ChangePassword: UIButton = UIButton()
+//    private let ChangePassword: UIButton = UIButton()
     private let UserPhoto: UIButton = UIButton()
     
     private let imageService = ImageService()
@@ -43,10 +43,10 @@ final class ProfileViewController: UIViewController
         logOutButton.layer.cornerRadius = Constans.EditButton.cornerRadius
         logOutButton.setTitle("Logout", for: .normal)
         
-        ChangePassword.backgroundColor = .customBlue.withAlphaComponent(0.8)
-        ChangePassword.setTitleColor(.black, for: .normal)
-        ChangePassword.layer.cornerRadius = Constans.EditButton.cornerRadius
-        ChangePassword.setTitle("Change password", for: .normal)
+//        ChangePassword.backgroundColor = .customBlue.withAlphaComponent(0.8)
+//        ChangePassword.setTitleColor(.black, for: .normal)
+//        ChangePassword.layer.cornerRadius = Constans.EditButton.cornerRadius
+//        ChangePassword.setTitle("Change password", for: .normal)
         
         UserPhoto.backgroundColor = .white
         UserPhoto.setTitleColor(.customDarkBlue, for: .normal)
@@ -56,7 +56,7 @@ final class ProfileViewController: UIViewController
         view.addSubview(avatarImage)
         view.addSubview(username)
         view.addSubview(logOutButton)
-        view.addSubview(ChangePassword)
+      //  view.addSubview(ChangePassword)
         view.addSubview(UserPhoto)
 //
         logOutButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
@@ -121,7 +121,7 @@ final class ProfileViewController: UIViewController
         view.addSubview(avatarImage)
         view.addSubview(username)
         view.addSubview(logOutButton)
-        view.addSubview(ChangePassword)
+//        view.addSubview(ChangePassword)
         view.addSubview(UserPhoto)
     }
     
@@ -179,11 +179,11 @@ final class ProfileViewController: UIViewController
             .sizeToFit(.width)
             .hCenter()
         
-        ChangePassword.pin
-            .bottom()
-            .marginBottom(view.safeAreaInsets.bottom + Constans.EditButton.marginBottom + 110)
-            .height(Constans.EditButton.height)
-            .horizontally(Constans.EditButton.marginHorizontal)
+//        ChangePassword.pin
+//            .bottom()
+//            .marginBottom(view.safeAreaInsets.bottom + Constans.EditButton.marginBottom + 110)
+//            .height(Constans.EditButton.height)
+//            .horizontally(Constans.EditButton.marginHorizontal)
         
         logOutButton.pin
             .bottom()
