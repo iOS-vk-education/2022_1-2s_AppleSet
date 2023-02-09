@@ -12,6 +12,7 @@ class GroupViewController: UIViewController  {
     
     let addButton: UIButton = UIButton()
     var groupTitle: String
+    lazy var user: String = databaseManager.getCurrentUser()
     
     init(title: String) {
         groupTitle = title
@@ -129,7 +130,7 @@ class GroupViewController: UIViewController  {
     
     private func loadDevices() {
         
-        databaseManager.loadDevicesInGroup(group: groupTitle) { result in
+        databaseManager.loadDevicesInGroup(user: self.user, group: groupTitle) { result in
             switch result {
             case .success(let devices):
                 self.models = devices
@@ -142,7 +143,7 @@ class GroupViewController: UIViewController  {
     
     func addDeviceCell(with name: String) {
         
-        databaseManager.seeDevicesInGroup(group: groupTitle) { result in
+        databaseManager.seeDevicesInGroup(user: self.user, group: groupTitle) { result in
             switch result {
             case .success(let devices):
                 self.models = devices
@@ -154,7 +155,7 @@ class GroupViewController: UIViewController  {
                     }
                 }
                 
-                self.databaseManager.seeAllDevices { result in
+                self.databaseManager.seeAllDevices(user: self.user) { result in
                     switch result {
                     case .success(let allDevices):
                         
@@ -172,7 +173,7 @@ class GroupViewController: UIViewController  {
                             return
                         }
                         
-                        self.databaseManager.addDeviceToGroup(group: self.groupTitle, device: CreateDeviceData(name: name)) { result in
+                        self.databaseManager.addDeviceToGroup(user: self.user, group: self.groupTitle, device: CreateDeviceData(name: name)) { result in
                             switch result {
                             case .success:
                                 break
@@ -196,7 +197,7 @@ class GroupViewController: UIViewController  {
     
     func delDeviceCell(name: String) {
 
-        databaseManager.delDeviceFromGroup(group: groupTitle, device: CreateDeviceData(name: name)) { result in
+        databaseManager.delDeviceFromGroup(user: self.user, group: groupTitle, device: CreateDeviceData(name: name)) { result in
             switch result {
             case .success:
                 break

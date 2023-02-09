@@ -32,6 +32,7 @@ class AllDevicesViewController: UIViewController {
     
     var models: [DeviceCellModel] = []
     let databaseManager = DatabaseManager.shared
+    lazy var user: String = databaseManager.getCurrentUser()
     
     // MARK: - setup
     
@@ -116,7 +117,7 @@ class AllDevicesViewController: UIViewController {
     // Загружаем данные из БД
     private func loadDevices() {
         
-        databaseManager.loadDevices { result in
+        databaseManager.loadDevices(user: self.user) { result in
             switch result {
             case .success(let devices):
                 self.models = devices
@@ -131,7 +132,7 @@ class AllDevicesViewController: UIViewController {
     
     func addDeviceCell(with name: String) {
         
-        databaseManager.seeAllDevices { result in
+        databaseManager.seeAllDevices(user: self.user) { result in
             switch result {
             case .success(let devices):
                 self.models = devices
@@ -143,7 +144,7 @@ class AllDevicesViewController: UIViewController {
                     }
                 }
                 
-                self.databaseManager.addDevice(device: CreateDeviceData(name: name)) { result in
+                self.databaseManager.addDevice(user: self.user, device: CreateDeviceData(name: name)) { result in
                     switch result {
                     case .success:
                         break
@@ -161,24 +162,24 @@ class AllDevicesViewController: UIViewController {
     
     func delDeviceCell(name: String) {
         
-        databaseManager.delDevice(device: CreateDeviceData(name: name)) { result in
+        databaseManager.delDevice(user: self.user, device: CreateDeviceData(name: name)) { result in
             switch result {
             case .success(_):
-                self.databaseManager.seeAllGroups { result in
+                self.databaseManager.seeAllGroups(user: self.user) { result in
                     
                     switch result {
                     case .success(let groups):
                         
                         for group in groups {
                             
-                            self.databaseManager.seeDevicesInGroup(group: group.name) { result in
+                            self.databaseManager.seeDevicesInGroup(user: self.user, group: group.name) { result in
                                 
                                 switch result {
                                 case .success(let devices):
                                     
                                     for device in devices{
                                         if device.name == name {
-                                            self.databaseManager.delDeviceFromGroup(group: group.name, device: CreateDeviceData(name: name)) { result in
+                                            self.databaseManager.delDeviceFromGroup(user: self.user, group: group.name, device: CreateDeviceData(name: name)) { result in
                                                 switch result {
                                                 case .success:
                                                     break

@@ -29,6 +29,8 @@ final class DeviceViewController: UIViewController {
     }()
     
     private var models: [FunctionCellModel] = []
+    let databaseManager = DatabaseManager.shared
+    lazy var user: String = databaseManager.getCurrentUser()
 
     private func setup()
     {
