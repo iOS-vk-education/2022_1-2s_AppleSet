@@ -28,6 +28,7 @@ class GroupsViewController: UIViewController {
     
     private var models: [GroupCellModel] = []
     let databaseManager = DatabaseManager.shared
+    lazy var user: String = databaseManager.getCurrentUser()
     
     // MARK: - setup
     
@@ -114,7 +115,7 @@ class GroupsViewController: UIViewController {
     // Загружаем данные из БД
     private func loadGroups() {
         
-        databaseManager.loadGroups { result in
+        databaseManager.loadGroups(user: self.user) { result in
             switch result {
             case .success(let groups):
                 self.models = groups
@@ -129,7 +130,7 @@ class GroupsViewController: UIViewController {
     
     func addGroupCell(with name: String) {
         
-        databaseManager.seeAllGroups { result in
+        databaseManager.seeAllGroups(user: self.user) { result in
             switch result {
             case .success(let groups):
                 self.models = groups
@@ -141,7 +142,7 @@ class GroupsViewController: UIViewController {
                     }
                 }
                 
-                self.databaseManager.addGroup(group: CreateGroupData(name: name, devices: [])) { result in
+                self.databaseManager.addGroup(user: self.user, group: CreateGroupData(name: name, devices: [])) { result in
                     switch result {
                     case .success:
                         break
@@ -159,7 +160,7 @@ class GroupsViewController: UIViewController {
     
     func delGroupCell(name: String) {
         
-        databaseManager.delGroup(group: CreateGroupData(name: name, devices: [])) { result in
+        databaseManager.delGroup(user: self.user, group: CreateGroupData(name: name, devices: [])) { result in
             switch result {
             case .success:
                 break

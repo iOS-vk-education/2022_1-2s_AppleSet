@@ -66,7 +66,7 @@ final class ProfileViewController: UIViewController
         
         view.backgroundColor = .white
         
-        if FirebaseAuth.Auth.auth().currentUser != nil{
+        if FirebaseAuth.Auth.auth().currentUser != nil {
             let user =  Auth.auth().currentUser
             if let user = user {
                 mail.text = user.email
