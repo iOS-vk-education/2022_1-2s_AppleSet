@@ -40,7 +40,7 @@ class GroupViewController: UIViewController  {
         
     }()
     
-    var models: [DeviceCellModel] = []
+    var models: [DeviceCellViewObject] = []
     let databaseManager = DatabaseManager.shared
     
     // MARK: - setup

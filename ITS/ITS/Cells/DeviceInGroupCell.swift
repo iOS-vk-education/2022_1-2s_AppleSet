@@ -16,7 +16,7 @@ final class DeviceInGroupCell: UICollectionViewCell, UIGestureRecognizerDelegate
     var deleteLabel2: UILabel!
     var groupTitle: String?
     
-    private var model: DeviceCellModel?
+    private var viewObject: DeviceCellViewObject?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -109,9 +109,9 @@ final class DeviceInGroupCell: UICollectionViewCell, UIGestureRecognizerDelegate
     
     // NOT ADD
     
-    func configure(with model: DeviceCellModel, title: String?) {
-        self.model = model
-        nameLabel.text = model.name
+    func configure(with viewObject: DeviceCellViewObject, title: String?) {
+        self.viewObject = viewObject
+        nameLabel.text = viewObject.name
         nameLabel.textColor = .black
         groupTitle = title
     }

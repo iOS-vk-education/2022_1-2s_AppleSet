@@ -15,7 +15,7 @@ final class DeviceCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     var deleteLabel1: UILabel!
     var deleteLabel2: UILabel!
     
-    private var model: DeviceCellModel?
+    private var viewObject: DeviceCellViewObject?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -110,9 +110,9 @@ final class DeviceCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     // NOT ADD
     
-    func configure(with model: DeviceCellModel) {
-        self.model = model
-        nameLabel.text = model.name
+    func configure(with viewObject: DeviceCellViewObject) {
+        self.viewObject = viewObject
+        nameLabel.text = viewObject.name
         nameLabel.textColor = .black
     }
 }

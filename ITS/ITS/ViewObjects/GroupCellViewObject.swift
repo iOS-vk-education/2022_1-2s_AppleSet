@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class GroupCellModel {
+final class GroupCellViewObject {
     let name: String
     let devices: [String]
     

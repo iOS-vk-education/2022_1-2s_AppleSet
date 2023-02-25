@@ -5,11 +5,12 @@
 //  Created by Natalia on 20.11.2022.
 //
 
+// Заглушка, пока не подключили сервак
 import UIKit
 
 struct FunctionCellDataModel {
-    func loadFunctions() -> [FunctionCellModel] {
-        let functions: [FunctionCellModel] = [
+    func loadFunctions() -> [FunctionCellViewObject] {
+        let functions: [FunctionCellViewObject] = [
             .init(name: "Температура",
                   values: "22"),
             .init(name: "Влажность",

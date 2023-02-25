@@ -15,7 +15,7 @@ final class GroupCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     var deleteLabel1: UILabel!
     var deleteLabel2: UILabel!
     
-    private var model: GroupCellModel?
+    private var model: GroupCellViewObject?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -106,7 +106,7 @@ final class GroupCell: UICollectionViewCell, UIGestureRecognizerDelegate {
       return abs((pan.velocity(in: pan.view)).x) > abs((pan.velocity(in: pan.view)).y)
     }
     
-    func configure(with model: GroupCellModel) {
+    func configure(with model: GroupCellViewObject) {
         self.model = model
         nameLabel.text = model.name
         nameLabel.textColor = .black
