@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DeviceCellModel {
+final class DeviceCellViewObject {
     let name: String
     
     init(name: String = "") {
@@ -16,7 +16,7 @@ final class DeviceCellModel {
 }
 
 struct CreateDeviceData {
-    let name : String
+    let name: String
     
     func dict() -> [String: Any] {
         return [

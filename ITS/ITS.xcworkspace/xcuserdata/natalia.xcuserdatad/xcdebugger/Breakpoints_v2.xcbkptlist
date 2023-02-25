@@ -44,8 +44,8 @@
             filePath = "ITS/Controllers/AllDevicesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "errorMessage(error:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -60,8 +60,8 @@
             filePath = "ITS/Controllers/AllDevicesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "errorMessage(error:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -69,32 +69,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D0EC9B88-A8A2-4F01-A72F-3C874B9F344B"
-            shouldBeEnabled = "Yes"
+            uuid = "7D2DF408-38CF-4F29-AEFF-104661304D57"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ITS/Controllers/ProfileViewController.swift"
+            filePath = "ITS/Presenters/AllDevicesPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
-            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "delDeviceCell(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3830DC3F-0407-4A59-AD03-028F4B77B981"
-            shouldBeEnabled = "Yes"
+            uuid = "A08AA904-0A51-463B-978F-5EE58C844730"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ITS/Controllers/ProfileViewController.swift"
+            filePath = "ITS/Presenters/AllDevicesPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "delDeviceCell(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DDEB2A6C-90DF-4618-BCF4-165851C1AE7F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ITS/Presenters/AllDevicesPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "delDeviceCell(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

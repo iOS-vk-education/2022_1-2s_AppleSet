@@ -26,7 +26,7 @@ class GroupsViewController: UIViewController {
         return collectionView
     }()
     
-    private var models: [GroupCellModel] = []
+    private var models: [GroupCellViewObject] = []
     let databaseManager = DatabaseManager.shared
     lazy var user: String = databaseManager.getCurrentUser()
     

@@ -12,7 +12,7 @@ import Firebase
 final class ProfileViewController: UIViewController
 {
     
-   @Published var list = [users]()
+   @Published var list = [UserViewObject]()
     private var avatarImage: UIImageView = UIImageView()
     private let mail: UILabel = UILabel()
     private let username: UILabel = UILabel()
@@ -102,10 +102,10 @@ final class ProfileViewController: UIViewController
                                         }
                                     }
                                     
-                                    return users(id: d["uid"] as? String ?? "", username: d["username"] as? String ?? "", email: d["email"] as? String ?? "", avatarImageName: d["avatarImageName"] as? String ?? "")
+                                    return UserViewObject(id: d["uid"] as? String ?? "", username: d["username"] as? String ?? "", email: d["email"] as? String ?? "", avatarImageName: d["avatarImageName"] as? String ?? "")
                                 }
                                 
-                                return users(id: "", username: "", email: "", avatarImageName: "")
+                                return UserViewObject(id: "", username: "", email: "", avatarImageName: "")
                             }
                         }
                     }

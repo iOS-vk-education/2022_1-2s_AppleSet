@@ -7,14 +7,12 @@
 
 import UIKit
 
-final class FunctionCellModel {
+final class FunctionCellViewObject {
     let name: String
-//    let image: UIImage?
     let values: String
     
     init(name: String = "", values: String = "") {
         self.name = name
-//        self.image = image
         self.values = values
     }
 }

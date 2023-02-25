@@ -10,27 +10,29 @@ import FirebaseFirestore
 import Firebase
 
 protocol DatabaseManagerDescription {
-    func loadDevices(user: String, completion: @escaping (Result<[DeviceCellModel], Error>) -> Void)
-    func addDevice(user: String, device: CreateDeviceData, completion: @escaping (Result<Void, Error>) -> Void)
-    func delDevice(user: String, device: CreateDeviceData, completion: @escaping (Result<String, Error>) -> Void)
-    func seeAllDevices(user: String, completion: @escaping (Result<[DeviceCellModel], Error>) -> Void)
+    func getCurrentUser() -> String
     
-    func loadGroups(user: String, completion: @escaping (Result<[GroupCellModel], Error>) -> Void)
+    func loadDevices(user: String, completion: @escaping (Result<[DeviceCellViewObject], Error>) -> Void)
+    func addDevice(user: String, device: CreateDeviceData, completion: @escaping (Result<Void, Error>) -> Void)
+    func delDevice(user: String, device: CreateDeviceData, completion: @escaping (Result<Void, Error>) -> Void)
+    func seeAllDevices(user: String, completion: @escaping (Result<[DeviceCellViewObject], Error>) -> Void)
+    
+    func loadGroups(user: String, completion: @escaping (Result<[GroupCellViewObject], Error>) -> Void)
     func addGroup(user: String, group: CreateGroupData, completion: @escaping (Result<Void, Error>) -> Void)
     func delGroup(user: String, group: CreateGroupData, completion: @escaping (Result<Void, Error>) -> Void)
-    func seeAllGroups(user: String, completion: @escaping (Result<[GroupCellModel], Error>) -> Void)
+    func seeAllGroups(user: String, completion: @escaping (Result<[GroupCellViewObject], Error>) -> Void)
     
-    func loadDevicesInGroup(user: String, group: String, completion: @escaping (Result<[DeviceCellModel], Error>) -> Void)
+    func loadDevicesInGroup(user: String, group: String, completion: @escaping (Result<[DeviceCellViewObject], Error>) -> Void)
     func addDeviceToGroup(user: String, group: String, device: CreateDeviceData, completion: @escaping (Result<Void, Error>) -> Void)
     func delDeviceFromGroup(user: String, group: String, device: CreateDeviceData, completion: @escaping (Result<Void, Error>) -> Void)
-    func seeDevicesInGroup(user: String, group: String, completion: @escaping (Result<[DeviceCellModel], Error>) -> Void)
+    func seeDevicesInGroup(user: String, group: String, completion: @escaping (Result<[DeviceCellViewObject], Error>) -> Void)
 }
 
 enum DatabaseManagerError: Error {
     case noDocuments
 }
 
-class DatabaseManager {
+class DatabaseManager: DatabaseManagerDescription {
     
     static let shared = DatabaseManager()
     
@@ -63,7 +65,7 @@ class DatabaseManager {
     
     // MARK: - devices
     
-    func loadDevices(user: String, completion: @escaping (Result<[DeviceCellModel], Error>) -> Void) {
+    func loadDevices(user: String, completion: @escaping (Result<[DeviceCellViewObject], Error>) -> Void) {
         
         let db = configureFB()
         
@@ -79,12 +81,12 @@ class DatabaseManager {
                 return
             }
             
-            var devicesList = [DeviceCellModel]()
+            var devicesList = [DeviceCellViewObject]()
             
             for device in devices {
                 let data = device.data()
                 let name = data["name"] as! String
-                let model = DeviceCellModel.init(name: name)
+                let model = DeviceCellViewObject.init(name: name)
                 devicesList.append(model)
             }
             
@@ -101,21 +103,19 @@ class DatabaseManager {
         
     }
     
-    func delDevice(user: String, device: CreateDeviceData, completion: @escaping (Result<String, Error>) -> Void) {
+    func delDevice(user: String, device: CreateDeviceData, completion: @escaping (Result<Void, Error>) -> Void) {
         
         let db = configureFB()
         let name: String = device.dict()["name"] as! String
         
         db.collection("users").document(user).collection("allDevices").document(name).delete()
         
-        completion(.success("Success"))
-        
     }
     
-    func seeAllDevices(user: String, completion: @escaping (Result<[DeviceCellModel], Error>) -> Void) {
+    func seeAllDevices(user: String, completion: @escaping (Result<[DeviceCellViewObject], Error>) -> Void) {
         
         let db = configureFB()
-        var devicesList: [DeviceCellModel] = []
+        var devicesList: [DeviceCellViewObject] = []
         
         db.collection("users").document(user).collection("allDevices").getDocuments { snap, error in
             
@@ -132,7 +132,7 @@ class DatabaseManager {
             for device in devices {
                 let data = device.data()
                 let name = data["name"] as! String
-                let model = DeviceCellModel.init(name: name)
+                let model = DeviceCellViewObject.init(name: name)
                 devicesList.append(model)
                 
             }
@@ -145,7 +145,7 @@ class DatabaseManager {
     
     // MARK: - groups
     
-    func loadGroups(user: String, completion: @escaping (Result<[GroupCellModel], Error>) -> Void) {
+    func loadGroups(user: String, completion: @escaping (Result<[GroupCellViewObject], Error>) -> Void) {
         
         let db = configureFB()
         
@@ -160,13 +160,13 @@ class DatabaseManager {
                 return
             }
             
-            var groupsList = [GroupCellModel]()
+            var groupsList = [GroupCellViewObject]()
             
             for group in groups {
                 let data = group.data()
                 let name = data["name"] as! String
                 let devices = data["devices"] as! [String]
-                let model = GroupCellModel.init(name: name, devices: devices)
+                let model = GroupCellViewObject.init(name: name, devices: devices)
                 groupsList.append(model)
             }
             
@@ -193,10 +193,10 @@ class DatabaseManager {
         
     }
     
-    func seeAllGroups(user: String, completion: @escaping (Result<[GroupCellModel], Error>) -> Void) {
+    func seeAllGroups(user: String, completion: @escaping (Result<[GroupCellViewObject], Error>) -> Void) {
         
         let db = configureFB()
-        var groupsList: [GroupCellModel] = []
+        var groupsList: [GroupCellViewObject] = []
         
         db.collection("users").document(user).collection("allGroups").getDocuments { snap, error in
             
@@ -213,7 +213,7 @@ class DatabaseManager {
             for group in groups {
                 let data = group.data()
                 let name = data["name"] as! String
-                let model = GroupCellModel.init(name: name, devices: [])
+                let model = GroupCellViewObject.init(name: name, devices: [])
                 groupsList.append(model)
                 
             }
@@ -225,7 +225,7 @@ class DatabaseManager {
     
     // MARK: - devices in group
     
-    func loadDevicesInGroup(user: String, group: String, completion: @escaping (Result<[DeviceCellModel], Error>) -> Void) {
+    func loadDevicesInGroup(user: String, group: String, completion: @escaping (Result<[DeviceCellViewObject], Error>) -> Void) {
         
         let db = configureFB()
         
@@ -240,7 +240,7 @@ class DatabaseManager {
                 return
             }
             
-            var devicesList = [DeviceCellModel]()
+            var devicesList = [DeviceCellViewObject]()
             
             for g in groups {
                 let data = g.data()
@@ -250,7 +250,7 @@ class DatabaseManager {
                     let devices = data["devices"] as! [String]
                     
                     for device in devices {
-                        let model = DeviceCellModel.init(name: device)
+                        let model = DeviceCellViewObject.init(name: device)
                         devicesList.append(model)
                     }
                     
@@ -341,7 +341,7 @@ class DatabaseManager {
         }
     }
     
-    func seeDevicesInGroup(user: String, group: String, completion: @escaping (Result<[DeviceCellModel], Error>) -> Void) {
+    func seeDevicesInGroup(user: String, group: String, completion: @escaping (Result<[DeviceCellViewObject], Error>) -> Void) {
         let db = configureFB()
         
         db.collection("users").document(user).collection("allGroups").getDocuments { snap, error in
@@ -355,7 +355,7 @@ class DatabaseManager {
                 return
             }
             
-            var devicesList = [DeviceCellModel]()
+            var devicesList = [DeviceCellViewObject]()
             
             for g in groups {
                 let data = g.data()
@@ -365,7 +365,7 @@ class DatabaseManager {
                     let devices = data["devices"] as! [String]
                     
                     for device in devices {
-                        let model = DeviceCellModel.init(name: device)
+                        let model = DeviceCellViewObject.init(name: device)
                         devicesList.append(model)
                     }
                     

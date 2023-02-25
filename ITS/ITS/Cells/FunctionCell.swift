@@ -15,7 +15,7 @@ final class FunctionCell: UICollectionViewCell {
     private let values: UILabel = UILabel()
 //    private let imageView: UIImageView = UIImageView()
     
-    private var model: FunctionCellModel?
+    private var viewObject: FunctionCellViewObject?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,12 +47,12 @@ final class FunctionCell: UICollectionViewCell {
 //        addSubview(imageView)
     }
     
-    func configure(with model: FunctionCellModel) {
-        self.model = model
+    func configure(with viewObject: FunctionCellViewObject) {
+        self.viewObject = viewObject
         
-        nameLabel.text = model.name
+        nameLabel.text = viewObject.name
 //        imageView.image = model.image
-        values.text = model.values
+        values.text = viewObject.values
         nameLabel.textColor = UIColor(red:  0x32 / 255,
                                       green:  0x33 / 255,
                                       blue:  0x34 / 255,

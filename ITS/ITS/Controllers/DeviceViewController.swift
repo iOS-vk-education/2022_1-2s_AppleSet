@@ -28,7 +28,7 @@ final class DeviceViewController: UIViewController {
         return collectionView
     }()
     
-    private var models: [FunctionCellModel] = []
+    private var models: [FunctionCellViewObject] = []
     let databaseManager = DatabaseManager.shared
     lazy var user: String = databaseManager.getCurrentUser()
 
@@ -105,7 +105,7 @@ final class DeviceViewController: UIViewController {
     
     private func addFunctionCell(with name: String) {
         
-        let model = FunctionCellModel(name: name)
+        let model = FunctionCellViewObject(name: name)
         self.models.append(model)
     
         self.collectionView.insertItems(at: [IndexPath(row: self.models.count - 1, section: 0)])
