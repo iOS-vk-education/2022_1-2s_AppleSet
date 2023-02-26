@@ -12,7 +12,6 @@ class GroupViewController: UIViewController  {
     
     let addButton: UIButton = UIButton()
     var groupTitle: String
-    lazy var user: String = databaseManager.getCurrentUser()
     
     init(title: String) {
         groupTitle = title
@@ -42,6 +41,7 @@ class GroupViewController: UIViewController  {
     
     var models: [DeviceCellViewObject] = []
     let databaseManager = DatabaseManager.shared
+    lazy var user: String = databaseManager.getCurrentUser()
     
     // MARK: - setup
     
