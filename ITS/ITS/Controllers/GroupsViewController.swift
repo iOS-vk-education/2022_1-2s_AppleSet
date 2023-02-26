@@ -107,12 +107,12 @@ class GroupsViewController: UIViewController {
     
     // MARK: - add device cell
     
-    private func addGroupCell(with name: String) {
+    func addGroupCell(with name: String) {
         
         presenter.addGroupCell(with: name)
     }
     
-    private func delGroupCell(name: String) {
+    func delGroupCell(name: String) {
         
         presenter.delGroupCell(with: name)
         

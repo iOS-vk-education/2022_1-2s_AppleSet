@@ -10,6 +10,8 @@ import PinLayout
 
 class GroupViewController: UIViewController  {
     
+    private lazy var presenter = GroupPresenter(output: self)
+    
     let addButton: UIButton = UIButton()
     var groupTitle: String
     
@@ -39,9 +41,9 @@ class GroupViewController: UIViewController  {
         
     }()
     
-    var models: [DeviceCellViewObject] = []
-    let databaseManager = DatabaseManager.shared
-    lazy var user: String = databaseManager.getCurrentUser()
+    private var deviceCellViewObjects: [DeviceCellViewObject] {
+        presenter.deviceCellViewObjects
+    }
     
     // MARK: - setup
     
@@ -80,7 +82,7 @@ class GroupViewController: UIViewController  {
         
         setupCollectionView()
         setupAddButton()
-        loadDevices()
+        presenter.didLoadView(group: groupTitle)
         
     }
     
@@ -128,85 +130,12 @@ class GroupViewController: UIViewController  {
         
     }
     
-    private func loadDevices() {
-        
-        databaseManager.loadDevicesInGroup(user: self.user, group: groupTitle) { result in
-            switch result {
-            case .success(let devices):
-                self.models = devices
-                self.collectionView.reloadData()
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
     func addDeviceCell(with name: String) {
-        
-        databaseManager.seeDevicesInGroup(user: self.user, group: groupTitle) { result in
-            switch result {
-            case .success(let devices):
-                self.models = devices
-                
-                for device in self.models {
-                    if device.name == name {
-                        self.errorMessage(error: "This device was already add to this group")
-                        return
-                    }
-                }
-                
-                self.databaseManager.seeAllDevices(user: self.user) { result in
-                    switch result {
-                    case .success(let allDevices):
-                        
-                        var is_dev = false
-                        
-                        for dev in allDevices {
-                            if dev.name == name {
-                                is_dev = true
-                                break
-                            }
-                        }
-                        
-                        if (!is_dev) {
-                            self.errorMessage(error: "Ther is not this device")
-                            return
-                        }
-                        
-                        self.databaseManager.addDeviceToGroup(user: self.user, group: self.groupTitle, device: CreateDeviceData(name: name)) { result in
-                            switch result {
-                            case .success:
-                                break
-                            case .failure(let error):
-                                print(error)
-                            }
-                        }
-                        
-                    case .failure(let error):
-                        print(error)
-                        return
-                    }
-                }
-                
-            case .failure(let error):
-                print(error)
-                return
-            }
-        }
+        presenter.addDeviceCell(with: name, group: groupTitle)
     }
     
     func delDeviceCell(name: String) {
-
-        databaseManager.delDeviceFromGroup(user: self.user, group: groupTitle, device: CreateDeviceData(name: name)) { result in
-            switch result {
-            case .success:
-                break
-            case .failure(let error):
-                print(error)
-            }
-
-        }
-        
+        presenter.delDeviceCell(with: name, group: groupTitle)
     }
     
     @objc
@@ -232,16 +161,6 @@ class GroupViewController: UIViewController  {
         present(alertController, animated: true)
         
     }
-    
-    func errorMessage(error: String)
-    {
-        let errorAlertController  = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-        
-        let errorOkAction = UIAlertAction(title: "Ok", style: .default)
-        errorAlertController .addAction(errorOkAction)
-        present(errorAlertController, animated: true)
-        print(error)
-    }
 
 }
 
@@ -252,7 +171,7 @@ extension GroupViewController: UICollectionViewDataSource, UICollectionViewDeleg
     // Количество ячеек
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return models.count
+        return deviceCellViewObjects.count
         
     }
     
@@ -262,12 +181,12 @@ extension GroupViewController: UICollectionViewDataSource, UICollectionViewDeleg
         
         guard
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DeviceInGroupCell", for: indexPath) as? DeviceInGroupCell,
-            models.count > indexPath.row
+            deviceCellViewObjects.count > indexPath.row
         else {
             return UICollectionViewCell()
         }
         
-        cell.configure(with: models[indexPath.row], title: groupTitle)
+        cell.configure(with: deviceCellViewObjects[indexPath.row], title: groupTitle)
         
         return cell
     }
@@ -276,7 +195,7 @@ extension GroupViewController: UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         let deviceViewController = DeviceViewController()
-        deviceViewController.title = models[indexPath.row].name
+        deviceViewController.title = deviceCellViewObjects[indexPath.row].name
 
         self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(deviceViewController, animated: true)
@@ -307,6 +226,23 @@ private extension GroupViewController {
             static let height: CGFloat = 50
             static let cornerRadius: CGFloat = height / 2
         }
+    }
+}
+
+extension GroupViewController: GroupPresenterOutput {
+    
+    func reloadData() {
+        collectionView.reloadData()
+    }
+    
+    func errorMessage(error: String) {
+        let errorAlertController  = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+        
+        let errorOkAction = UIAlertAction(title: "Ok", style: .default)
+        errorAlertController.addAction(errorOkAction)
+        present(errorAlertController, animated: true)
+        print(error)
+        
     }
 }
 

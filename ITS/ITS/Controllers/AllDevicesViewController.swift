@@ -116,12 +116,12 @@ class AllDevicesViewController: UIViewController {
     
     // MARK: - add device cell
 
-    private func addDeviceCell(with name: String) {
+    func addDeviceCell(with name: String) {
         
         presenter.addDeviceCell(with: name)
     }
 
-    private func delDeviceCell(name: String) {
+    func delDeviceCell(name: String) {
         
         presenter.delDeviceCell(with: name)
     }
