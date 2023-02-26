@@ -5,14 +5,13 @@
 //  Created by Natalia on 23.02.2023.
 //
 
-import Foundation
-
 protocol AllDevicesPresenterOutput: AnyObject {
     func reloadData()
+    func errorMessage(error: String)
 }
 
 class AllDevicesPresenter {
-    private let model: AllDevicesModel = AllDevicesModel()
+    private let model: DevicesAndGroupsModel = DevicesAndGroupsModel()
     private weak var output: AllDevicesPresenterOutput?
     
     var deviceCellViewObjects = [DeviceCellViewObject]()
@@ -41,7 +40,7 @@ extension AllDevicesPresenter {
             }
         }
     }
-
+    
     func addDeviceCell(with name: String) {
 
         model.seeAllDevices { result in
@@ -51,7 +50,8 @@ extension AllDevicesPresenter {
 
                 for device in self.deviceCellViewObjects {
                     if device.name == name {
-//                        self.errorMessage(error: "This device was already add")
+                        // Почему не работает???
+                        self.output?.errorMessage(error: "This device was already add")
                         return
                     }
                 }

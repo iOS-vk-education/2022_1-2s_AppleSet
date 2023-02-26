@@ -8,10 +8,12 @@
 import Foundation
 import UIKit
 
-final class AllDevicesModel {
+final class DevicesAndGroupsModel {
     
     private let manager: DatabaseManagerDescription =  DatabaseManager.shared
     lazy var user: String = manager.getCurrentUser()
+    
+    // Devices
     
     func loadDevices(completion: @escaping (Result<[DeviceCellViewObject], Error>) -> Void) {
         manager.loadDevices(user: self.user, completion: completion)
@@ -29,7 +31,7 @@ final class AllDevicesModel {
         manager.seeAllDevices(user: self.user, completion: completion)
     }
     
-    // !!!
+    // Groups
     
     func loadGroups(completion: @escaping (Result<[GroupCellViewObject], Error>) -> Void) {
         manager.loadGroups(user: self.user, completion: completion)
@@ -47,7 +49,7 @@ final class AllDevicesModel {
         manager.seeAllGroups(user: self.user, completion: completion)
     }
     
-    // ???
+    // Devices + Groups
     
     func loadDevicesInGroup(group: String, completion: @escaping (Result<[DeviceCellViewObject], Error>) -> Void) {
         manager.loadDevicesInGroup(user: self.user, group: group, completion: completion)

@@ -9,8 +9,10 @@ import UIKit
 import PinLayout
 
 class GroupsViewController: UIViewController {
-    
+
     // MARK: - Create objects
+    
+    private lazy var presenter = GroupsPresenter(output: self)
 
     private let collectionView: UICollectionView = {
         
@@ -26,9 +28,9 @@ class GroupsViewController: UIViewController {
         return collectionView
     }()
     
-    private var models: [GroupCellViewObject] = []
-    let databaseManager = DatabaseManager.shared
-    lazy var user: String = databaseManager.getCurrentUser()
+    private var groupCellViewObjects: [GroupCellViewObject] {
+        presenter.groupCellViewObjects
+    }
     
     // MARK: - setup
     
@@ -50,7 +52,7 @@ class GroupsViewController: UIViewController {
         view.backgroundColor = .white
     
         setupCollectionView()
-        loadGroups()
+        presenter.didLoadView()
 
     }
     
@@ -71,15 +73,6 @@ class GroupsViewController: UIViewController {
         layout()
         
     }
-    
-//    // MARK: - Load places
-//
-//    // Загружаем данные из БД
-//    private func loadGroups() {
-//
-//        let groupModel = GroupCellDataModel()
-//        models = groupModel.loadGroups()
-//    }
     
     // MARK: - set up navigation bar
     
@@ -112,74 +105,17 @@ class GroupsViewController: UIViewController {
             .bottom(view.safeAreaInsets.bottom)
     }
     
-    // Загружаем данные из БД
-    private func loadGroups() {
-        
-        databaseManager.loadGroups(user: self.user) { result in
-            switch result {
-            case .success(let groups):
-                self.models = groups
-                self.collectionView.reloadData()
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
     // MARK: - add device cell
     
     func addGroupCell(with name: String) {
         
-        databaseManager.seeAllGroups(user: self.user) { result in
-            switch result {
-            case .success(let groups):
-                self.models = groups
-                
-                for group in self.models {
-                    if group.name == name {
-                        self.errorMessage(error: "This group was already add")
-                        return
-                    }
-                }
-                
-                self.databaseManager.addGroup(user: self.user, group: CreateGroupData(name: name, devices: [])) { result in
-                    switch result {
-                    case .success:
-                        break
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
-                
-            case .failure(let error):
-                print(error)
-                return
-            }
-        }
+        presenter.addGroupCell(with: name)
     }
     
     func delGroupCell(name: String) {
         
-        databaseManager.delGroup(user: self.user, group: CreateGroupData(name: name, devices: [])) { result in
-            switch result {
-            case .success:
-                break
-            case .failure(let error):
-                print(error)
-            }
-            
-        }
+        presenter.delGroupCell(with: name)
         
-    }
-    
-    func errorMessage(error: String)
-    {
-        let errorAlertController  = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-        
-        let errorOkAction = UIAlertAction(title: "Ok", style: .default)
-        errorAlertController .addAction(errorOkAction)
-        present(errorAlertController, animated: true)
-        print(error)
     }
     
     // MARK: - Question button action
@@ -217,7 +153,7 @@ extension GroupsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     // Количество ячеек
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return models.count
+        return groupCellViewObjects.count
     }
     
     // Создание ячейки
@@ -225,20 +161,20 @@ extension GroupsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         guard
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GroupCell", for: indexPath) as? GroupCell,
-            models.count > indexPath.row
+            groupCellViewObjects.count > indexPath.row
         else {
             return UICollectionViewCell()
         }
         
-        cell.configure(with: models[indexPath.row])
+        cell.configure(with: groupCellViewObjects[indexPath.row])
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let groupViewController = GroupViewController(title: models[indexPath.row].name)
-        groupViewController.title = models[indexPath.row].name
+        let groupViewController = GroupViewController(title: groupCellViewObjects[indexPath.row].name)
+        groupViewController.title = groupCellViewObjects[indexPath.row].name
 
         self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(groupViewController, animated: true)
@@ -254,5 +190,22 @@ extension GroupsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: view.frame.width - 30, height: 70)
+    }
+}
+
+extension GroupsViewController: GroupsPresenterOutput {
+    
+    func reloadData() {
+        collectionView.reloadData()
+    }
+    
+    func errorMessage(error: String) {
+        let errorAlertController  = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+
+        let errorOkAction = UIAlertAction(title: "Ok", style: .default)
+        errorAlertController.addAction(errorOkAction)
+        present(errorAlertController, animated: true)
+        print(error)
+
     }
 }
