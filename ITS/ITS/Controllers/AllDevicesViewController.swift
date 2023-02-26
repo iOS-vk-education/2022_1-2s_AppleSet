@@ -35,8 +35,6 @@ class AllDevicesViewController: UIViewController {
     private var deviceCellViewObjects: [DeviceCellViewObject] {
         presenter.deviceCellViewObjects
     }
-//    let databaseManager = DatabaseManager.shared
-//    lazy var user: String = databaseManager.getCurrentUser()
     
     // MARK: - setup
     
@@ -128,16 +126,6 @@ class AllDevicesViewController: UIViewController {
         presenter.delDeviceCell(with: name)
     }
     
-    func errorMessage(error: String) {
-        let errorAlertController  = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-        
-        let errorOkAction = UIAlertAction(title: "Ok", style: .default)
-        errorAlertController.addAction(errorOkAction)
-        present(errorAlertController, animated: true)
-        print(error)
-        
-    }
-    
     // MARK: - Question button action
     
     @objc
@@ -220,7 +208,18 @@ extension AllDevicesViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension AllDevicesViewController: AllDevicesPresenterOutput {
+    
     func reloadData() {
         collectionView.reloadData()
+    }
+    
+    func errorMessage(error: String) {
+        let errorAlertController  = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+        
+        let errorOkAction = UIAlertAction(title: "Ok", style: .default)
+        errorAlertController.addAction(errorOkAction)
+        present(errorAlertController, animated: true)
+        print(error)
+        
     }
 }

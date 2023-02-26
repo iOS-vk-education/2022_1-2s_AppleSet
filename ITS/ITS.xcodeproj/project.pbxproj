@@ -34,7 +34,8 @@
 		E15DC1DB292A04E100FE1818 /* FunctionCellDataViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DC1DA292A04E100FE1818 /* FunctionCellDataViewObject.swift */; };
 		E15DC1DD292A050300FE1818 /* DeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DC1DC292A050300FE1818 /* DeviceViewController.swift */; };
 		E15DC1E0292A089A00FE1818 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DC1DF292A089A00FE1818 /* UIViewExtensions.swift */; };
-		E19F7B4B29AA006000E9A45B /* AllDevicesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19F7B4A29AA006000E9A45B /* AllDevicesModel.swift */; };
+		E17633D729AB1BF60080CD99 /* GroupsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17633D629AB1BF50080CD99 /* GroupsPresenter.swift */; };
+		E19F7B4B29AA006000E9A45B /* DevicesAndGroupsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19F7B4A29AA006000E9A45B /* DevicesAndGroupsModel.swift */; };
 		E1DC0C9E2958E9F40090FDAE /* DeviceInGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC0C9D2958E9F40090FDAE /* DeviceInGroupCell.swift */; };
 		E1DC0CA02958EA360090FDAE /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC0C9F2958EA360090FDAE /* GroupViewController.swift */; };
 		E1DC0CA2295A9CFD0090FDAE /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC0CA1295A9CFD0090FDAE /* StorageManager.swift */; };
@@ -72,7 +73,8 @@
 		E15DC1DA292A04E100FE1818 /* FunctionCellDataViewObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionCellDataViewObject.swift; sourceTree = "<group>"; };
 		E15DC1DC292A050300FE1818 /* DeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewController.swift; sourceTree = "<group>"; };
 		E15DC1DF292A089A00FE1818 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
-		E19F7B4A29AA006000E9A45B /* AllDevicesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDevicesModel.swift; sourceTree = "<group>"; };
+		E17633D629AB1BF50080CD99 /* GroupsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsPresenter.swift; sourceTree = "<group>"; };
+		E19F7B4A29AA006000E9A45B /* DevicesAndGroupsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesAndGroupsModel.swift; sourceTree = "<group>"; };
 		E1DC0C9D2958E9F40090FDAE /* DeviceInGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInGroupCell.swift; sourceTree = "<group>"; };
 		E1DC0C9F2958EA360090FDAE /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		E1DC0CA1295A9CFD0090FDAE /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -216,7 +218,7 @@
 		E19F7B4929AA003700E9A45B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E19F7B4A29AA006000E9A45B /* AllDevicesModel.swift */,
+				E19F7B4A29AA006000E9A45B /* DevicesAndGroupsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				E1F277D529A7A8F6009F3237 /* AllDevicesPresenter.swift */,
+				E17633D629AB1BF50080CD99 /* GroupsPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				E1DC0C9E2958E9F40090FDAE /* DeviceInGroupCell.swift in Sources */,
 				A04FFF2F2913034400BC96A7 /* AllDevicesViewController.swift in Sources */,
 				E1DC0CA2295A9CFD0090FDAE /* StorageManager.swift in Sources */,
+				E17633D729AB1BF60080CD99 /* GroupsPresenter.swift in Sources */,
 				E14CC47C2933AD8C0061F262 /* TabBarController.swift in Sources */,
 				D560D7E929573E2900C2BE5E /* ProfileViewController.swift in Sources */,
 				E15DC1D9292A04D100FE1818 /* FunctionCellViewObject.swift in Sources */,
@@ -370,7 +374,7 @@
 				E1178E9629489DFB00DE42CB /* DatabaseManager.swift in Sources */,
 				D5FDF91A29630B5600CC5E57 /* AuthorizationViewController.swift in Sources */,
 				D5FDF91C2963104600CC5E57 /* ChangePassword.swift in Sources */,
-				E19F7B4B29AA006000E9A45B /* AllDevicesModel.swift in Sources */,
+				E19F7B4B29AA006000E9A45B /* DevicesAndGroupsModel.swift in Sources */,
 				E15DC1DD292A050300FE1818 /* DeviceViewController.swift in Sources */,
 				E15DC1D5292A04A000FE1818 /* GroupCell.swift in Sources */,
 				E15DC1E0292A089A00FE1818 /* UIViewExtensions.swift in Sources */,
