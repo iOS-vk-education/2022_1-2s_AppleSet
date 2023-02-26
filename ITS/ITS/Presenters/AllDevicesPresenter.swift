@@ -40,7 +40,7 @@ extension AllDevicesPresenter {
             }
         }
     }
-
+    
     func addDeviceCell(with name: String) {
 
         model.seeAllDevices { result in
