@@ -36,7 +36,7 @@ class GroupsViewController: UIViewController {
     
     private func setupCollectionView() {
 
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .customBackgroundColor
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -49,7 +49,7 @@ class GroupsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = .customBackgroundColor
     
         setupCollectionView()
         presenter.didLoadView()

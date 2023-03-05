@@ -41,7 +41,7 @@ class AllDevicesViewController: UIViewController {
     private func setupCollectionView() {
         
         // background of main controller
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .customBackgroundColor
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -55,7 +55,7 @@ class AllDevicesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //navigation bar
-        view.backgroundColor = .white
+        view.backgroundColor = .customBackgroundColor
         
         setupCollectionView()
         presenter.didLoadView()

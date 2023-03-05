@@ -50,7 +50,7 @@ class GroupViewController: UIViewController  {
     private func setupCollectionView() {
         
         // background of main controller
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .customBackgroundColor
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -76,7 +76,7 @@ class GroupViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .customBackgroundColor
         
         title = groupTitle
         
@@ -221,7 +221,7 @@ private extension GroupViewController {
         
         struct AddButton {
             static let iconName: String = "plus.circle"
-            static let backgroundColor: UIColor = .white
+            static let backgroundColor: UIColor = .customBackgroundColor
             static let marginBottom: CGFloat = 0
             static let height: CGFloat = 50
             static let cornerRadius: CGFloat = height / 2

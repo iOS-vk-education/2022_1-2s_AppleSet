@@ -13,7 +13,7 @@ class RegistrationController: UIViewController {
     
     private let label: UILabel = {
         let label = UILabel()
-//        label.backgroundColor = .white
+        label.backgroundColor = .customBackgroundColor
         label.textAlignment = .center
         label.text = "Log In"
         label.font = .systemFont(ofSize: 24, weight: .semibold)
@@ -23,11 +23,11 @@ class RegistrationController: UIViewController {
     
     private let emailField: UITextField = {
         let emailField = UITextField()
-        emailField.textColor = .black
+        emailField.textColor = .customTextColor
         emailField.placeholder = "Email Addres"
         emailField.layer.borderWidth = 1
         emailField.autocapitalizationType = .none
-        emailField.layer.backgroundColor = UIColor.white.cgColor
+        emailField.layer.backgroundColor = UIColor.customBackgroundFieldColor.cgColor
         emailField.leftViewMode = .always
         emailField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         
@@ -36,7 +36,7 @@ class RegistrationController: UIViewController {
     
     private let userName: UITextField = {
         let userName = UITextField()
-        userName.textColor = .black
+        userName.textColor = .customTextColor
         userName.placeholder = "User name"
         userName.layer.borderWidth = 1
         userName.autocapitalizationType = .none
@@ -63,7 +63,7 @@ class RegistrationController: UIViewController {
     private let button: UIButton = {
         let button = UIButton()
         button.backgroundColor = .customBlue
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.customTextColor, for: .normal)
         button.setTitle("Signin", for: .normal)
         return button
     }()
@@ -71,8 +71,8 @@ class RegistrationController: UIViewController {
     
         private let ShowCreateAccount: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .white
-        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .customBackgroundColor
+        button.setTitleColor(.customTextColor, for: .normal)
         button.setTitle("Create account!", for: .normal)
         return button
     }()
@@ -80,15 +80,15 @@ class RegistrationController: UIViewController {
     private let SinginButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .customBlue
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.customTextColor, for: .normal)
         button.setTitle("Return to Authorization", for: .normal)
         return button
     }()
     
     private let ResetPassword: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .white
-        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .customBackgroundColor
+        button.setTitleColor(.customTextColor, for: .normal)
         button.setTitle("Fogot password?", for: .normal)
         return button
     }()
@@ -96,7 +96,7 @@ class RegistrationController: UIViewController {
     private let ResetPasswordButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .customBlue
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.customTextColor, for: .normal)
         button.setTitle("Change password", for: .normal)
         return button
     }()
@@ -114,7 +114,7 @@ class RegistrationController: UIViewController {
         view.addSubview(ResetPasswordButton)
 
         
-        view.backgroundColor = .white
+        view.backgroundColor = .customBackgroundColor
         
         
         userName.isHidden = true
@@ -210,7 +210,7 @@ class RegistrationController: UIViewController {
             }
             guard error == nil else {
                 self?.label.text = "Log in"
-                self?.label.textColor = .black
+                self?.label.textColor = .customTextColor
                 if error?._code == AuthErrorCode.wrongPassword.rawValue{
                     self?.label.text = "Wrong Password"
                     self?.label.textColor = .red

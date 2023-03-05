@@ -34,9 +34,9 @@ final class DeviceViewController: UIViewController {
 
     private func setup()
     {
-        view.backgroundColor = .white
+        view.backgroundColor = .customBackgroundColor
         
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .customBackgroundColor
         collectionView.delegate = self
         collectionView.dataSource = self
         view.addSubview(collectionView)
