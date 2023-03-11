@@ -259,7 +259,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             let newImage = UIImage(data: imgData!)
             avatarImage.image = newImage
             
-            imageService.upload(image: editedImage) { result in
+            imageService.upload(image: newImage!) { result in
                 switch result {
                 case .success(let imageName):
                     let user =  Auth.auth().currentUser
