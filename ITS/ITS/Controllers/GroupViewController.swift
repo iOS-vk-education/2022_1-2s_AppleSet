@@ -50,7 +50,7 @@ class GroupViewController: UIViewController  {
     private func setupCollectionView() {
         
         // background of main controller
-        collectionView.backgroundColor = .customBackgroundColor
+        collectionView.backgroundColor = .customBackgroundDeviceColor
         
         collectionView.delegate = self
         collectionView.dataSource = self

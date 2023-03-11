@@ -18,10 +18,11 @@ extension UIColor {
 //                                    alpha: 1)
     
     // 03045e
-    static let customGrey = UIColor(red: 0x32 / 255,
-                                    green: 0x33 / 255,
-                                    blue: 0x34 / 255,
-                                    alpha: 1)
+    
+//    static let customGrey = UIColor(red: 0x32 / 255,
+//                                    green: 0x33 / 255,
+//                                    blue: 0x34 / 255,
+//                                    alpha: 1)
     
 //
 //    static let customBlue: UIColor = Color(lightValue: .init(red: 0xd6, green: 0xe6, blue: 0xf2, alpha: 1)
@@ -47,10 +48,16 @@ extension UIColor {
     static let customBackgroundColor: UIColor = Color(lightValue: .init(red: 255, green: 255, blue: 255, alpha: 1)
                                                 ,darkValue: .init(red: 0, green: 0, blue: 0, alpha: 1)).value
     
+    static let customBackgroundDeviceColor: UIColor = Color(lightValue: .init(red: 255, green: 255, blue: 255, alpha: 1)
+                                                            ,darkValue: .init(white: 0.1, alpha: 1)).value
     
     
     static let customTextColor: UIColor = Color(lightValue: .init(red: 0, green: 0, blue: 0, alpha: 1)
                                                 ,darkValue: .init(red: 255, green: 255, blue: 255, alpha: 1)).value
+    
+    static let customGrey: UIColor = Color(lightValue: .darkGray
+                                           ,darkValue: .init(red: 255, green: 255, blue: 255, alpha: 1)).value
+
     
     static let customBackgroundLayer:  UIColor = Color(lightValue: .init(red: 255, green: 255, blue: 255, alpha: 1)
                                                        ,darkValue: .init(white: 0.3, alpha: 1)).value

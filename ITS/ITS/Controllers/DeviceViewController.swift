@@ -45,7 +45,7 @@ final class DeviceViewController: UIViewController {
     private func setupAddFunctionButton() {
 
         addFunctionButton.setImage(UIImage(systemName: Constants.AddFunctionButton.iconName), for: .normal)
-        addFunctionButton.imageView?.tintColor = .white
+        addFunctionButton.imageView?.tintColor = .customBackgroundColor
         addFunctionButton.imageView?.layer.transform = CATransform3DMakeScale(2, 2, 2)
         addFunctionButton.backgroundColor = Constants.AddFunctionButton.backgroundColor
         addFunctionButton.layer.cornerRadius = Constants.AddFunctionButton.cornerRadius
