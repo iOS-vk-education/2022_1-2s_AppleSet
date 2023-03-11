@@ -62,9 +62,9 @@ final class ProfileViewController: UIViewController
         logOutButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
         UserPhoto.addTarget(self, action: #selector(ChooseUserPhoto), for: .touchUpInside)
         username.text = "Username"
-        
-        
+         
         view.backgroundColor = .customBackgroundColor
+
         
         if FirebaseAuth.Auth.auth().currentUser != nil {
             let user =  Auth.auth().currentUser
@@ -243,6 +243,7 @@ final class ProfileViewController: UIViewController
 }
  
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
     func showImagePickerController() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -253,10 +254,13 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        if let editedImage = info[UIImagePickerController.InfoKey.editedImage ] as? UIImage {
-            avatarImage.image = editedImage
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            // Compress image
+            let imgData = editedImage.jpegData(compressionQuality: 0.1)
+            let newImage = UIImage(data: imgData!)
+            avatarImage.image = newImage
             
-            imageService.upload(image: editedImage) { result in
+            imageService.upload(image: newImage!) { result in
                 switch result {
                 case .success(let imageName):
                     let user =  Auth.auth().currentUser
