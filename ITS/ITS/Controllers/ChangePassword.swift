@@ -11,7 +11,7 @@ import Firebase
 final class ChangePassword:UIViewController{
     private let label: UILabel = {
         let label = UILabel()
-//        label.backgroundColor = .white
+        label.backgroundColor = .customBackgroundColor
         label.textAlignment = .center
         label.text = ""
         label.font = .systemFont(ofSize: 24, weight: .semibold)
@@ -20,11 +20,25 @@ final class ChangePassword:UIViewController{
     
     private let emailField: UITextField = {
         let emailField = UITextField()
-        emailField.textColor = .black
+        emailField.textColor = .customTextColor
         emailField.placeholder = "Email Addres"
         emailField.layer.borderWidth = 1
+        emailField.layer.backgroundColor = UIColor.customBackgroundLayer.cgColor
+        
+        emailField.layer.backgroundColor = UIColor.customBackgroundColor.cgColor
+        emailField.layer.cornerRadius = 10
+        
+        emailField.layer.borderWidth = 1
+        emailField.layer.borderColor = UIColor.customBackgroundLayer.cgColor
+        emailField.layer.backgroundColor = UIColor.customBackgroundLayer.cgColor
+        
+        emailField.layer.shadowColor = UIColor.customButtonShadowColor.cgColor
+        emailField.layer.shadowOffset = CGSize(width: 0.0, height: -3.0)
+        emailField.layer.shadowRadius = 9.0
+        emailField.layer.shadowOpacity = 0.6
+        emailField.layer.masksToBounds = false
+        
         emailField.autocapitalizationType = .none
-        emailField.layer.backgroundColor = UIColor.white.cgColor
         emailField.leftViewMode = .always
         emailField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         
@@ -34,7 +48,8 @@ final class ChangePassword:UIViewController{
     private let ResetPasswordButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .customBlue
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.customTextColor, for: .normal)
+        button.layer.cornerRadius = 20
         button.setTitle("Change password", for: .normal)
         return button
     }()
@@ -45,7 +60,7 @@ final class ChangePassword:UIViewController{
         view.addSubview(emailField)
         view.addSubview(label)
         
-        view.backgroundColor = .white
+        view.backgroundColor = .customBackgroundColor
 
         
         ResetPasswordButton.addTarget(self, action: #selector(ResetPasswordTapButton), for: .touchUpInside)
@@ -55,10 +70,10 @@ final class ChangePassword:UIViewController{
         super.viewWillAppear(animated)
         label.frame = CGRect(x: 0, y: 120, width: view.frame.size.width, height: 80)
         
-        emailField.frame = CGRect(x: 20, y: label.frame.origin.y+label.frame.size.height+10,
+        emailField.frame = CGRect(x: 20, y: label.frame.origin.y+label.frame.size.height+140,
                                   width: view.frame.size.width-40, height: 50)
         
-         ResetPasswordButton.frame = CGRect(x: 20, y: emailField.frame.origin.y+emailField.frame.size.height+20,
+         ResetPasswordButton.frame = CGRect(x: 20, y: emailField.frame.origin.y+emailField.frame.size.height+30,
                                             width: view.frame.size.width-40, height: 50)
         
         setupNavBar()

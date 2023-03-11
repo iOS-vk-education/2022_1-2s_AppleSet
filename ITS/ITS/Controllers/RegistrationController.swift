@@ -13,7 +13,7 @@ class RegistrationController: UIViewController {
     
     private let label: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .customBackgroundColor
+//        label.backgroundColor = .white
         label.textAlignment = .center
         label.text = "Log In"
         label.font = .systemFont(ofSize: 24, weight: .semibold)
@@ -23,11 +23,21 @@ class RegistrationController: UIViewController {
     
     private let emailField: UITextField = {
         let emailField = UITextField()
-        emailField.textColor = .customTextColor
+        emailField.textColor = .black
         emailField.placeholder = "Email Addres"
-        emailField.layer.borderWidth = 1
         emailField.autocapitalizationType = .none
-        emailField.layer.backgroundColor = UIColor.customBackgroundFieldColor.cgColor
+        emailField.layer.cornerRadius = 10
+        
+        emailField.layer.borderWidth = 1
+        emailField.layer.borderColor = UIColor.customBackgroundLayer.cgColor
+        emailField.layer.backgroundColor = UIColor.customBackgroundLayer.cgColor
+        
+        emailField.layer.shadowColor = UIColor.customButtonShadowColor.cgColor
+        emailField.layer.shadowOffset = CGSize(width: 0.0, height: -3.0)
+        emailField.layer.shadowRadius = 9.0
+        emailField.layer.shadowOpacity = 0.6
+        emailField.layer.masksToBounds = false
+        
         emailField.leftViewMode = .always
         emailField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         
@@ -36,11 +46,13 @@ class RegistrationController: UIViewController {
     
     private let userName: UITextField = {
         let userName = UITextField()
-        userName.textColor = .customTextColor
+        userName.textColor = .black
         userName.placeholder = "User name"
-        userName.layer.borderWidth = 1
         userName.autocapitalizationType = .none
-        userName.layer.backgroundColor = UIColor.white.cgColor
+        
+        userName.layer.borderWidth = 1
+        userName.layer.backgroundColor = UIColor.customBackgroundLayer.cgColor
+        
         userName.leftViewMode = .always
         userName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         
@@ -52,9 +64,22 @@ class RegistrationController: UIViewController {
         let passField = UITextField()
         passField.textColor = .black
         passField.placeholder = "Password"
-        passField.layer.borderWidth = 1
         passField.isSecureTextEntry = true
-        passField.layer.backgroundColor = UIColor.white.cgColor
+        
+        passField.layer.borderWidth = 1
+        passField.layer.backgroundColor = UIColor.customBackgroundLayer.cgColor
+        passField.layer.cornerRadius = 10
+        
+        passField.layer.borderWidth = 1
+        passField.layer.borderColor = UIColor.customBackgroundLayer.cgColor
+        passField.layer.backgroundColor = UIColor.customBackgroundLayer.cgColor
+        
+        passField.layer.shadowColor = UIColor.customButtonShadowColor.cgColor
+        passField.layer.shadowOffset = CGSize(width: 0.0, height: -3.0)
+        passField.layer.shadowRadius = 9.0
+        passField.layer.shadowOpacity = 0.6
+        passField.layer.masksToBounds = false
+        
         passField.leftViewMode = .always
         passField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         return passField
@@ -62,9 +87,10 @@ class RegistrationController: UIViewController {
     
     private let button: UIButton = {
         let button = UIButton()
+        button.layer.cornerRadius = 20
         button.backgroundColor = .customBlue
         button.setTitleColor(.customTextColor, for: .normal)
-        button.setTitle("Signin", for: .normal)
+        button.setTitle("Sign In", for: .normal)
         return button
     }()
 
@@ -260,7 +286,7 @@ class RegistrationController: UIViewController {
         button.isHidden = false
         SinginButton.isHidden = true
         label.text = "Log In"
-        label.textColor = .black
+        label.textColor = .customTextColor
         passwordField.text = ""
     }
 
