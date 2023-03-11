@@ -70,7 +70,7 @@ class RootTabBarViewController: UITabBarController, RootTabBarDelegate {
     func setRootTabbarConntroller(){
         
         self.tabBar.tintColor = .customGrey
-        self.tabBar.backgroundColor = .white
+        self.tabBar.backgroundColor = .customBackgroundColor
         
         var vc: UIViewController?
         
@@ -191,11 +191,11 @@ class RootNavigationController: UINavigationController{
     
     func defaultSetting() {
         
-        view.backgroundColor = .white
+        view.backgroundColor = .customBackgroundColor
         self.navigationBar.barStyle = .default
-        self.navigationController?.navigationBar.backgroundColor = .white
-        self.navigationBar.tintColor = .white
-        self.toolbar.tintColor = .white
+        self.navigationController?.navigationBar.backgroundColor = .red ///??
+        self.navigationBar.tintColor = .red
+        self.toolbar.tintColor = .red
         self.navigationBar.isTranslucent = false
         self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.customGrey,
                                                   NSAttributedString.Key.font: UIFont.systemFont(ofSize:17)]

@@ -32,11 +32,11 @@ final class ProfileViewController: UIViewController
         
         username.text = "Username"
         username.font = UIFont(name: "Noteworthy", size: 32)
-        username.textColor = .black
+        username.textColor = .customTextColor
         
         mail.text = "Mail"
         mail.font = UIFont(name: "Noteworthy", size: 32)
-        mail.textColor = .black
+        mail.textColor = .customTextColor
         
         logOutButton.backgroundColor = .customBlue.withAlphaComponent(0.8)
         logOutButton.setTitleColor(.black, for: .normal)
@@ -48,7 +48,7 @@ final class ProfileViewController: UIViewController
 //        ChangePassword.layer.cornerRadius = Constans.EditButton.cornerRadius
 //        ChangePassword.setTitle("Change password", for: .normal)
         
-        UserPhoto.backgroundColor = .white
+        UserPhoto.backgroundColor = .customBackgroundColor
         UserPhoto.setTitleColor(.customDarkBlue, for: .normal)
         UserPhoto.setTitle("Choose photo", for: .normal)
         
@@ -62,8 +62,9 @@ final class ProfileViewController: UIViewController
         logOutButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
         UserPhoto.addTarget(self, action: #selector(ChooseUserPhoto), for: .touchUpInside)
         username.text = "Username"
-        
-        view.backgroundColor = .white
+         
+        view.backgroundColor = .customBackgroundColor
+
         
         if FirebaseAuth.Auth.auth().currentUser != nil {
             let user =  Auth.auth().currentUser
@@ -137,7 +138,7 @@ final class ProfileViewController: UIViewController
                                          action: #selector(didTapBackButton))
         
         navigationItem.leftBarButtonItem = backButton
-        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.tintColor = .customTextColor
         title = "Profile"
     }
     
