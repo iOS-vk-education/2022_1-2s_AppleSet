@@ -117,13 +117,13 @@ class AllDevicesViewController: UIViewController {
     // MARK: - add device cell
 
     func addDeviceCell(with name: String) {
-        
-        presenter.addDeviceCell(with: name)
+    
+            presenter.addDeviceCell(with: name)
     }
 
     func delDeviceCell(name: String) {
         
-        presenter.delDeviceCell(with: name)
+            presenter.delDeviceCell(with: name)
     }
     
     // MARK: - Question button action
