@@ -132,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				E1004FD029C59C0200EE45B9 /* CustomComponents */,
-				E128A745292912D40005011A /* Controllers */,
+				E128A745292912D40005011A /* ViewControllers */,
 				E1F277D429A7A8D1009F3237 /* Presenters */,
 				E19F7B4929AA003700E9A45B /* Models */,
 				E1178E9429489DA800DE42CB /* Managers */,
@@ -201,7 +201,7 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		E128A745292912D40005011A /* Controllers */ = {
+		E128A745292912D40005011A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				A04FFF2E2913034400BC96A7 /* AllDevicesViewController.swift */,
@@ -214,7 +214,7 @@
 				D5FDF91929630B5600CC5E57 /* AuthorizationViewController.swift */,
 				D5FDF91B2963104600CC5E57 /* ChangePassword.swift */,
 			);
-			path = Controllers;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		E128A749292A01A60005011A /* ViewObjects */ = {
