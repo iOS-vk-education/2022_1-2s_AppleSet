@@ -14,6 +14,8 @@
 		A04FFF342913034400BC96A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A04FFF332913034400BC96A7 /* Assets.xcassets */; };
 		A04FFF372913034400BC96A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A04FFF352913034400BC96A7 /* LaunchScreen.storyboard */; };
 		D511F79A295A1B2D005862AA /* UserViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D511F799295A1B2D005862AA /* UserViewObject.swift */; };
+		D55BBE8529B4C375002441D1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55BBE8429B4C375002441D1 /* Color.swift */; };
+		D55BBE8729B4C593002441D1 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55BBE8629B4C593002441D1 /* UIColor+RGB.swift */; };
 		D560D7E929573E2900C2BE5E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D560D7E829573E2900C2BE5E /* ProfileViewController.swift */; };
 		D5E4A516293C85F400F0E9F8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5E4A515293C85F400F0E9F8 /* GoogleService-Info.plist */; };
 		D5E4A518293C954B00F0E9F8 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E4A517293C954B00F0E9F8 /* RegistrationController.swift */; };
@@ -54,6 +56,8 @@
 		A04FFF382913034400BC96A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CABA6EBE88E717B96C3A5747 /* Pods-ITS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITS.release.xcconfig"; path = "Target Support Files/Pods-ITS/Pods-ITS.release.xcconfig"; sourceTree = "<group>"; };
 		D511F799295A1B2D005862AA /* UserViewObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewObject.swift; sourceTree = "<group>"; };
+		D55BBE8429B4C375002441D1 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		D55BBE8629B4C593002441D1 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
 		D560D7E829573E2900C2BE5E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D5E4A515293C85F400F0E9F8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D5E4A517293C954B00F0E9F8 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
@@ -145,6 +149,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D55BBE8329B4C33E002441D1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D55BBE8429B4C375002441D1 /* Color.swift */,
+				D55BBE8629B4C593002441D1 /* UIColor+RGB.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		E1178E9429489DA800DE42CB /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +221,7 @@
 		E15DC1DE292A086C00FE1818 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D55BBE8329B4C33E002441D1 /* Helpers */,
 				E15DC1DF292A089A00FE1818 /* UIViewExtensions.swift */,
 				E14CC47D2933ADD50061F262 /* UIColorExtensions.swift */,
 			);
@@ -354,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1F277D629A7A8F6009F3237 /* AllDevicesPresenter.swift in Sources */,
+				D55BBE8729B4C593002441D1 /* UIColor+RGB.swift in Sources */,
 				E1DC0C9E2958E9F40090FDAE /* DeviceInGroupCell.swift in Sources */,
 				A04FFF2F2913034400BC96A7 /* AllDevicesViewController.swift in Sources */,
 				E1DC0CA2295A9CFD0090FDAE /* StorageManager.swift in Sources */,
@@ -370,6 +385,7 @@
 				E17633D929AB2B1B0080CD99 /* GroupPresenter.swift in Sources */,
 				E14CC47E2933ADD50061F262 /* UIColorExtensions.swift in Sources */,
 				D5E4A518293C954B00F0E9F8 /* RegistrationController.swift in Sources */,
+				D55BBE8529B4C375002441D1 /* Color.swift in Sources */,
 				A04FFF2D2913034400BC96A7 /* SceneDelegate.swift in Sources */,
 				E1178E9629489DFB00DE42CB /* DatabaseManager.swift in Sources */,
 				D5FDF91A29630B5600CC5E57 /* AuthorizationViewController.swift in Sources */,

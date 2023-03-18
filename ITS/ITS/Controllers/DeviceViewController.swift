@@ -34,9 +34,9 @@ final class DeviceViewController: UIViewController {
 
     private func setup()
     {
-        view.backgroundColor = .white
+        view.backgroundColor = .customBackgroundColor
         
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .customBackgroundColor
         collectionView.delegate = self
         collectionView.dataSource = self
         view.addSubview(collectionView)
@@ -45,7 +45,7 @@ final class DeviceViewController: UIViewController {
     private func setupAddFunctionButton() {
 
         addFunctionButton.setImage(UIImage(systemName: Constants.AddFunctionButton.iconName), for: .normal)
-        addFunctionButton.imageView?.tintColor = .white
+        addFunctionButton.imageView?.tintColor = .customBackgroundColor
         addFunctionButton.imageView?.layer.transform = CATransform3DMakeScale(2, 2, 2)
         addFunctionButton.backgroundColor = Constants.AddFunctionButton.backgroundColor
         addFunctionButton.layer.cornerRadius = Constants.AddFunctionButton.cornerRadius

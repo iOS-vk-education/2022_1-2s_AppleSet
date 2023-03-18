@@ -21,11 +21,25 @@ final class AuthorizationViewController:UIViewController{
     
     private let emailField: UITextField = {
         let emailField = UITextField()
-        emailField.textColor = .black
+        emailField.textColor = .customTextColor
         emailField.placeholder = "Email Addres"
-        emailField.layer.borderWidth = 1
         emailField.autocapitalizationType = .none
-        emailField.layer.backgroundColor = UIColor.white.cgColor
+        
+        emailField.layer.borderWidth = 1
+        emailField.layer.backgroundColor = UIColor.customBackgroundLayer.cgColor
+        emailField.layer.cornerRadius = 10
+        
+        emailField.layer.borderWidth = 1
+        emailField.layer.borderColor = UIColor.customBackgroundLayer.cgColor
+        emailField.layer.backgroundColor = UIColor.customBackgroundLayer.cgColor
+        
+        emailField.layer.shadowColor = UIColor.customButtonShadowColor.cgColor
+        emailField.layer.shadowOffset = CGSize(width: 0.0, height: -3.0)
+        emailField.layer.shadowRadius = 9.0
+        emailField.layer.shadowOpacity = 0.6
+        emailField.layer.masksToBounds = false
+        
+        
         emailField.leftViewMode = .always
         emailField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         
@@ -34,11 +48,24 @@ final class AuthorizationViewController:UIViewController{
     
     private let userName: UITextField = {
         let userName = UITextField()
-        userName.textColor = .black
+        userName.textColor = .customTextColor
         userName.placeholder = "User name"
-        userName.layer.borderWidth = 1
         userName.autocapitalizationType = .none
-        userName.layer.backgroundColor = UIColor.white.cgColor
+        userName.layer.borderWidth = 1
+        
+        userName.layer.cornerRadius = 10
+        
+        userName.layer.borderWidth = 1
+        userName.layer.borderColor = UIColor.customBackgroundLayer.cgColor
+        userName.layer.backgroundColor = UIColor.customBackgroundLayer.cgColor
+        
+        userName.layer.shadowColor = UIColor.customButtonShadowColor.cgColor
+        userName.layer.shadowOffset = CGSize(width: 0.0, height: -3.0)
+        userName.layer.shadowRadius = 9.0
+        userName.layer.shadowOpacity = 0.6
+        userName.layer.masksToBounds = false
+        
+        userName.layer.backgroundColor = UIColor.customBackgroundLayer.cgColor
         userName.leftViewMode = .always
         userName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         
@@ -48,11 +75,24 @@ final class AuthorizationViewController:UIViewController{
     
     private let passwordField: UITextField = {
         let passField = UITextField()
-        passField.textColor = .black
+        passField.textColor = .customTextColor
         passField.placeholder = "Password"
-        passField.layer.borderWidth = 1
         passField.isSecureTextEntry = true
-        passField.layer.backgroundColor = UIColor.white.cgColor
+        passField.layer.borderWidth = 1
+        
+        passField.layer.cornerRadius = 10
+        
+        passField.layer.borderWidth = 1
+        passField.layer.borderColor = UIColor.customBackgroundLayer.cgColor
+        passField.layer.backgroundColor = UIColor.customBackgroundLayer.cgColor
+        
+        passField.layer.shadowColor = UIColor.customButtonShadowColor.cgColor
+        passField.layer.shadowOffset = CGSize(width: 0.0, height: -3.0)
+        passField.layer.shadowRadius = 9.0
+        passField.layer.shadowOpacity = 0.6
+        passField.layer.masksToBounds = false
+        
+        passField.layer.backgroundColor = UIColor.customBackgroundLayer.cgColor
         passField.leftViewMode = .always
         passField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         return passField
@@ -61,9 +101,12 @@ final class AuthorizationViewController:UIViewController{
     
     private let SinginButton: UIButton = {
     let button = UIButton()
+        
     button.backgroundColor = .customBlue
-    button.setTitleColor(.black, for: .normal)
+    button.setTitleColor(.customTextColor, for: .normal)
     button.setTitle("Create account!", for: .normal)
+    button.layer.cornerRadius = 20
+        
     return button
 }()
     
@@ -76,7 +119,7 @@ final class AuthorizationViewController:UIViewController{
         view.addSubview(passwordField)
         view.addSubview(SinginButton)
         
-        view.backgroundColor = .white
+        view.backgroundColor = .customBackgroundColor
         SinginButton.addTarget(self, action: #selector(SinginButtonTap), for: .touchUpInside)
     }
     
@@ -92,7 +135,7 @@ final class AuthorizationViewController:UIViewController{
         passwordField.frame = CGRect(x: 20, y: emailField.frame.origin.y+emailField.frame.size.height+10,
                              width: view.frame.size.width-40, height: 50)
         
-        SinginButton.frame = CGRect(x: 20, y:  passwordField.frame.origin.y+passwordField.frame.size.height+30,
+        SinginButton.frame = CGRect(x: 20, y:  passwordField.frame.origin.y+passwordField.frame.size.height+80,
                               width: view.frame.size.width-40, height: 50)
         
         setupNavBar()
