@@ -129,7 +129,7 @@ final class DevicesAndGroupsModel {
             
             self.manager.addDeviceToGroup(user: self.user, group: group, device: device, completion: completion)
         }
-    }
+    } 
     
     func delDeviceFromGroup(group: String, device: CreateDeviceData, completion: @escaping (Result<Void, Error>) -> Void) {
         
