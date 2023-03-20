@@ -8,7 +8,7 @@
 import UIKit
 import PinLayout
 
-class GroupsViewController: UIViewController {
+class GroupsViewController: CustomViewController {
 
     // MARK: - Create objects
     
@@ -200,12 +200,15 @@ extension GroupsViewController: GroupsPresenterOutput {
     }
     
     func errorMessage(error: String) {
-        let errorAlertController  = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-
-        let errorOkAction = UIAlertAction(title: "Ok", style: .default)
-        errorAlertController.addAction(errorOkAction)
-        present(errorAlertController, animated: true)
-        print(error)
+        
+        showErrorView(with: error)
+        
+//        let errorAlertController  = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+//
+//        let errorOkAction = UIAlertAction(title: "Ok", style: .default)
+//        errorAlertController.addAction(errorOkAction)
+//        present(errorAlertController, animated: true)
+//        print(error)
 
     }
 }

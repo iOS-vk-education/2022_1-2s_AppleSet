@@ -1,5 +1,5 @@
 //
-//  CustomTabBar.swift
+//  RootTabBarViewController.swift
 //  ITS
 //
 //  Created by Natalia on 30.11.2022.

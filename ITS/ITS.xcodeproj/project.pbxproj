@@ -29,7 +29,7 @@
 		E1178E9629489DFB00DE42CB /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1178E9529489DFB00DE42CB /* DatabaseManager.swift */; };
 		E128A748292924A50005011A /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = E128A747292924A50005011A /* PinLayout */; };
 		E14CC47E2933ADD50061F262 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14CC47D2933ADD50061F262 /* UIColorExtensions.swift */; };
-		E158EB6A29375E4500597A08 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158EB6929375E4500597A08 /* CustomTabBar.swift */; };
+		E158EB6A29375E4500597A08 /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E158EB6929375E4500597A08 /* RootTabBarViewController.swift */; };
 		E15DC1D1292A045600FE1818 /* GroupCellViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DC1D0292A045600FE1818 /* GroupCellViewObject.swift */; };
 		E15DC1D5292A04A000FE1818 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DC1D4292A04A000FE1818 /* GroupCell.swift */; };
 		E15DC1D7292A04BB00FE1818 /* FunctionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15DC1D6292A04BB00FE1818 /* FunctionCell.swift */; };
@@ -72,7 +72,7 @@
 		E10A71722931EA0E00653EA3 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		E1178E9529489DFB00DE42CB /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		E14CC47D2933ADD50061F262 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
-		E158EB6929375E4500597A08 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		E158EB6929375E4500597A08 /* RootTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
 		E15DC1D0292A045600FE1818 /* GroupCellViewObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCellViewObject.swift; sourceTree = "<group>"; };
 		E15DC1D4292A04A000FE1818 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		E15DC1D6292A04BB00FE1818 /* FunctionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionCell.swift; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 				E15DC1DC292A050300FE1818 /* DeviceViewController.swift */,
 				E10A71722931EA0E00653EA3 /* GroupsViewController.swift */,
 				E1DC0C9F2958EA360090FDAE /* GroupViewController.swift */,
-				E158EB6929375E4500597A08 /* CustomTabBar.swift */,
+				E158EB6929375E4500597A08 /* RootTabBarViewController.swift */,
 				D5E4A517293C954B00F0E9F8 /* RegistrationController.swift */,
 				D560D7E829573E2900C2BE5E /* ProfileViewController.swift */,
 				D5FDF91929630B5600CC5E57 /* AuthorizationViewController.swift */,
@@ -398,7 +398,7 @@
 				D560D7E929573E2900C2BE5E /* ProfileViewController.swift in Sources */,
 				E15DC1D9292A04D100FE1818 /* FunctionCellViewObject.swift in Sources */,
 				E1DC0CA02958EA360090FDAE /* GroupViewController.swift in Sources */,
-				E158EB6A29375E4500597A08 /* CustomTabBar.swift in Sources */,
+				E158EB6A29375E4500597A08 /* RootTabBarViewController.swift in Sources */,
 				E15DC1D1292A045600FE1818 /* GroupCellViewObject.swift in Sources */,
 				E15DC1D7292A04BB00FE1818 /* FunctionCell.swift in Sources */,
 				E15DC1DB292A04E100FE1818 /* FunctionCellDataViewObject.swift in Sources */,
