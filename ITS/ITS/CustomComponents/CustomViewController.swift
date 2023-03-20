@@ -59,9 +59,9 @@ class CustomViewController: UIViewController {
         
         print("? showErrorView:", self)
 
-//        guard errorView.isHidden else {
-//            return
-//        }
+        guard errorView.isHidden else {
+            return
+        }
         
         print(error)
         
