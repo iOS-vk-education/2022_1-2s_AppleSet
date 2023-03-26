@@ -11,11 +11,11 @@ import CocoaMQTT
 
 protocol MqttManagerOutput: AnyObject {
     func update(for topic: String, message: String)
+    func didSubscribed(to topic: String)
+    func didUnsubscribed(from topic: String)
 }
 
 final class MQttManager {
-    static let notificationKey: NSNotification.Name = .init(rawValue: "ru.vsevond.MQTTClient.subscribed")
-    
     private weak var output: MqttManagerOutput?
     
     private let queue = DispatchQueue(label: "MQTT", qos: .utility, attributes: .concurrent)
@@ -116,19 +116,21 @@ extension MQttManager: CocoaMQTT5Delegate {
     }
     
     func mqtt5(_ mqtt5: CocoaMQTT5, didSubscribeTopics success: NSDictionary, failed: [String], subAckData: MqttDecodeSubAck?) {
-        success.forEach { topic in
-            if topic.value as? Int == 1 {
-                print("[DEBUG] subscribed to topic: \(topic.key as! String)")
-                NotificationCenter.default.post(name: Self.notificationKey, object: nil, userInfo: ["topic" : topic.key])
+        success.forEach { topic, state in
+            if state as? Int == 1, let topic = topic as? String {
+                print("[DEBUG] subscribed to topic: \(topic)")
+                output?.didSubscribed(to: topic)
             } else {
-                print("[DEBUG] can't subscribe to topic: \(topic.key as! String)")
+                print("[DEBUG] can't subscribe to topic: \(topic)")
             }
         }
     }
     
     func mqtt5(_ mqtt5: CocoaMQTT5, didUnsubscribeTopics topics: [String], UnsubAckData: MqttDecodeUnsubAck?) {
         topics.forEach { topic in
+            output?.didUnsubscribed(from: topic)
             print("[DEBUG] unsubscribed from topic: \(topic)")
+            
         }
     }
     

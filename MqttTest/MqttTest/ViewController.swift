@@ -134,17 +134,20 @@ class ViewController: UIViewController {
         switch buttonState {
         case .on:
             brightSlider.isUserInteractionEnabled = true
+            brightSlider.tintColor = .link
         case .off:
             brightSlider.isUserInteractionEnabled = false
+            brightSlider.tintColor = .systemGray3
         case .disabled:
             brightSlider.isUserInteractionEnabled = false
+            brightSlider.tintColor = .systemGray3
         }
     }
     
 }
 
 extension ViewController: PresenterOutput {
-    func update(for function: RecieveFunction, message: String) {
+    func update(for function: ReceiveFunction, message: String) {
         switch function {
         case .temperature:
             tempLabel.text = message + " °C"
@@ -156,6 +159,7 @@ extension ViewController: PresenterOutput {
         case .led:
             guard let state = ButtonState(rawValue: message) else {
                 buttonState = .disabled
+                setupSlider()
                 return
             }
             

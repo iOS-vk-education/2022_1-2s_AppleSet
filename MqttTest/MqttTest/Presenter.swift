@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum RecieveTopicType {
+enum ReceiveTopicType {
     case recieve
     case status
     case connection
@@ -19,7 +19,7 @@ enum ConnectionTopicType: String {
     case pong = "pong"
 }
 
-enum RecieveFunction: String {
+enum ReceiveFunction: String {
     case temperature = "temperature"
 }
 
@@ -29,7 +29,7 @@ enum SendFunction: String {
 }
 
 protocol PresenterOutput: AnyObject {
-    func update(for function: RecieveFunction, message: String)
+    func update(for function: ReceiveFunction, message: String)
     func updateState(for function: SendFunction, message: String)
 }
 
@@ -38,13 +38,20 @@ final class Presenter {
     private weak var output: PresenterOutput?
     private lazy var model = Model(output: self)
     
-    private var recieveFunctions: [String : RecieveFunction] = [:]
+    private var receiveFunctions: [String : ReceiveFunction] = [:]
     private var statusFunctions: [String : SendFunction] = [:]
     
     private var sendTopics: [SendFunction : String] = [:]
-    private var connectionTopics: [ConnectionTopicType : String] = [:]
     
-    private var recieveTopicType: [String : RecieveTopicType] = [:]
+    private var receiveTopicType: [String : ReceiveTopicType] = [:]
+    
+    private var activeTopics: Set<String> = Set<String>() {
+        didSet {
+            if activeTopics.count == receiveFunctions.count + statusFunctions.count + 1 {
+                model.startNotify()
+            }
+        }
+    }
     
     
     init(output: PresenterOutput) {
@@ -58,18 +65,15 @@ final class Presenter {
         setStatusTopics(from: statusTopics)
         setConnectionTopics(from: connectionTopics)
         
-        model.startPing(at: self.connectionTopics)
-        
-//        model.startRecieving(from: recieveFunctions)
-//        model.getStatus(of: statusFunctions)
+        model.startPing()
     }
 
     
     private func setTopics(from functions: [String : String]) { // funcStr : topic
         functions.forEach { functionString, topic in
-            if let function = RecieveFunction(rawValue: functionString) {
-                recieveTopicType[topic] = .recieve
-                recieveFunctions[topic] = function
+            if let function = ReceiveFunction(rawValue: functionString) {
+                receiveTopicType[topic] = .recieve
+                receiveFunctions[topic] = function
             } else if let function = SendFunction(rawValue: functionString) {
                 sendTopics[function] = topic
             } else {
@@ -81,7 +85,7 @@ final class Presenter {
     private func setStatusTopics(from statusTopics: [String : String]) {
         statusTopics.forEach { functionString, statusTopic in
             if let function = SendFunction(rawValue: functionString) {
-                recieveTopicType[statusTopic] = .status
+                receiveTopicType[statusTopic] = .status
                 statusFunctions[statusTopic] = function
             } else {
                 print("[DEBUG] unknown send function of status topic")
@@ -91,16 +95,20 @@ final class Presenter {
     }
     
     private func setConnectionTopics(from connectionTopics: [String : String]) {
+        var connTopics: [ConnectionTopicType : String] = [:]
         connectionTopics.forEach { typeString, connectionTopic in
             if let type = ConnectionTopicType(rawValue: typeString) {
-                self.connectionTopics[type] = connectionTopic
                 if type == .pong {
-                    recieveTopicType[connectionTopic] = .connection
+                    receiveTopicType[connectionTopic] = .connection
                 }
+                
+                connTopics[type] = connectionTopic
             } else {
                 print("[DEBUG] unknown connection type of connection topic")
             }
         }
+        
+        model.setup(with: connTopics)
     }
     
     
@@ -112,16 +120,18 @@ final class Presenter {
 
 extension Presenter: ModelOutput {
     func update(for topic: String, message: String) {
-        switch recieveTopicType[topic] {
+        switch receiveTopicType[topic] {
         case .recieve:
-            output?.update(for: recieveFunctions[topic]!, message: message)
+            output?.update(for: receiveFunctions[topic]!, message: message)
         case .status:
             output?.updateState(for: statusFunctions[topic]!, message: message)
         case .connection:
             if message == "pong" {
-                model.stopPing(at: connectionTopics)
-                model.startRecieving(from: recieveFunctions)
-                model.getStatus(of: statusFunctions, with: sendTopics)
+                model.stopPing()
+                model.startRecieving(from: receiveFunctions, and: statusFunctions)
+            } else if message == "ready" {
+                model.stopNotify()
+                model.stopConnecting()
             }
         case .none:
             return
@@ -129,15 +139,11 @@ extension Presenter: ModelOutput {
     }
     
     func didSubscribedTo(topic: String) {
-//        if let _ = recieveFunctions[topic] {
-//
-//        }
-        
-        guard let function = statusFunctions[topic] else {
-            return
-        }
-        
-        model.send(message: "get", to: sendTopics[function]!)
+        activeTopics.insert(topic)
+    }
+    
+    func didUnsubscribedFrom(topic: String) {
+        activeTopics.remove(topic)
     }
 }
 

@@ -11,11 +11,14 @@ import Foundation
 protocol ModelOutput: AnyObject {
     func update(for topic: String, message: String)
     func didSubscribedTo(topic: String)
+    func didUnsubscribedFrom(topic: String)
 }
 
 
 final class Model {
     private var messages: [String : String] = [:]
+    
+    private var connectionTopics: [ConnectionTopicType : String] = [:]
     
     private weak var output: ModelOutput?
     
@@ -25,6 +28,10 @@ final class Model {
     
     init(output: ModelOutput) {
         self.output = output
+    }
+    
+    func setup(with connectionTopics : [ConnectionTopicType : String]) {
+        self.connectionTopics = connectionTopics
     }
     
     func start() {
@@ -39,42 +46,58 @@ final class Model {
         mqttManager.publish(message: message, to: topic)
     }
     
-    func startRecieving(from functions: [String : RecieveFunction]) {
-        functions.forEach { topic, _ in
-            mqttManager.subscribe(to: topic)
-        }
-    }
-    
-    func getStatus(of functions: [String : SendFunction], with sendTopics: [SendFunction : String]) {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(didSubscribed(_:)),
-                                               name: MQttManager.notificationKey,
-                                               object: nil)
+    func startRecieving(from receiveFunctions: [String : ReceiveFunction], and statusFunctions: [String : SendFunction]) {
         
+        receiveFunctions.forEach { topic, _ in
+            mqttManager.subscribe(to: topic)
+        }
+        
+        statusFunctions.forEach { topic, _ in
+            mqttManager.subscribe(to: topic)
+        }
+    }
+    
+    func getStatus(of functions: [String : SendFunction]) {
         functions.forEach { topic, _ in
             mqttManager.subscribe(to: topic)
         }
     }
     
-    @objc
-    private func didSubscribed(_ notification: Notification) {
-        guard let userInfo = notification.userInfo, let topic = userInfo["topic"] as? String else {
+    
+    
+    func startPing() {
+        guard let pongTopic = connectionTopics[ConnectionTopicType.pong] else {
             return
         }
+        mqttManager.subscribe(to: pongTopic)
         
-        output?.didSubscribedTo(topic: topic)
-    }
-    
-    func startPing(at connectionTopics: [ConnectionTopicType : String]) {
-        mqttManager.subscribe(to: connectionTopics[ConnectionTopicType.pong]!)
         pingTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) {[weak self] _ in
-            self?.mqttManager.publish(message: "ping", to: connectionTopics[ConnectionTopicType.ping]!)
+            guard let pingTopic = self?.connectionTopics[ConnectionTopicType.ping] else {
+                return
+            }
+            self?.mqttManager.publish(message: "ping", to: pingTopic)
         }
     }
     
-    func stopPing(at connectionTopics: [ConnectionTopicType : String]) { // оставить проверку соединения!
+    func stopPing() {
         pingTimer?.invalidate()
-        mqttManager.publish(message: "ready", to: connectionTopics[ConnectionTopicType.ping]!)
+    }
+    
+    func startNotify() {
+        pingTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { [weak self] _ in
+            guard let pingTopic = self?.connectionTopics[ConnectionTopicType.ping] else {
+                return
+            }
+            self?.mqttManager.publish(message: "ready", to: pingTopic)
+        }
+    }
+    
+    func stopNotify() {
+        pingTimer?.invalidate()
+    }
+    
+    func stopConnecting() {
+        pingTimer?.invalidate()
         mqttManager.unsubscribe(from: connectionTopics[ConnectionTopicType.pong]!)
     }
 }
@@ -84,6 +107,14 @@ extension Model: MqttManagerOutput {
     func update(for topic: String, message: String) {
         messages[topic] = message
         output?.update(for: topic, message: message)
+    }
+    
+    func didSubscribed(to topic: String) {
+        output?.didSubscribedTo(topic: topic)
+    }
+    
+    func didUnsubscribed(from topic: String) {
+        output?.didUnsubscribedFrom(topic: topic)
     }
 }
 
