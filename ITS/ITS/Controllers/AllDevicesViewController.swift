@@ -185,7 +185,7 @@ extension AllDevicesViewController: UICollectionViewDataSource, UICollectionView
     // Переход в контроллер ячейки
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        let deviceViewController = DeviceViewController()
+        let deviceViewController = MqttTestViewController()
         deviceViewController.title = deviceCellViewObjects[indexPath.row].name
 
         self.hidesBottomBarWhenPushed = true

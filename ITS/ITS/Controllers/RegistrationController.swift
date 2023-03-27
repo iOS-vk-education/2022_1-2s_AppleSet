@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 import FirebaseAuth
 
 class RegistrationController: UIViewController {
@@ -229,7 +228,7 @@ class RegistrationController: UIViewController {
             return
         }
         
-        Firebase.Auth.auth().signIn(withEmail: email, password: password, completion: { [weak self] result, error in
+        Auth.auth().signIn(withEmail: email, password: password, completion: { [weak self] result, error in
             guard let strongSelf = self else{
 
                 return

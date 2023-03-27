@@ -7,7 +7,8 @@
 
 import UIKit
 import PinLayout
-import Firebase
+import FirebaseFirestore
+import FirebaseAuth
 
 final class ProfileViewController: UIViewController
 {
@@ -131,7 +132,7 @@ final class ProfileViewController: UIViewController
         setupNavBar()
     }
     
-        private func setupNavBar(){
+    private func setupNavBar(){
         let backButton = UIBarButtonItem(image: UIImage(systemName: "xmark"),
                                          style: .plain,
                                          target: self,
@@ -170,14 +171,12 @@ final class ProfileViewController: UIViewController
             .marginTop(Constans.NameTitle.marginTop)
             .horizontally(Constans.NameTitle.marginHorizontal)
             .sizeToFit(.width)
-            .hCenter()
         
         mail.pin
             .below(of: username)
             .marginTop(Constans.NameTitle.marginTop)
             .horizontally(Constans.NameTitle.marginHorizontal)
             .sizeToFit(.width)
-            .hCenter()
         
 //        ChangePassword.pin
 //            .bottom()

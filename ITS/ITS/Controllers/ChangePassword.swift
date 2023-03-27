@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
 
 final class ChangePassword:UIViewController{
     private let label: UILabel = {

@@ -6,7 +6,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
 final class AuthorizationViewController:UIViewController{
     

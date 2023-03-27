@@ -134,7 +134,7 @@ class RootTabBar: UITabBar {
     }
     
     @objc func addButtonClick(){
-        if addDelegate != nil{
+        if addDelegate != nil {
             addDelegate?.addClick()
         }
     }

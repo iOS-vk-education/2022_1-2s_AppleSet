@@ -7,7 +7,9 @@
 
 import UIKit
 import FirebaseFirestore
-import Firebase
+import FirebaseStorage
+import FirebaseAuth
+
 
 protocol DatabaseManagerDescription {
     func getCurrentUser() -> String
