@@ -46,6 +46,12 @@ class AllDevicesViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+//        let Gif = UIImage.gifImageWithName("backgoundGif")
+//        let imageGif = UIImageView(image: Gif)
+//        imageGif.frame = CGRect(x: 1.0, y: 260.0, width: self.view.frame.size.width - 40, height: 400.0) //Giiiiffff
+//
+//        view.addSubview(imageGif)
+//
         view.addSubview(collectionView)
         
     }
@@ -55,7 +61,7 @@ class AllDevicesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //navigation bar
-        view.backgroundColor = .customBackgroundColor // Я не понимаю к чему относится этот цвет!
+        view.backgroundColor = .customBackgroundColor // 
         
         setupCollectionView()
         presenter.didLoadView()
@@ -91,7 +97,7 @@ class AllDevicesViewController: UIViewController {
                                                                   action: #selector(didTapQuestionButton))
         
         navigationItem.rightBarButtonItem = rightBarButtonItem
-        navigationItem.rightBarButtonItem?.tintColor = .customGrey
+        navigationItem.rightBarButtonItem?.tintColor = .customGrey // sing ?
         
         let leftBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"),
                                                                  style: .plain,
@@ -99,7 +105,7 @@ class AllDevicesViewController: UIViewController {
                                                                  action: #selector(didTapProfileButton))
         
         navigationItem.leftBarButtonItem = leftBarButtonItem
-        navigationItem.leftBarButtonItem?.tintColor = .customGrey
+        navigationItem.leftBarButtonItem?.tintColor = .customGrey  // avatar
         
     }
     
