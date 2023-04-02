@@ -34,10 +34,12 @@ final class ProfileViewController: UIViewController
         username.text = "Username"
         username.font = UIFont(name: "Noteworthy", size: 32)
         username.textColor = .customTextColor
+        username.textAlignment = .center
         
         mail.text = "Mail"
         mail.font = UIFont(name: "Noteworthy", size: 32)
         mail.textColor = .customTextColor
+        mail.textAlignment = .center
         
         logOutButton.backgroundColor = .customBlue.withAlphaComponent(0.8)
         logOutButton.setTitleColor(.black, for: .normal)

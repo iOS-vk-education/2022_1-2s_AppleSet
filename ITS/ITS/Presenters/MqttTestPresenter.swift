@@ -7,16 +7,9 @@
 
 import Foundation
 
-
 enum ReceiveTopicType {
     case recieve
     case status
-    case connection
-}
-
-enum ConnectionTopicType: String {
-    case ping = "ping"
-    case pong = "pong"
 }
 
 enum ReceiveFunction: String {
@@ -28,9 +21,18 @@ enum SendFunction: String {
     case brightness = "brightness"
 }
 
+enum Mode {
+    case READY
+    case CHECKING
+    case DISCONNECTED
+}
+
 protocol MqttTestPresenterOutput: AnyObject {
     func update(for function: ReceiveFunction, message: String)
     func updateState(for function: SendFunction, message: String)
+    func setUIEnabled()
+    func setUIDisabled()
+    func setDisconnected()
 }
 
 final class MqttTestPresenter {
@@ -45,27 +47,33 @@ final class MqttTestPresenter {
     
     private var receiveTopicType: [String : ReceiveTopicType] = [:]
     
-    private var activeTopics: Set<String> = Set<String>() {
-        didSet {
-            if activeTopics.count == receiveFunctions.count + statusFunctions.count + 1 {
-                model.startNotify()
-            }
-        }
-    }
+    private var mode: Mode = .DISCONNECTED
     
     
     init(output: MqttTestPresenterOutput) {
         self.output = output
     }
     
-    func didLoadView(with functions: [String : String], statusTopics: [String : String], connectionTopics: [String : String]) {
+    func didLoadView(with functions: [String : String], statusTopics: [String : String], connectionTopics: [String : String], connectionTokens: [String : String]) {
+        output?.setDisconnected()
+        
         model.start()
         
         setTopics(from: functions)
         setStatusTopics(from: statusTopics)
-        setConnectionTopics(from: connectionTopics)
         
-        model.startPing()
+        model.setConnectionTopics(from: connectionTopics)
+        model.setConnectionTokens(from: connectionTokens)
+        
+        model.startConnecting(to: receiveFunctions.keys.shuffled() + statusFunctions.keys.shuffled())
+    }
+    
+    func sendMessage(from sender: SendFunction, message: String) {
+        guard let sendTopic = sendTopics[sender] else {
+            return
+        }
+        
+        model.send(message: message, to: sendTopic)
     }
 
     
@@ -77,7 +85,7 @@ final class MqttTestPresenter {
             } else if let function = SendFunction(rawValue: functionString) {
                 sendTopics[function] = topic
             } else {
-                print("[DEBUG] unknown function")
+                print("[DEBUG] unknown function: " + functionString + " ### of topic: " + topic)
             }
         }
     }
@@ -88,62 +96,42 @@ final class MqttTestPresenter {
                 receiveTopicType[statusTopic] = .status
                 statusFunctions[statusTopic] = function
             } else {
-                print("[DEBUG] unknown send function of status topic")
+                print("[DEBUG] unknown send function: " + functionString + " ### of status topic: " + statusTopic)
             }
             
         }
-    }
-    
-    private func setConnectionTopics(from connectionTopics: [String : String]) {
-        var connTopics: [ConnectionTopicType : String] = [:]
-        connectionTopics.forEach { typeString, connectionTopic in
-            if let type = ConnectionTopicType(rawValue: typeString) {
-                if type == .pong {
-                    receiveTopicType[connectionTopic] = .connection
-                }
-                
-                connTopics[type] = connectionTopic
-            } else {
-                print("[DEBUG] unknown connection type of connection topic")
-            }
-        }
-        
-        model.setup(with: connTopics)
-    }
-    
-    
-    
-    func sendMessage(from sender: SendFunction, message: String) {
-        model.send(message: message, to: sendTopics[sender]!)
     }
 }
 
 extension MqttTestPresenter: MqttTestModelOutput {
     func update(for topic: String, message: String) {
+        guard mode == .READY else {
+            return
+        }
+        
         switch receiveTopicType[topic] {
         case .recieve:
             output?.update(for: receiveFunctions[topic]!, message: message)
         case .status:
             output?.updateState(for: statusFunctions[topic]!, message: message)
-        case .connection:
-            if message == "pong" {
-                model.stopPing()
-                model.startRecieving(from: receiveFunctions, and: statusFunctions)
-            } else if message == "ready" {
-                model.stopNotify()
-                model.stopConnecting()
-            }
         case .none:
             return
         }
     }
     
-    func didSubscribedTo(topic: String) {
-        activeTopics.insert(topic)
+    func setReady() {
+        mode = .READY
+        output?.setUIEnabled()
     }
     
-    func didUnsubscribedFrom(topic: String) {
-        activeTopics.remove(topic)
+    func setChecking() {
+        mode = .CHECKING
+        output?.setUIDisabled()
+    }
+    
+    func setDisconnected() {
+        mode = .DISCONNECTED
+        output?.setDisconnected()
     }
 }
 

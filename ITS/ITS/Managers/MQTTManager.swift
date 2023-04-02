@@ -10,7 +10,7 @@ import CocoaMQTT
 
 
 protocol MqttManagerOutput: AnyObject {
-    func update(for topic: String, message: String)
+    func didReceived(in topic: String, message: String)
     func didSubscribed(to topic: String)
     func didUnsubscribed(from topic: String)
 }
@@ -112,7 +112,7 @@ extension MQTTManager: CocoaMQTT5Delegate {
     
     func mqtt5(_ mqtt5: CocoaMQTT5, didReceiveMessage message: CocoaMQTT5Message, id: UInt16, publishData: MqttDecodePublish?) {
         print("[DEBUG] message recieved: \(message.string!) ### from topic: \(message.topic)")
-        output?.update(for: message.topic, message: message.string!)
+        output?.didReceived(in: message.topic, message: message.string!)
     }
     
     func mqtt5(_ mqtt5: CocoaMQTT5, didSubscribeTopics success: NSDictionary, failed: [String], subAckData: MqttDecodeSubAck?) {

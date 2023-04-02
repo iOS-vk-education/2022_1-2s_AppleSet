@@ -28,6 +28,8 @@ private enum ButtonState: String {
 final class MqttTestViewController: UIViewController {
     private lazy var presenter = MqttTestPresenter(output: self)
     
+    private let disconnectedLabel = UILabel()
+    
     private let tempLabel = UILabel()
 
     private let button = UIButton()
@@ -51,18 +53,30 @@ final class MqttTestViewController: UIViewController {
         "pong" : "device_97F4A9/pong",
     ]
     
+    private var connectionTokens = [
+        "ping" : "8CA3E512-CF14-47DB-AC17-7F578FBEE0A7",
+        "ready_app" : "28D0E489-1A1D-43D3-9AA8-1570C05C8989",
+        "pong" : "e72cf36f-f9c5-4dee-b11a-951c0e3dc638",
+        "ready_device" : "a7f08e89-8c63-4d90-8c2d-f3fdb0b6f52e",
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setup()
-        presenter.didLoadView(with: functions, statusTopics: statusTopics, connectionTopics: connectionTopics)
+        presenter.didLoadView(with: functions, statusTopics: statusTopics, connectionTopics: connectionTopics, connectionTokens: connectionTokens)
     }
     
     private func setup() {
         view.backgroundColor = .white
         title = "Test"
         
-        tempLabel.text = "temperature"
+        disconnectedLabel.text = "CONNECTING..."
+        disconnectedLabel.font = UIFont(name: "Marker Felt", size: 26)
+        disconnectedLabel.textAlignment = .center
+        disconnectedLabel.textColor = .customRed
+        
+        tempLabel.text = "TEMP"
         tempLabel.font = UIFont(name: "Marker Felt", size: 24)
         tempLabel.textAlignment = .center
         tempLabel.textColor = .systemMint
@@ -78,13 +92,16 @@ final class MqttTestViewController: UIViewController {
         brightSlider.addTarget(self, action: #selector(didSliderValueChanged), for: .touchUpInside)
         setupSlider()
         
-        view.addSubview(tempLabel)
-        view.addSubview(button)
-        view.addSubview(brightSlider)
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        disconnectedLabel.pin
+            .vCenter()
+            .horizontally(32)
+            .sizeToFit(.width)
         
         tempLabel.pin
             .vCenter()
@@ -123,7 +140,7 @@ final class MqttTestViewController: UIViewController {
             button.setTitle("OFF", for: .normal)
             button.setTitleColor(.systemRed.withAlphaComponent(0.8), for: .normal)
         case .disabled:
-            button.setTitle("Checking...", for: .normal)
+            button.setTitle("CHECKING...", for: .normal)
             button.setTitleColor(.systemGray3, for: .normal)
             button.isUserInteractionEnabled = false
         }
@@ -133,11 +150,11 @@ final class MqttTestViewController: UIViewController {
     private func setupSlider() {
         switch buttonState {
         case .on:
-            brightSlider.isUserInteractionEnabled = true
             brightSlider.tintColor = .link
+            brightSlider.isUserInteractionEnabled = true
         case .off:
-            brightSlider.isUserInteractionEnabled = false
             brightSlider.tintColor = .systemGray3
+            brightSlider.isUserInteractionEnabled = false
         case .disabled:
             brightSlider.isUserInteractionEnabled = false
             brightSlider.tintColor = .systemGray3
@@ -159,6 +176,7 @@ extension MqttTestViewController: MqttTestPresenterOutput {
         case .led:
             guard let state = ButtonState(rawValue: message) else {
                 buttonState = .disabled
+                setupButton()
                 setupSlider()
                 return
             }
@@ -169,15 +187,35 @@ extension MqttTestViewController: MqttTestPresenterOutput {
                 setupSlider()
             }
             
-            if !button.isUserInteractionEnabled {
-                button.isUserInteractionEnabled = true
-            }
-            
         case .brightness:
             if message.isNumber {
                 brightSlider.value = Float(message)!
             }
         }
+    }
+    
+    func setUIEnabled() {
+        disconnectedLabel.removeFromSuperview()
+        
+        view.addSubview(tempLabel)
+        view.addSubview(button)
+        view.addSubview(brightSlider)
+        
+        button.isUserInteractionEnabled = true
+        brightSlider.isUserInteractionEnabled = true
+    }
+    
+    func setUIDisabled() {
+        button.isUserInteractionEnabled = false
+        brightSlider.isUserInteractionEnabled = false
+    }
+    
+    func setDisconnected() {
+        tempLabel.removeFromSuperview()
+        button.removeFromSuperview()
+        brightSlider.removeFromSuperview()
+        
+        view.addSubview(disconnectedLabel)
     }
 }
 
