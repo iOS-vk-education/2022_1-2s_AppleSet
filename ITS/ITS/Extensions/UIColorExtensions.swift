@@ -9,8 +9,8 @@ import UIKit
 
 extension UIColor {
     // 6c757d
-    static let customLightGrey: UIColor = Color(lightValue: .init(red: 0x6c, green: 0x75, blue: 0x7d, alpha: 1)
-                                                ,darkValue: .init(red: 0x34, green: 0x43, blue: 0x4d, alpha: 1)).value
+    //цвет для переходного значки девайсы-группы
+    static let customLightGrey: UIColor = .lightGray
     
 //    static let customLightGrey = UIColor(red: 0x6c / 255,
 //                                    green: 0x75 / 255,
