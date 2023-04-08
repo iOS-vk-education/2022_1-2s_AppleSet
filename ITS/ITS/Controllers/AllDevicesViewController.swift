@@ -40,19 +40,31 @@ class AllDevicesViewController: UIViewController {
     
     private func setupCollectionView() {
         
+       
         // background of main controller
         collectionView.backgroundColor = .customBackgroundDeviceColor
         
         collectionView.delegate = self
         collectionView.dataSource = self
         
-//        let Gif = UIImage.gifImageWithName("backgoundGif")
-//        let imageGif = UIImageView(image: Gif)
-//        imageGif.frame = CGRect(x: 1.0, y: 260.0, width: self.view.frame.size.width - 40, height: 400.0) //Giiiiffff
+        let Gif = UIImage.gifImageWithName("backgoundGif")
+        let imageGif = UIImageView(image: Gif)
+        imageGif.frame = CGRect(x: 1.0, y: 260.0, width: self.view.frame.size.width - 40, height: 400.0) //Giiiiffff
+
+      
+            print("setupCollectionView \(deviceCellViewObjects.count)")
+            
+            
+            if deviceCellViewObjects.count == 0{
+                view.addSubview(collectionView)
+                view.addSubview(imageGif)
+            } else {
+                view.addSubview(collectionView)
+            }
+            
+   
 //
-//        view.addSubview(imageGif)
-//
-        view.addSubview(collectionView)
+    
         
     }
     
@@ -62,9 +74,12 @@ class AllDevicesViewController: UIViewController {
         super.viewDidLoad()
         //navigation bar
         view.backgroundColor = .customBackgroundColor // 
-        
-        setupCollectionView()
-        presenter.didLoadView()
+        let queue = DispatchQueue.global(qos: .utility)
+        queue.sync{
+            presenter.didLoadView()
+            setupCollectionView()
+        }
+       
         
     }
     
@@ -168,6 +183,10 @@ extension AllDevicesViewController: UICollectionViewDataSource, UICollectionView
     // Количество ячеек
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
+       
+        if deviceCellViewObjects.count == 1{
+            print("\(deviceCellViewObjects.count)")
+        }
         return deviceCellViewObjects.count
         
     }
