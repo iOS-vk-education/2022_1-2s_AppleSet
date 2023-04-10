@@ -32,6 +32,9 @@ class AllDevicesViewController: UIViewController {
         
     }()
     
+//    let Gif = UIImage.gifImageWithName("backgoundGif")
+    let imageGif = UIImageView(image: UIImage.gifImageWithName("backgoundGif"))
+    
     private var deviceCellViewObjects: [DeviceCellViewObject] {
         presenter.deviceCellViewObjects
     }
@@ -47,8 +50,7 @@ class AllDevicesViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        let Gif = UIImage.gifImageWithName("backgoundGif")
-        let imageGif = UIImageView(image: Gif)
+       
         imageGif.frame = CGRect(x: 1.0, y: 260.0, width: self.view.frame.size.width - 40, height: 400.0) //Giiiiffff
 
       
@@ -74,11 +76,11 @@ class AllDevicesViewController: UIViewController {
         super.viewDidLoad()
         //navigation bar
         view.backgroundColor = .customBackgroundColor // 
-        let queue = DispatchQueue.global(qos: .utility)
-        queue.sync{
+//        let queue = DispatchQueue.global(qos: .utility)
+//        queue.sync{
             presenter.didLoadView()
             setupCollectionView()
-        }
+  
        
         
     }
@@ -235,6 +237,11 @@ extension AllDevicesViewController: UICollectionViewDelegateFlowLayout {
 extension AllDevicesViewController: AllDevicesPresenterOutput {
     
     func reloadData() {
+        if deviceCellViewObjects.count > 0{
+            imageGif.isHidden = true
+        } else {
+            imageGif.isHidden = false
+        }
         collectionView.reloadData()
     }
     
