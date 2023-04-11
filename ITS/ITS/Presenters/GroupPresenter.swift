@@ -72,7 +72,7 @@ extension GroupPresenter {
                             return
                         }
                         
-                        self.model.addDeviceToGroup(group: group, device: CreateDeviceData(name: name)) { result in
+                        self.model.addDeviceToGroup(group: group, device: CreateDeviceData(name: name, type: nil, deviceID: nil)) { result in
                             switch result {
                             case .success:
                                 break
@@ -96,7 +96,7 @@ extension GroupPresenter {
     
     func delDeviceCell(with name: String, group: String) {
 
-        model.delDeviceFromGroup(group: group, device: CreateDeviceData(name: name)) { result in
+        model.delDeviceFromGroup(group: group, device: CreateDeviceData(name: name, type: nil, deviceID: nil)) { result in
             switch result {
             case .success:
                 break

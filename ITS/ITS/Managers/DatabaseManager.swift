@@ -100,8 +100,11 @@ class DatabaseManager: DatabaseManagerDescription {
         
         let db = configureFB()
         let name: String = device.dict()["name"] as! String
+        let type: String = device.dict()["type"] as! String
+        let deviceID: String = device.dict()["deviceID"] as! String
         
-        db.collection("users").document(user).collection("allDevices").document(name).setData(["name": name])
+        db.collection("users").document(user).collection("allDevices").document(name)
+            .setData(["name": name, "type" : type, "deviceID" : deviceID])
         
     }
     

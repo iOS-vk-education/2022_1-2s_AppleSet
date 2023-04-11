@@ -9,14 +9,12 @@ import Foundation
 import CocoaMQTT
 
 
-protocol MqttManagerOutput: AnyObject {
-    func didReceived(in topic: String, message: String)
-    func didSubscribed(to topic: String)
-    func didUnsubscribed(from topic: String)
-}
-
 final class MQTTManager {
-    private weak var output: MqttManagerOutput?
+    
+    static let shared = MQTTManager()
+    static let receivedNotificationKey: NSNotification.Name = .init(rawValue: "com.AppleSet.ITS.receivedNotificationKey")
+    static let subscribedNotificationKey: NSNotification.Name = .init(rawValue: "com.AppleSet.ITS.subscribedNotificationKey")
+    static let unsubscribedNotificationKey: NSNotification.Name = .init(rawValue: "com.AppleSet.ITS.unsubscribedNotificationKey")
     
     private let queue = DispatchQueue(label: "MQTT", qos: .utility, attributes: .concurrent)
     
@@ -24,20 +22,21 @@ final class MQTTManager {
     private static let port = 1883
     
     private var mqtt5: CocoaMQTT5?
-    private var state = CocoaMQTTConnState.disconnected {
+    private var state: CocoaMQTTConnState {
         didSet {
             if state == .connected {
                 queue.resume()
+            } else {
+                queue.suspend()
             }
         }
     }
     
-    init(output: MqttManagerOutput?) {
-        self.output = output
+    private init() {
+        state = .disconnected
     }
     
     func start() {
-        queue.suspend()
         
         let clientID = "CocoaMQTT-" + String(ProcessInfo().processIdentifier)
         let new_mqtt5 = CocoaMQTT5(clientID: clientID, host: "test.mosquitto.org", port: 1883)
@@ -111,15 +110,23 @@ extension MQTTManager: CocoaMQTT5Delegate {
     }
     
     func mqtt5(_ mqtt5: CocoaMQTT5, didReceiveMessage message: CocoaMQTT5Message, id: UInt16, publishData: MqttDecodePublish?) {
-        print("[DEBUG] message recieved: \(message.string!) ### from topic: \(message.topic)")
-        output?.didReceived(in: message.topic, message: message.string!)
+        guard let messageString = message.string else {
+            return
+        }
+        
+        print("[DEBUG] message recieved: \(messageString) ### from topic: \(message.topic)")
+        NotificationCenter.default.post(name: Self.receivedNotificationKey, object: nil,
+                                        userInfo: ["topic" : message.topic,
+                                                   "message" : messageString])
     }
     
     func mqtt5(_ mqtt5: CocoaMQTT5, didSubscribeTopics success: NSDictionary, failed: [String], subAckData: MqttDecodeSubAck?) {
         success.forEach { topic, state in
             if state as? Int == 1, let topic = topic as? String {
+                
                 print("[DEBUG] subscribed to topic: \(topic)")
-                output?.didSubscribed(to: topic)
+                NotificationCenter.default.post(name: Self.subscribedNotificationKey, object: nil,
+                                                userInfo: ["topic" : topic])
             } else {
                 print("[DEBUG] can't subscribe to topic: \(topic)")
             }
@@ -128,7 +135,9 @@ extension MQTTManager: CocoaMQTT5Delegate {
     
     func mqtt5(_ mqtt5: CocoaMQTT5, didUnsubscribeTopics topics: [String], UnsubAckData: MqttDecodeUnsubAck?) {
         topics.forEach { topic in
-            output?.didUnsubscribed(from: topic)
+            
+            NotificationCenter.default.post(name: Self.unsubscribedNotificationKey, object: nil,
+                                            userInfo: ["topic" : topic])
             print("[DEBUG] unsubscribed from topic: \(topic)")
             
         }

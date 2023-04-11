@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-ITS/Pods-ITS-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework
+${BUILT_PRODUCTS_DIR}/ChromaColorPicker/ChromaColorPicker.framework
 ${BUILT_PRODUCTS_DIR}/CocoaMQTT/CocoaMQTT.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseAppCheckInterop/FirebaseAppCheckInterop.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseAuth/FirebaseAuth.framework

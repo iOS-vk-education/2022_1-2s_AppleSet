@@ -116,9 +116,9 @@ class AllDevicesViewController: UIViewController {
     
     // MARK: - add device cell
 
-    func addDeviceCell(with name: String) {
+    func addDeviceCell(with data: CreateDeviceData) {
     
-            presenter.addDeviceCell(with: name)
+            presenter.addDeviceCell(with: data)
     }
 
     func delDeviceCell(name: String) {
@@ -185,7 +185,7 @@ extension AllDevicesViewController: UICollectionViewDataSource, UICollectionView
     // Переход в контроллер ячейки
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        let deviceViewController = MqttTestViewController()
+        let deviceViewController = SmartLightViewController()
         deviceViewController.title = deviceCellViewObjects[indexPath.row].name
 
         self.hidesBottomBarWhenPushed = true
