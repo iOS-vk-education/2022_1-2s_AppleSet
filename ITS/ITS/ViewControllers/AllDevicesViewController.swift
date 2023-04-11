@@ -37,13 +37,31 @@ class AllDevicesViewController: CustomViewController {
     
     private func setupCollectionView() {
         
+       
         // background of main controller
         collectionView.backgroundColor = .customBackgroundDeviceColor
         
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        view.addSubview(collectionView)
+        let Gif = UIImage.gifImageWithName("backgoundGif")
+        let imageGif = UIImageView(image: Gif)
+        imageGif.frame = CGRect(x: 1.0, y: 260.0, width: self.view.frame.size.width - 40, height: 400.0) //Giiiiffff
+
+      
+            print("setupCollectionView \(deviceCellViewObjects.count)")
+            
+            
+            if deviceCellViewObjects.count == 0{
+                view.addSubview(collectionView)
+                view.addSubview(imageGif)
+            } else {
+                view.addSubview(collectionView)
+            }
+            
+   
+//
+    
         
     }
     
@@ -52,10 +70,13 @@ class AllDevicesViewController: CustomViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //navigation bar
-        view.backgroundColor = .customBackgroundColor // Я не понимаю к чему относится этот цвет!
-        
-        setupCollectionView()
-        presenter.didLoadView()
+        view.backgroundColor = .customBackgroundColor // 
+        let queue = DispatchQueue.global(qos: .utility)
+        queue.sync{
+            presenter.didLoadView()
+            setupCollectionView()
+        }
+       
         
     }
     
@@ -88,7 +109,7 @@ class AllDevicesViewController: CustomViewController {
                                                                   action: #selector(didTapQuestionButton))
         
         navigationItem.rightBarButtonItem = rightBarButtonItem
-        navigationItem.rightBarButtonItem?.tintColor = .customGrey
+        navigationItem.rightBarButtonItem?.tintColor = .customGrey // sing ?
         
         let leftBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"),
                                                                  style: .plain,
@@ -96,7 +117,7 @@ class AllDevicesViewController: CustomViewController {
                                                                  action: #selector(didTapProfileButton))
         
         navigationItem.leftBarButtonItem = leftBarButtonItem
-        navigationItem.leftBarButtonItem?.tintColor = .customGrey
+        navigationItem.leftBarButtonItem?.tintColor = .customGrey  // avatar
         
     }
     
@@ -159,6 +180,10 @@ extension AllDevicesViewController: UICollectionViewDataSource, UICollectionView
     // Количество ячеек
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
+       
+        if deviceCellViewObjects.count == 1{
+            print("\(deviceCellViewObjects.count)")
+        }
         return deviceCellViewObjects.count
         
     }

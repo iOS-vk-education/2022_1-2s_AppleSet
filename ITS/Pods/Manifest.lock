@@ -681,6 +681,7 @@ PODS:
     - FirebaseCore (~> 10.0)
     - FirebaseCoreExtension (~> 10.0)
     - GTMSessionFetcher/Core (< 4.0, >= 2.1)
+  - Gifu (3.2.0)
   - GoogleAppMeasurement (10.2.0):
     - GoogleAppMeasurement/AdIdSupport (= 10.2.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
@@ -785,6 +786,7 @@ PODS:
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
   - PromisesObjC (2.1.1)
+  - TinyConstraints (4.0.2)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -795,6 +797,8 @@ DEPENDENCIES:
   - Firebase/Storage
   - FirebaseDatabase
   - FirebaseStorage
+  - Gifu (~> 3.2.0)
+  - TinyConstraints (~> 4.0.0)
 
 SPEC REPOS:
   trunk:
@@ -812,6 +816,7 @@ SPEC REPOS:
     - FirebaseFirestore
     - FirebaseInstallations
     - FirebaseStorage
+    - Gifu
     - GoogleAppMeasurement
     - GoogleUtilities
     - "gRPC-C++"
@@ -821,6 +826,7 @@ SPEC REPOS:
     - Libuv-gRPC
     - nanopb
     - PromisesObjC
+    - TinyConstraints
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
@@ -837,6 +843,7 @@ SPEC CHECKSUMS:
   FirebaseFirestore: bda7a1ca8c19319a2acd2761cd4b962022c1d5ea
   FirebaseInstallations: 004915af170935e3a583faefd5f8bc851afc220f
   FirebaseStorage: e7b3fdc90b579cda35e5a0e4c6b206325766e75a
+  Gifu: 7bcb6427457d85e0b4dff5a84ec5947ac19a93ea
   GoogleAppMeasurement: 3bc3a6484b7bb20dd8489242c4dd3c92a3e5107b
   GoogleUtilities: bad72cb363809015b1f7f19beb1f1cd23c589f95
   "gRPC-C++": 9675f953ace2b3de7c506039d77be1f2e77a8db2
@@ -846,7 +853,8 @@ SPEC CHECKSUMS:
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
+  TinyConstraints: 7b7ccc0c485bb3bb47082138ff28bc33cd49897f
 
-PODFILE CHECKSUM: 69a3e5a9e12b6d28faa6f8f5c5072f8f78a23081
+PODFILE CHECKSUM: 125b154fbe34bdf449a2d165ffc8688be8ca3414
 
 COCOAPODS: 1.11.3

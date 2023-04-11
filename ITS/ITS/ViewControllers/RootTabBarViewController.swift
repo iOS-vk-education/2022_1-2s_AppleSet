@@ -69,7 +69,7 @@ class RootTabBarViewController: UITabBarController, RootTabBarDelegate {
     
     func setRootTabbarConntroller(){
         
-        self.tabBar.tintColor = .customGrey
+        self.tabBar.tintColor = .customGrey // bottom button
         self.tabBar.backgroundColor = .customBackgroundColor
         
         var vc: UIViewController?

@@ -17,6 +17,8 @@
 		D55BBE8529B4C375002441D1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55BBE8429B4C375002441D1 /* Color.swift */; };
 		D55BBE8729B4C593002441D1 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55BBE8629B4C593002441D1 /* UIColor+RGB.swift */; };
 		D560D7E929573E2900C2BE5E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D560D7E829573E2900C2BE5E /* ProfileViewController.swift */; };
+		D5DDBA0A29C2014900572762 /* backgoundGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = D5DDBA0929C2014800572762 /* backgoundGif.gif */; };
+		D5DDBA4029C7836D00572762 /* ExtensionsGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DDBA3F29C7836D00572762 /* ExtensionsGif.swift */; };
 		D5E4A516293C85F400F0E9F8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5E4A515293C85F400F0E9F8 /* GoogleService-Info.plist */; };
 		D5E4A518293C954B00F0E9F8 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E4A517293C954B00F0E9F8 /* RegistrationController.swift */; };
 		D5FDF91A29630B5600CC5E57 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FDF91929630B5600CC5E57 /* AuthorizationViewController.swift */; };
@@ -61,6 +63,8 @@
 		D55BBE8429B4C375002441D1 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D55BBE8629B4C593002441D1 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
 		D560D7E829573E2900C2BE5E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D5DDBA0929C2014800572762 /* backgoundGif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = backgoundGif.gif; sourceTree = "<group>"; };
+		D5DDBA3F29C7836D00572762 /* ExtensionsGif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsGif.swift; sourceTree = "<group>"; };
 		D5E4A515293C85F400F0E9F8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D5E4A517293C954B00F0E9F8 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		D5FDF91929630B5600CC5E57 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
@@ -131,8 +135,13 @@
 		A04FFF292913034400BC96A7 /* ITS */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				E1004FD029C59C0200EE45B9 /* CustomComponents */,
 				E128A745292912D40005011A /* ViewControllers */,
+=======
+				D5DDBA0929C2014800572762 /* backgoundGif.gif */,
+				E128A745292912D40005011A /* Controllers */,
+>>>>>>> origin/prod
 				E1F277D429A7A8D1009F3237 /* Presenters */,
 				E19F7B4929AA003700E9A45B /* Models */,
 				E1178E9429489DA800DE42CB /* Managers */,
@@ -246,6 +255,7 @@
 				D55BBE8329B4C33E002441D1 /* Helpers */,
 				E15DC1DF292A089A00FE1818 /* UIViewExtensions.swift */,
 				E14CC47D2933ADD50061F262 /* UIColorExtensions.swift */,
+				D5DDBA3F29C7836D00572762 /* ExtensionsGif.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -334,6 +344,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5DDBA0A29C2014900572762 /* backgoundGif.gif in Resources */,
 				A04FFF372913034400BC96A7 /* LaunchScreen.storyboard in Resources */,
 				A04FFF342913034400BC96A7 /* Assets.xcassets in Resources */,
 				D5E4A516293C85F400F0E9F8 /* GoogleService-Info.plist in Resources */,
@@ -397,6 +408,7 @@
 				E17633D729AB1BF60080CD99 /* GroupsPresenter.swift in Sources */,
 				D560D7E929573E2900C2BE5E /* ProfileViewController.swift in Sources */,
 				E15DC1D9292A04D100FE1818 /* FunctionCellViewObject.swift in Sources */,
+				D5DDBA4029C7836D00572762 /* ExtensionsGif.swift in Sources */,
 				E1DC0CA02958EA360090FDAE /* GroupViewController.swift in Sources */,
 				E158EB6A29375E4500597A08 /* RootTabBarViewController.swift in Sources */,
 				E15DC1D1292A045600FE1818 /* GroupCellViewObject.swift in Sources */,
