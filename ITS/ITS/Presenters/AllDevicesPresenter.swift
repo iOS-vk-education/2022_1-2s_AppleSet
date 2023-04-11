@@ -25,6 +25,7 @@ class AllDevicesPresenter {
     func didLoadView() {
         loadDevices()
         MQTTManager.shared.start()
+        DevicesManager.shared.loadDevicesData()
     }
 }
 

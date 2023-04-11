@@ -11,31 +11,10 @@ import CocoaMQTT
 import ChromaColorPicker
 
 
-private struct SmartLight {
-    var state: State
-    var bright: UInt8?
-    var color: (Int, Int, Int, Int)?
-    var mode: String?
-    
-    enum State: String {
-        case on
-        case off
-        case disabled
-        
-        mutating func switchState() {
-            if self == .on {
-                self = .off
-            } else if self == .off {
-                self = .on
-            }
-        }
-    }
-}
-
 
 final class SmartLightViewController: UIViewController {
     private lazy var presenter = SmartLightPresenter(output: self)
-    private var smartLight = SmartLight(state: .disabled)
+    private var smartLight: SmartLight = SmartLight(name: "some", deviceID: "some")
     
     private let loadLabel = UILabel()
 
@@ -48,25 +27,31 @@ final class SmartLightViewController: UIViewController {
     private let deviceID = "device_97F4A9"
     
     private var functionTopics: [String : String] = [
-        "led" : "device_97F4A9/state",
+        "state" : "device_97F4A9/state",
         "brightness" : "device_97F4A9/bright",
-        "color_red" : "device_97F4A9/color/red",
-        "color_green" : "device_97F4A9/color/green",
-        "color_blue" : "device_97F4A9/color/blue"
+        "color" : "device_97F4A9/color"
     ]
     
     private var statusTopics: [String : String] = [
-        "led" : "device_97F4A9/state/status",
+        "state" : "device_97F4A9/state/status",
         "brightness" : "device_97F4A9/bright/status",
-        "color_red" : "device_97F4A9/color/red/status",
-        "color_green" : "device_97F4A9/color/green/status",
-        "color_blue" : "device_97F4A9/color/blue/status"
+        "color" : "device_97F4A9/color/status"
     ]
     
     private var connectionTopics = [
         "ping" : "device_97F4A9/ping",
         "pong" : "device_97F4A9/pong",
     ]
+    
+    func configure(with name: String) {
+        title = name
+        
+        guard let smartLight = DevicesManager.shared.getSmartLightState(name: name) else {
+            return
+        }
+        
+        self.smartLight = smartLight
+    }
     
     
     override func viewDidLoad() {
@@ -79,7 +64,6 @@ final class SmartLightViewController: UIViewController {
     
     private func setup() {
         view.backgroundColor = .white
-        title = "Smart Lightning"
         
         loadLabel.text = "CONNECTING..."
         loadLabel.font = UIFont(name: "Marker Felt", size: 26)
@@ -98,14 +82,11 @@ final class SmartLightViewController: UIViewController {
         
         brightSlider.minimumValue = 0
         brightSlider.maximumValue = 255
-        brightSlider.value = 50
         brightSlider.addTarget(self, action: #selector(didSliderValueChanged), for: .touchUpInside)
-        setupSlider()
         
         button.layer.borderWidth = 2
         button.layer.cornerRadius = 8
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-        setupButton()
         
         
     }
@@ -119,7 +100,7 @@ final class SmartLightViewController: UIViewController {
             .sizeToFit(.width)
         
         colorPicker.pin
-            .marginTop(view.safeAreaInsets.top + 100)
+            .top(50)
             .hCenter()
         
         saturationSlider.pin
@@ -129,7 +110,7 @@ final class SmartLightViewController: UIViewController {
         
         button.pin
             .below(of: saturationSlider)
-            .marginTop(30)
+            .marginTop(100)
             .height(32)
             .horizontally(32)
         
@@ -144,8 +125,9 @@ final class SmartLightViewController: UIViewController {
         
         setupButton()
         setupSlider()
+        setupColorCircle()
         
-        presenter.send(from: .led, message: smartLight.state.rawValue)
+        presenter.send(from: .state, message: smartLight.state.rawValue)
     }
     
     @objc func didSliderValueChanged() {
@@ -153,19 +135,20 @@ final class SmartLightViewController: UIViewController {
     }
     
     @objc func didColorValueChanged() {
-        guard let rgb = colorHandle.color.rgb() else {
+        guard let hex = colorHandle.color.toHex() else {
             return
         }
         
         guard let currentColor = smartLight.color else {
-            smartLight.color = rgb
+            smartLight.color = hex
             return
         }
-        
-        if rgb != currentColor {
-            smartLight.color = rgb
-            print(currentColor)
+
+        if hex != currentColor {
+            smartLight.color = hex
+            presenter.send(from: .color, message: hex)
         }
+        
         
     }
     
@@ -175,10 +158,12 @@ final class SmartLightViewController: UIViewController {
         case .off:
             button.setTitle("ON", for: .normal)
             button.setTitleColor(.systemBlue.withAlphaComponent(0.8), for: .normal)
+            button.isUserInteractionEnabled = true
         case .on:
             button.setTitle("OFF", for: .normal)
             button.setTitleColor(.systemRed.withAlphaComponent(0.8), for: .normal)
-        case .disabled:
+            button.isUserInteractionEnabled = true
+        case .disconnected:
             button.setTitle("CHECKING...", for: .normal)
             button.setTitleColor(.systemGray3, for: .normal)
             button.isUserInteractionEnabled = false
@@ -187,6 +172,7 @@ final class SmartLightViewController: UIViewController {
     }
     
     private func setupSlider() {
+        brightSlider.value = Float(smartLight.bright ?? 0)
         switch smartLight.state {
         case .on:
             brightSlider.tintColor = .link
@@ -194,9 +180,21 @@ final class SmartLightViewController: UIViewController {
         case .off:
             brightSlider.tintColor = .systemGray3
             brightSlider.isUserInteractionEnabled = false
-        case .disabled:
+        case .disconnected:
             brightSlider.isUserInteractionEnabled = false
             brightSlider.tintColor = .systemGray3
+        }
+    }
+    
+    private func setupColorCircle() {
+        colorHandle.color = UIColor(hex: smartLight.color ?? "FFFFFF")
+        switch smartLight.state {
+        case .on:
+            colorPicker.isUserInteractionEnabled = true
+            saturationSlider.isUserInteractionEnabled = true
+        default:
+            colorPicker.isUserInteractionEnabled = false
+            saturationSlider.isUserInteractionEnabled = false
         }
     }
     
@@ -204,11 +202,15 @@ final class SmartLightViewController: UIViewController {
 
 extension SmartLightViewController: SmartLightPresenterOutput {
     
+    func getState() -> SmartLight.State {
+        return smartLight.state
+    }
+    
     func updateState(for function: SendFunction, message: String) {
         switch function {
-        case .led:
+        case .state:
             guard let state = SmartLight.State(rawValue: message) else {
-                smartLight.state = .disabled
+                smartLight.state = .disconnected
                 setupButton()
                 setupSlider()
                 return
@@ -222,9 +224,24 @@ extension SmartLightViewController: SmartLightPresenterOutput {
             
         case .brightness:
             if message.isNumber {
-                brightSlider.value = Float(message)!
+                smartLight.bright = UInt8(message)!
+                setupSlider()
+            }
+            
+        case .color:
+            guard smartLight.color != nil else {
+                smartLight.color = message
+                setupColorCircle()
+                return
+            }
+            
+            if smartLight.color != message {
+                smartLight.color = message
+                setupColorCircle()
             }
         }
+        
+        DevicesManager.shared.updateSmartLightState(state: smartLight)
     }
     
     func setUIEnabled() {
@@ -235,10 +252,8 @@ extension SmartLightViewController: SmartLightPresenterOutput {
         view.addSubview(colorPicker)
         view.addSubview(saturationSlider)
         
-        button.isUserInteractionEnabled = true
-        brightSlider.isUserInteractionEnabled = true
-        colorPicker.isUserInteractionEnabled = true
-        saturationSlider.isUserInteractionEnabled = true
+        setupButton()
+        setupSlider()
     }
     
     func setUIDisabled() {

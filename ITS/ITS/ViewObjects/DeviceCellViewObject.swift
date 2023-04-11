@@ -29,8 +29,8 @@ struct CreateDeviceData {
     }
     
     enum DeviceType: String {
-        case SmartLight
-        case AirControl
+        case SmartLight = "Smart Lightning"
+        case AirControl = "Air Controller"
         case None
     }
 }

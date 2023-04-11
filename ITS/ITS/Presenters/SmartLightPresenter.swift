@@ -9,13 +9,15 @@ import Foundation
 
 
 enum SendFunction: String {
-    case led = "led"
+    case state = "state"
     case brightness = "brightness"
+    case color = "color"
 }
 
 
 protocol SmartLightPresenterOutput: AnyObject {
     func updateState(for function: SendFunction, message: String)
+    func getState() -> SmartLight.State
     func setUIEnabled()
     func setUIDisabled()
     func setDisconnected()
@@ -43,13 +45,18 @@ final class SmartLightPresenter {
     }
     
     func didLoadView(with functionTopics: [String : String], statusTopics: [String : String], connectionTopics: [String : String]) {
-        output?.setDisconnected()
         
         setFunctionTopics(from: functionTopics)
         setStatusTopics(from: statusTopics)
         
-        model.setConnectionTopics(from: connectionTopics)
-        model.startConnecting(to: statusFunctions.keys.shuffled())
+        if output?.getState() == .disconnected {
+            output?.setDisconnected()
+            
+            model.setConnectionTopics(from: connectionTopics)
+            model.startConnecting(to: statusFunctions.keys.shuffled())
+        } else {
+            setReady()
+        }
     }
     
     func send(from sender: SendFunction, message: String) {

@@ -96,6 +96,38 @@ class DatabaseManager: DatabaseManagerDescription {
         }
     }
     
+    func loadDevicesData(user: String, completion: @escaping (Result<[DeviceData], Error>) -> Void) {
+        
+        let db = configureFB()
+        
+        db.collection("users").document(user).collection("allDevices")
+            .addSnapshotListener { snap, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let devices = snap?.documents else {
+                completion(.failure(DatabaseManagerError.noDocuments))
+                return
+            }
+            
+            var devicesList = [DeviceData]()
+            
+            for device in devices {
+                let data = device.data()
+                let name = data["name"] as! String
+                let deviceType = CreateDeviceData.DeviceType(rawValue: data["type"] as! String)!
+                let deviceID = data["deviceID"] as! String
+                let model = DeviceData(name: name, deviceType: deviceType, deviceID: deviceID)
+                devicesList.append(model)
+            }
+            
+            completion(.success(devicesList))
+        }
+    }
+    
+    
     func addDevice(user: String, device: CreateDeviceData, completion: @escaping (Result<Void, Error>) -> Void) {
         
         let db = configureFB()
