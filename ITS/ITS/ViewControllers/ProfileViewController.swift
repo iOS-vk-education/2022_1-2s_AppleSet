@@ -256,7 +256,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             // Compress image
-            let imgData = editedImage.jpegData(compressionQuality: 0.1)
+            let imgData = editedImage.jpegData(compressionQuality: 5)
             let newImage = UIImage(data: imgData!)
             avatarImage.image = newImage
             
