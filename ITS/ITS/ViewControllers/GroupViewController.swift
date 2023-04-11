@@ -8,7 +8,7 @@
 import UIKit
 import PinLayout
 
-class GroupViewController: UIViewController  {
+class GroupViewController: CustomViewController {
     
     private lazy var presenter = GroupPresenter(output: self)
     
@@ -236,12 +236,15 @@ extension GroupViewController: GroupPresenterOutput {
     }
     
     func errorMessage(error: String) {
-        let errorAlertController  = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
         
-        let errorOkAction = UIAlertAction(title: "Ok", style: .default)
-        errorAlertController.addAction(errorOkAction)
-        present(errorAlertController, animated: true)
-        print(error)
+        showErrorView(with: error)
+        
+//        let errorAlertController  = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+//
+//        let errorOkAction = UIAlertAction(title: "Ok", style: .default)
+//        errorAlertController.addAction(errorOkAction)
+//        present(errorAlertController, animated: true)
+//        print(error)
         
     }
 }

@@ -5,13 +5,10 @@
 //  Created by Всеволод on 02.11.2022.
 //
 
-//self.models.remove(at: indexPath.row)
-//collectionView.deleteItems(at: [indexPath])
-
 import UIKit
 import PinLayout
 
-class AllDevicesViewController: UIViewController {
+class AllDevicesViewController: CustomViewController {
     
     private lazy var presenter = AllDevicesPresenter(output: self)
     
@@ -239,12 +236,14 @@ extension AllDevicesViewController: AllDevicesPresenterOutput {
     }
     
     func errorMessage(error: String) {
-        let errorAlertController  = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
         
-        let errorOkAction = UIAlertAction(title: "Ok", style: .default)
-        errorAlertController.addAction(errorOkAction)
-        present(errorAlertController, animated: true)
-        print(error)
+        showErrorView(with: error)
         
+//        let errorAlertController  = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+//
+//        let errorOkAction = UIAlertAction(title: "Ok", style: .default)
+//        errorAlertController.addAction(errorOkAction)
+//        present(errorAlertController, animated: true)
+//        print(error)
     }
 }
