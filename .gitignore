@@ -1,6 +1,6 @@
 *.DS_Store
 *.xcuserstate
-ITS/ITS.xcworkspace/xcuserdata/new.xcuserdatad/xcdebugger/*
-ITS/Pods/Pods.xcodeproj/project.pbxproj
-ITS/Podfile.lock
-ITS/ITS.xcworkspace
+*/xcuserdata/new.xcuserdatad/xcdebugger/*
+*/Pods
+*/Podfile.lock
+*/*.xcworkspace
