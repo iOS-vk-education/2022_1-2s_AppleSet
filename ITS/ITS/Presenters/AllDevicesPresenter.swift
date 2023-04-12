@@ -51,16 +51,12 @@ extension AllDevicesPresenter {
         }
     }
     
-<<<<<<< HEAD
     func addDeviceCell(with data: CreateDeviceData) {
-=======
-    func addDeviceCell(with name: String) {
         
         guard let output = self.output else {
             print("!delegate is nil!")
             return
         }
->>>>>>> prod
 
         model.seeAllDevices { result in
             switch result {
@@ -68,18 +64,13 @@ extension AllDevicesPresenter {
                 self.deviceCellViewObjects = devices
 
                 for device in self.deviceCellViewObjects {
-<<<<<<< HEAD
                     if device.name == data.name {
                         // Почему не работает???
                         self.output?.errorMessage(error: "This device was already add")
-=======
-                    if device.name == name {
-                        output.errorMessage(error: "This device was already add")
->>>>>>> prod
                         return
                     }
                 }
-                
+                    
                 self.model.addDevice(device: data) { result in
                     switch result {
                     case .success:
@@ -97,6 +88,7 @@ extension AllDevicesPresenter {
             }
         }
     }
+        
 
     func delDeviceCell(with name: String) {
         

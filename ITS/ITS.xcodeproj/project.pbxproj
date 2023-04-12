@@ -159,14 +159,11 @@
 		A04FFF292913034400BC96A7 /* ITS */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				A0EFD1C629E3433A0048C249 /* Entity */,
 				E128A745292912D40005011A /* Controllers */,
-=======
 				E1004FD029C59C0200EE45B9 /* CustomComponents */,
 				D5DDBA0929C2014800572762 /* backgoundGif.gif */,
 				E128A745292912D40005011A /* ViewControllers */,
->>>>>>> prod
 				E1F277D429A7A8D1009F3237 /* Presenters */,
 				E19F7B4929AA003700E9A45B /* Models */,
 				E1178E9429489DA800DE42CB /* Managers */,
@@ -481,11 +478,8 @@
 				A0EFD1C329E340C70048C249 /* SmartLightViewController.swift in Sources */,
 				E15DC1DD292A050300FE1818 /* DeviceViewController.swift in Sources */,
 				E15DC1D5292A04A000FE1818 /* GroupCell.swift in Sources */,
-<<<<<<< HEAD
 				A0EFD1CC29E35A9A0048C249 /* ConnectionTopicTypes.swift in Sources */,
-=======
 				E1004FD229C59C2E00EE45B9 /* CustomViewController.swift in Sources */,
->>>>>>> prod
 				E15DC1E0292A089A00FE1818 /* UIViewExtensions.swift in Sources */,
 				E10A716D2931E88400653EA3 /* DeviceCell.swift in Sources */,
 				E10A716F2931E90100653EA3 /* DeviceCellViewObject.swift in Sources */,

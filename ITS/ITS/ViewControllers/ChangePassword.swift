@@ -6,13 +6,9 @@
 //
 
 import UIKit
-<<<<<<< HEAD:ITS/ITS/Controllers/ChangePassword.swift
 import FirebaseAuth
-=======
-import Firebase
 import Gifu
 import TinyConstraints
->>>>>>> prod:ITS/ITS/ViewControllers/ChangePassword.swift
 
 final class ChangePassword:UIViewController{
     
