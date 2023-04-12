@@ -116,9 +116,16 @@ class DatabaseManager: DatabaseManagerDescription {
             
             for device in devices {
                 let data = device.data()
-                let name = data["name"] as! String
-                let deviceType = CreateDeviceData.DeviceType(rawValue: data["type"] as! String)!
-                let deviceID = data["deviceID"] as! String
+                
+                guard
+                    let name = data["name"] as? String,
+                    let type = data["type"] as? String,
+                    let deviceType = CreateDeviceData.DeviceType(rawValue: type),
+                    let deviceID = data["deviceID"] as? String
+                else {
+                    return
+                }
+                
                 let model = DeviceData(name: name, deviceType: deviceType, deviceID: deviceID)
                 devicesList.append(model)
             }
