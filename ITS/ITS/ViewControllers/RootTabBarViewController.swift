@@ -26,22 +26,11 @@ class RootTabBarViewController: UITabBarController, RootTabBarDelegate {
     func addClick() {
         if (self.tabBar.selectedItem?.title == "All devices") {
             
-            let alertController  = UIAlertController(title: "Add device", message: "Input device`s name", preferredStyle: .alert)
+            let alertController = AddDeviceAlertController()
             
-            alertController.addTextField()
-            
-            let okAction = UIAlertAction(title: "Add", style: .default) { _ in
-                guard let text = alertController.textFields?.first?.text else {
-                    return
-                }
-        
-                AllDevicesViewController().addDeviceCell(with: text)
-            }
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
-            
-            alertController.addAction(okAction)
-            alertController.addAction(cancelAction)
+            alertController.onAddAction(completion: { name, type, id in
+                AllDevicesViewController().addDeviceCell(with: CreateDeviceData(name: name, type: type, deviceID: id))
+            })
             
             present(alertController, animated: true)
             
@@ -134,7 +123,7 @@ class RootTabBar: UITabBar {
     }
     
     @objc func addButtonClick(){
-        if addDelegate != nil{
+        if addDelegate != nil {
             addDelegate?.addClick()
         }
     }
@@ -220,3 +209,4 @@ class RootNavigationController: UINavigationController{
         self.popViewController(animated:true)
     }
 }
+

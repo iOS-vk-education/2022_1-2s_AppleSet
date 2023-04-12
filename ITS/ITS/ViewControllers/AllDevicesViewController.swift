@@ -134,9 +134,9 @@ class AllDevicesViewController: CustomViewController {
     
     // MARK: - add device cell
 
-    func addDeviceCell(with name: String) {
+    func addDeviceCell(with data: CreateDeviceData) {
     
-            presenter.addDeviceCell(with: name)
+            presenter.addDeviceCell(with: data)
     }
 
     func delDeviceCell(name: String) {
@@ -206,13 +206,26 @@ extension AllDevicesViewController: UICollectionViewDataSource, UICollectionView
     
     // Переход в контроллер ячейки
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let name = deviceCellViewObjects[indexPath.row].name
+        let type = DevicesManager.shared.getTypeByName(name: name)
+        
+        switch type {
+        case .SmartLight:
+            let deviceViewController = SmartLightViewController()
+            deviceViewController.configure(with: name)
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(deviceViewController, animated: true)
+            self.hidesBottomBarWhenPushed = false
+        default:
+            let deviceViewController = DeviceViewController()
+            deviceViewController.title = name
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(deviceViewController, animated: true)
+            self.hidesBottomBarWhenPushed = false
+        }
 
-        let deviceViewController = DeviceViewController()
-        deviceViewController.title = deviceCellViewObjects[indexPath.row].name
-
-        self.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(deviceViewController, animated: true)
-        self.hidesBottomBarWhenPushed = false
+        
 
     }
     

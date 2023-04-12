@@ -7,7 +7,9 @@
 
 import UIKit
 import FirebaseFirestore
-import Firebase
+import FirebaseStorage
+import FirebaseAuth
+
 
 protocol DatabaseManagerDescription {
     func getCurrentUser() -> String
@@ -94,12 +96,54 @@ class DatabaseManager: DatabaseManagerDescription {
         }
     }
     
+    func loadDevicesData(user: String, completion: @escaping (Result<[DeviceData], Error>) -> Void) {
+        
+        let db = configureFB()
+        
+        db.collection("users").document(user).collection("allDevices")
+            .addSnapshotListener { snap, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let devices = snap?.documents else {
+                completion(.failure(DatabaseManagerError.noDocuments))
+                return
+            }
+            
+            var devicesList = [DeviceData]()
+            
+            for device in devices {
+                let data = device.data()
+                
+                guard
+                    let name = data["name"] as? String,
+                    let type = data["type"] as? String,
+                    let deviceType = CreateDeviceData.DeviceType(rawValue: type),
+                    let deviceID = data["deviceID"] as? String
+                else {
+                    return
+                }
+                
+                let model = DeviceData(name: name, deviceType: deviceType, deviceID: deviceID)
+                devicesList.append(model)
+            }
+            
+            completion(.success(devicesList))
+        }
+    }
+    
+    
     func addDevice(user: String, device: CreateDeviceData, completion: @escaping (Result<Void, Error>) -> Void) {
         
         let db = configureFB()
         let name: String = device.dict()["name"] as! String
+        let type: String = device.dict()["type"] as! String
+        let deviceID: String = device.dict()["deviceID"] as! String
         
-        db.collection("users").document(user).collection("allDevices").document(name).setData(["name": name])
+        db.collection("users").document(user).collection("allDevices").document(name)
+            .setData(["name": name, "type" : type, "deviceID" : deviceID])
         
     }
     

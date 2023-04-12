@@ -8,11 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		225A17E64191B584B0ED7DD1 /* Pods_ITS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CCD278E298D50A4C92E33B /* Pods_ITS.framework */; };
+		A0160F4D29D220D9005662E1 /* MqttTestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0160F4C29D220D9005662E1 /* MqttTestPresenter.swift */; };
+		A0160F4F29D22110005662E1 /* MqttTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0160F4E29D22110005662E1 /* MqttTestModel.swift */; };
+		A0160F5129D22138005662E1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0160F5029D22138005662E1 /* String.swift */; };
+		A0160F5329D2216D005662E1 /* MQTTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0160F5229D2216D005662E1 /* MQTTManager.swift */; };
+		A04BB57129D2203B00A8B11B /* MqttTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04BB57029D2203B00A8B11B /* MqttTestViewController.swift */; };
 		A04FFF2B2913034400BC96A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04FFF2A2913034400BC96A7 /* AppDelegate.swift */; };
 		A04FFF2D2913034400BC96A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04FFF2C2913034400BC96A7 /* SceneDelegate.swift */; };
 		A04FFF2F2913034400BC96A7 /* AllDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04FFF2E2913034400BC96A7 /* AllDevicesViewController.swift */; };
 		A04FFF342913034400BC96A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A04FFF332913034400BC96A7 /* Assets.xcassets */; };
 		A04FFF372913034400BC96A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A04FFF352913034400BC96A7 /* LaunchScreen.storyboard */; };
+		A0EFD1C329E340C70048C249 /* SmartLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C229E340C70048C249 /* SmartLightViewController.swift */; };
+		A0EFD1C529E341C20048C249 /* SmartLightPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C429E341C20048C249 /* SmartLightPresenter.swift */; };
+		A0EFD1C829E343610048C249 /* DeviceModes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C729E343610048C249 /* DeviceModes.swift */; };
+		A0EFD1CA29E345440048C249 /* MQTTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C929E345440048C249 /* MQTTModel.swift */; };
+		A0EFD1CC29E35A9A0048C249 /* ConnectionTopicTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1CB29E35A9A0048C249 /* ConnectionTopicTypes.swift */; };
+		A0EFD1CE29E4B73D0048C249 /* DevicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1CD29E4B73D0048C249 /* DevicesManager.swift */; };
+		A0EFD1D029E4CA6C0048C249 /* AddDeviceAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1CF29E4CA6C0048C249 /* AddDeviceAlertController.swift */; };
 		D511F79A295A1B2D005862AA /* UserViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D511F799295A1B2D005862AA /* UserViewObject.swift */; };
 		D55BBE8529B4C375002441D1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55BBE8429B4C375002441D1 /* Color.swift */; };
 		D55BBE8729B4C593002441D1 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55BBE8629B4C593002441D1 /* UIColor+RGB.swift */; };
@@ -51,6 +63,11 @@
 /* Begin PBXFileReference section */
 		4D0CDDBC1BB55DDD6E0FEB25 /* Pods-ITS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITS.debug.xcconfig"; path = "Target Support Files/Pods-ITS/Pods-ITS.debug.xcconfig"; sourceTree = "<group>"; };
 		55CCD278E298D50A4C92E33B /* Pods_ITS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0160F4C29D220D9005662E1 /* MqttTestPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttTestPresenter.swift; sourceTree = "<group>"; };
+		A0160F4E29D22110005662E1 /* MqttTestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttTestModel.swift; sourceTree = "<group>"; };
+		A0160F5029D22138005662E1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		A0160F5229D2216D005662E1 /* MQTTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTManager.swift; sourceTree = "<group>"; };
+		A04BB57029D2203B00A8B11B /* MqttTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttTestViewController.swift; sourceTree = "<group>"; };
 		A04FFF272913034400BC96A7 /* ITS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A04FFF2A2913034400BC96A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A04FFF2C2913034400BC96A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +75,13 @@
 		A04FFF332913034400BC96A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A04FFF362913034400BC96A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A04FFF382913034400BC96A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0EFD1C229E340C70048C249 /* SmartLightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLightViewController.swift; sourceTree = "<group>"; };
+		A0EFD1C429E341C20048C249 /* SmartLightPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLightPresenter.swift; sourceTree = "<group>"; };
+		A0EFD1C729E343610048C249 /* DeviceModes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModes.swift; sourceTree = "<group>"; };
+		A0EFD1C929E345440048C249 /* MQTTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTModel.swift; sourceTree = "<group>"; };
+		A0EFD1CB29E35A9A0048C249 /* ConnectionTopicTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionTopicTypes.swift; sourceTree = "<group>"; };
+		A0EFD1CD29E4B73D0048C249 /* DevicesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesManager.swift; sourceTree = "<group>"; };
+		A0EFD1CF29E4CA6C0048C249 /* AddDeviceAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceAlertController.swift; sourceTree = "<group>"; };
 		CABA6EBE88E717B96C3A5747 /* Pods-ITS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITS.release.xcconfig"; path = "Target Support Files/Pods-ITS/Pods-ITS.release.xcconfig"; sourceTree = "<group>"; };
 		D511F799295A1B2D005862AA /* UserViewObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewObject.swift; sourceTree = "<group>"; };
 		D55BBE8429B4C375002441D1 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -135,6 +159,8 @@
 		A04FFF292913034400BC96A7 /* ITS */ = {
 			isa = PBXGroup;
 			children = (
+				A0EFD1C629E3433A0048C249 /* Entity */,
+				E128A745292912D40005011A /* Controllers */,
 				E1004FD029C59C0200EE45B9 /* CustomComponents */,
 				D5DDBA0929C2014800572762 /* backgoundGif.gif */,
 				E128A745292912D40005011A /* ViewControllers */,
@@ -159,11 +185,21 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A0EFD1C629E3433A0048C249 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				A0EFD1C729E343610048C249 /* DeviceModes.swift */,
+				A0EFD1CB29E35A9A0048C249 /* ConnectionTopicTypes.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		D55BBE8329B4C33E002441D1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				D55BBE8429B4C375002441D1 /* Color.swift */,
 				D55BBE8629B4C593002441D1 /* UIColor+RGB.swift */,
+				A0160F5029D22138005662E1 /* String.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -190,6 +226,8 @@
 			children = (
 				E1178E9529489DFB00DE42CB /* DatabaseManager.swift */,
 				E1DC0CA1295A9CFD0090FDAE /* StorageManager.swift */,
+				A0160F5229D2216D005662E1 /* MQTTManager.swift */,
+				A0EFD1CD29E4B73D0048C249 /* DevicesManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -209,6 +247,7 @@
 		E128A745292912D40005011A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A04BB57029D2203B00A8B11B /* MqttTestViewController.swift */,
 				A04FFF2E2913034400BC96A7 /* AllDevicesViewController.swift */,
 				E15DC1DC292A050300FE1818 /* DeviceViewController.swift */,
 				E10A71722931EA0E00653EA3 /* GroupsViewController.swift */,
@@ -218,6 +257,8 @@
 				D560D7E829573E2900C2BE5E /* ProfileViewController.swift */,
 				D5FDF91929630B5600CC5E57 /* AuthorizationViewController.swift */,
 				D5FDF91B2963104600CC5E57 /* ChangePassword.swift */,
+				A0EFD1C229E340C70048C249 /* SmartLightViewController.swift */,
+				A0EFD1CF29E4CA6C0048C249 /* AddDeviceAlertController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -259,7 +300,9 @@
 		E19F7B4929AA003700E9A45B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A0160F4E29D22110005662E1 /* MqttTestModel.swift */,
 				E19F7B4A29AA006000E9A45B /* DevicesAndGroupsModel.swift */,
+				A0EFD1C929E345440048C249 /* MQTTModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -267,9 +310,11 @@
 		E1F277D429A7A8D1009F3237 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				A0160F4C29D220D9005662E1 /* MqttTestPresenter.swift */,
 				E1F277D529A7A8F6009F3237 /* AllDevicesPresenter.swift */,
 				E17633D629AB1BF50080CD99 /* GroupsPresenter.swift */,
 				E17633D829AB2B1B0080CD99 /* GroupPresenter.swift */,
+				A0EFD1C429E341C20048C249 /* SmartLightPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -396,13 +441,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0EFD1C829E343610048C249 /* DeviceModes.swift in Sources */,
 				E1F277D629A7A8F6009F3237 /* AllDevicesPresenter.swift in Sources */,
 				D55BBE8729B4C593002441D1 /* UIColor+RGB.swift in Sources */,
 				E1DC0C9E2958E9F40090FDAE /* DeviceInGroupCell.swift in Sources */,
+				A0EFD1CE29E4B73D0048C249 /* DevicesManager.swift in Sources */,
 				A04FFF2F2913034400BC96A7 /* AllDevicesViewController.swift in Sources */,
 				E1DC0CA2295A9CFD0090FDAE /* StorageManager.swift in Sources */,
+				A0160F4F29D22110005662E1 /* MqttTestModel.swift in Sources */,
 				E17633D729AB1BF60080CD99 /* GroupsPresenter.swift in Sources */,
 				D560D7E929573E2900C2BE5E /* ProfileViewController.swift in Sources */,
+				A0EFD1D029E4CA6C0048C249 /* AddDeviceAlertController.swift in Sources */,
 				E15DC1D9292A04D100FE1818 /* FunctionCellViewObject.swift in Sources */,
 				D5DDBA4029C7836D00572762 /* ExtensionsGif.swift in Sources */,
 				E1DC0CA02958EA360090FDAE /* GroupViewController.swift in Sources */,
@@ -410,25 +459,33 @@
 				E15DC1D1292A045600FE1818 /* GroupCellViewObject.swift in Sources */,
 				E15DC1D7292A04BB00FE1818 /* FunctionCell.swift in Sources */,
 				E15DC1DB292A04E100FE1818 /* FunctionCellDataViewObject.swift in Sources */,
+				A0160F5129D22138005662E1 /* String.swift in Sources */,
 				A04FFF2B2913034400BC96A7 /* AppDelegate.swift in Sources */,
 				D511F79A295A1B2D005862AA /* UserViewObject.swift in Sources */,
 				E1004FD529C59CE300EE45B9 /* ErrorView.swift in Sources */,
 				E17633D929AB2B1B0080CD99 /* GroupPresenter.swift in Sources */,
+				A0160F4D29D220D9005662E1 /* MqttTestPresenter.swift in Sources */,
 				E14CC47E2933ADD50061F262 /* UIColorExtensions.swift in Sources */,
 				D5E4A518293C954B00F0E9F8 /* RegistrationController.swift in Sources */,
+				A04BB57129D2203B00A8B11B /* MqttTestViewController.swift in Sources */,
+				A0EFD1C529E341C20048C249 /* SmartLightPresenter.swift in Sources */,
 				D55BBE8529B4C375002441D1 /* Color.swift in Sources */,
 				A04FFF2D2913034400BC96A7 /* SceneDelegate.swift in Sources */,
 				E1178E9629489DFB00DE42CB /* DatabaseManager.swift in Sources */,
 				D5FDF91A29630B5600CC5E57 /* AuthorizationViewController.swift in Sources */,
 				D5FDF91C2963104600CC5E57 /* ChangePassword.swift in Sources */,
 				E19F7B4B29AA006000E9A45B /* DevicesAndGroupsModel.swift in Sources */,
+				A0EFD1C329E340C70048C249 /* SmartLightViewController.swift in Sources */,
 				E15DC1DD292A050300FE1818 /* DeviceViewController.swift in Sources */,
 				E15DC1D5292A04A000FE1818 /* GroupCell.swift in Sources */,
+				A0EFD1CC29E35A9A0048C249 /* ConnectionTopicTypes.swift in Sources */,
 				E1004FD229C59C2E00EE45B9 /* CustomViewController.swift in Sources */,
 				E15DC1E0292A089A00FE1818 /* UIViewExtensions.swift in Sources */,
 				E10A716D2931E88400653EA3 /* DeviceCell.swift in Sources */,
 				E10A716F2931E90100653EA3 /* DeviceCellViewObject.swift in Sources */,
+				A0EFD1CA29E345440048C249 /* MQTTModel.swift in Sources */,
 				E10A71732931EA0E00653EA3 /* GroupsViewController.swift in Sources */,
+				A0160F5329D2216D005662E1 /* MQTTManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,6 +633,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -605,6 +663,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -17,10 +17,20 @@ final class DeviceCellViewObject {
 
 struct CreateDeviceData {
     let name: String
+    let type: DeviceType?
+    let deviceID: String?
     
     func dict() -> [String: Any] {
         return [
-            "name": name
+            "name": name,
+            "type" : type?.rawValue as Any,
+            "deviceID" : deviceID as Any
         ]
+    }
+    
+    enum DeviceType: String {
+        case SmartLight = "Smart Lightning"
+        case AirControl = "Air Controller"
+        case None
     }
 }

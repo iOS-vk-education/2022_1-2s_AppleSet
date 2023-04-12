@@ -4,14 +4,11 @@
 target 'ITS' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-pod 'Firebase/Core'
-pod 'Firebase/Auth'
-pod 'Firebase/Database'
-pod 'Firebase/Auth'
-pod 'Firebase/Analytics'
-pod 'Firebase/Firestore'
-pod 'Firebase/Storage'
+pod 'FirebaseAuth'
+pod 'FirebaseFirestore'
 pod 'FirebaseStorage'
+pod 'CocoaMQTT'
+pod 'ChromaColorPicker'
 pod 'FirebaseDatabase'
 pod 'TinyConstraints', '~> 4.0.0'
 pod 'Gifu', '~> 3.2.0' 
