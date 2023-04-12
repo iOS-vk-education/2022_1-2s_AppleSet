@@ -26,15 +26,20 @@ class GroupsPresenter {
 }
 
 extension GroupsPresenter {
-    
+
     // Загружаем данные из БД
     private func loadGroups() {
+        
+        guard let output = self.output else {
+            print("!delegate is nil!")
+            return
+        }
         
         model.loadGroups { result in
             switch result {
             case .success(let groups):
                 self.groupCellViewObjects = groups
-                self.output?.reloadData()
+                output.reloadData()
             case .failure(let error):
                 print(error)
             }
@@ -43,6 +48,11 @@ extension GroupsPresenter {
     
     func addGroupCell(with name: String) {
         
+        guard let output = self.output else {
+            print("!delegate is nil!")
+            return
+        }
+        
         model.seeAllGroups { result in
             switch result {
             case .success(let groups):
@@ -50,7 +60,7 @@ extension GroupsPresenter {
                 
                 for group in self.groupCellViewObjects {
                     if group.name == name {
-                        self.output?.errorMessage(error: "This group was already add")
+                        output.errorMessage(error: "This group was already add")
                         return
                     }
                 }
