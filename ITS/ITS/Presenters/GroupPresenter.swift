@@ -29,11 +29,16 @@ extension GroupPresenter {
     
     private func loadDevices(group: String) {
         
+        guard let output = self.output else {
+            print("!delegate is nil!")
+            return
+        }
+        
         model.loadDevicesInGroup(group: group) { result in
             switch result {
             case .success(let devices):
                 self.deviceCellViewObjects = devices
-                self.output?.reloadData()
+                output.reloadData()
             case .failure(let error):
                 print(error)
             }
@@ -42,6 +47,11 @@ extension GroupPresenter {
     
     func addDeviceCell(with name: String, group: String) {
         
+        guard let output = self.output else {
+            print("!delegate is nil!")
+            return
+        }
+        
         model.seeDevicesInGroup(group: group) { result in
             switch result {
             case .success(let devices):
@@ -49,7 +59,7 @@ extension GroupPresenter {
                 
                 for device in self.deviceCellViewObjects {
                     if device.name == name {
-                        self.output?.errorMessage(error: "This device was already add to this group")
+                        output.errorMessage(error: "This device was already add to this group")
                         return
                     }
                 }
@@ -68,7 +78,7 @@ extension GroupPresenter {
                         }
                         
                         if (!is_dev) {
-                            self.output?.errorMessage(error: "Ther is not this device")
+                            output.errorMessage(error: "Ther is not this device")
                             return
                         }
                         

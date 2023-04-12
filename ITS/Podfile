@@ -7,7 +7,14 @@ target 'ITS' do
 pod 'FirebaseAuth'
 pod 'FirebaseFirestore'
 pod 'FirebaseStorage'
+<<<<<<< HEAD
 pod 'CocoaMQTT'
 pod 'ChromaColorPicker'
+=======
+pod 'FirebaseDatabase'
+pod 'TinyConstraints', '~> 4.0.0'
+pod 'Gifu', '~> 3.2.0' 
+  # Pods for ITS
+>>>>>>> prod
 
 end

@@ -13,6 +13,7 @@ protocol AllDevicesPresenterOutput: AnyObject {
 }
 
 class AllDevicesPresenter {
+    
     private let model: DevicesAndGroupsModel = DevicesAndGroupsModel()
     private weak var output: AllDevicesPresenterOutput?
     
@@ -34,18 +35,32 @@ extension AllDevicesPresenter {
     // Загружаем данные из БД
     private func loadDevices() {
         
+        guard let output = self.output else {
+            print("!delegate is nil!")
+            return
+        }
+        
         model.loadDevices { result in
             switch result {
             case .success(let devices):
                 self.deviceCellViewObjects = devices
-                self.output?.reloadData()
+                output.reloadData()
             case .failure(let error):
                 print(error)
             }
         }
     }
     
+<<<<<<< HEAD
     func addDeviceCell(with data: CreateDeviceData) {
+=======
+    func addDeviceCell(with name: String) {
+        
+        guard let output = self.output else {
+            print("!delegate is nil!")
+            return
+        }
+>>>>>>> prod
 
         model.seeAllDevices { result in
             switch result {
@@ -53,9 +68,14 @@ extension AllDevicesPresenter {
                 self.deviceCellViewObjects = devices
 
                 for device in self.deviceCellViewObjects {
+<<<<<<< HEAD
                     if device.name == data.name {
                         // Почему не работает???
                         self.output?.errorMessage(error: "This device was already add")
+=======
+                    if device.name == name {
+                        output.errorMessage(error: "This device was already add")
+>>>>>>> prod
                         return
                     }
                 }
@@ -63,7 +83,7 @@ extension AllDevicesPresenter {
                 self.model.addDevice(device: data) { result in
                     switch result {
                     case .success:
-                        self.output?.reloadData()
+                        output.reloadData()
                         break
                     case .failure(let error):
                         print(error)
@@ -79,6 +99,11 @@ extension AllDevicesPresenter {
     }
 
     func delDeviceCell(with name: String) {
+        
+        guard let output = self.output else {
+            print("!delegate is nil!")
+            return
+        }
 
         model.delDevice(device: CreateDeviceData(name: name, type: nil, deviceID: nil)) { result in
             switch result {
@@ -100,7 +125,7 @@ extension AllDevicesPresenter {
                                             self.model.delDeviceFromGroup(group: group.name, device: CreateDeviceData(name: name, type: nil, deviceID: nil)) { result in
                                                 switch result {
                                                 case .success:
-                                                    self.output?.reloadData()
+                                                    output.reloadData()
                                                     break
                                                 case .failure(let error):
                                                     print(error)
