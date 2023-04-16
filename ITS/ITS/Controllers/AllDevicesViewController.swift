@@ -33,7 +33,7 @@ class AllDevicesViewController: UIViewController {
     }()
     
 //    let Gif = UIImage.gifImageWithName("backgoundGif")
-    let imageGif = UIImageView(image: UIImage.gifImageWithName("backgoundGif"))
+    let imageGif = UIImageView(image: UIImage.gifImageWithName("gifius"))
     
     private var deviceCellViewObjects: [DeviceCellViewObject] {
         presenter.deviceCellViewObjects
