@@ -31,7 +31,7 @@ final class AddDeviceAlertController: UIViewController {
     }
     
     private func setup() {
-        alertView.backgroundColor = .white
+        alertView.backgroundColor = .customBackgroundColor
         alertView.layer.cornerRadius = 10
         
         titleLabel.text = "Add Device"
@@ -40,16 +40,16 @@ final class AddDeviceAlertController: UIViewController {
         titleLabel.textAlignment = .center
         
         addButton.setTitle("Add", for: .normal)
-        addButton.setTitleColor(.systemBlue, for: .normal)
-        addButton.backgroundColor = .white
+        addButton.setTitleColor(.customBlue, for: .normal)
+        addButton.backgroundColor = .customBackgroundColor
         addButton.layer.borderWidth = 2
-        addButton.layer.borderColor = UIColor.systemBlue.cgColor
+        addButton.layer.borderColor = UIColor.customBlue.cgColor
         addButton.layer.cornerRadius = 10
         addButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
         
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.setTitleColor(.systemRed, for: .normal)
-        cancelButton.backgroundColor = .white
+        cancelButton.backgroundColor = .customBackgroundColor
         cancelButton.layer.borderWidth = 2
         cancelButton.layer.borderColor = UIColor.systemRed.cgColor
         cancelButton.layer.cornerRadius = 10

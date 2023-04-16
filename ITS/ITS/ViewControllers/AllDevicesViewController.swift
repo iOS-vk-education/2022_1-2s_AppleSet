@@ -111,7 +111,7 @@ class AllDevicesViewController: CustomViewController {
                                                                   action: #selector(didTapQuestionButton))
         
         navigationItem.rightBarButtonItem = rightBarButtonItem
-        navigationItem.rightBarButtonItem?.tintColor = .customGrey // sing ?
+        navigationItem.rightBarButtonItem?.tintColor = .TextOnnavigationBar // sing ?
         
         let leftBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"),
                                                                  style: .plain,
@@ -119,7 +119,7 @@ class AllDevicesViewController: CustomViewController {
                                                                  action: #selector(didTapProfileButton))
         
         navigationItem.leftBarButtonItem = leftBarButtonItem
-        navigationItem.leftBarButtonItem?.tintColor = .customGrey  // avatar
+        navigationItem.leftBarButtonItem?.tintColor = .TextOnnavigationBar  // avatar
         
     }
     

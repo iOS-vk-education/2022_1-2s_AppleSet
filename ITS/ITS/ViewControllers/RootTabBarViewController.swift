@@ -58,8 +58,8 @@ class RootTabBarViewController: UITabBarController, RootTabBarDelegate {
     
     func setRootTabbarConntroller(){
         
-        self.tabBar.tintColor = .customGrey // bottom button
-        self.tabBar.backgroundColor = .customBackgroundColor
+        self.tabBar.tintColor = .tapBarbutton // bottom button
+        self.tabBar.backgroundColor = .tapBarBackground
         
         var vc: UIViewController?
         
@@ -76,7 +76,7 @@ class RootTabBarViewController: UITabBarController, RootTabBarDelegate {
 
             let nav = RootNavigationController.init(rootViewController: vc!)
 
-            let barItem = UITabBarItem.init(title: self.tabBarTitles[i], image: UIImage.init(systemName: self.tabBarNormalImages[i])?.withTintColor(.customLightGrey, renderingMode: .alwaysOriginal), selectedImage: UIImage.init(systemName: self.tabBarSelectedImages[i])?.withRenderingMode(.alwaysOriginal))
+            let barItem = UITabBarItem.init(title: self.tabBarTitles[i], image: UIImage.init(systemName: self.tabBarNormalImages[i])?.withTintColor(.TextOnnavigationBar, renderingMode: .alwaysOriginal), selectedImage: UIImage.init(systemName: self.tabBarSelectedImages[i])?.withRenderingMode(.alwaysOriginal))
             
             barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.customLightGrey], for: .normal)
             barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.customGrey], for: .selected)
@@ -180,13 +180,13 @@ class RootNavigationController: UINavigationController{
     
     func defaultSetting() {
         
-        view.backgroundColor = .customBackgroundColor
+        view.backgroundColor = .navigationBarBackground
         self.navigationBar.barStyle = .default
         self.navigationController?.navigationBar.backgroundColor = .red ///??
         self.navigationBar.tintColor = .red
         self.toolbar.tintColor = .red
         self.navigationBar.isTranslucent = false
-        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.customGrey,
+        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.TextOnnavigationBar,
                                                   NSAttributedString.Key.font: UIFont.systemFont(ofSize:17)]
         
     }
