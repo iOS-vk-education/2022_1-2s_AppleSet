@@ -5,12 +5,15 @@
 //  Created by Natalia on 23.02.2023.
 //
 
+import Foundation
+
 protocol AllDevicesPresenterOutput: AnyObject {
     func reloadData()
     func errorMessage(error: String)
 }
 
 class AllDevicesPresenter {
+    
     private let model: DevicesAndGroupsModel = DevicesAndGroupsModel()
     private weak var output: AllDevicesPresenterOutput?
     
@@ -22,6 +25,8 @@ class AllDevicesPresenter {
     
     func didLoadView() {
         loadDevices()
+        MQTTManager.shared.start()
+        DevicesManager.shared.loadDevicesData()
     }
 }
 
@@ -30,18 +35,28 @@ extension AllDevicesPresenter {
     // Загружаем данные из БД
     private func loadDevices() {
         
+        guard let output = self.output else {
+            print("!delegate is nil!")
+            return
+        }
+        
         model.loadDevices { result in
             switch result {
             case .success(let devices):
                 self.deviceCellViewObjects = devices
-                self.output?.reloadData()
+                output.reloadData()
             case .failure(let error):
                 print(error)
             }
         }
     }
     
-    func addDeviceCell(with name: String) {
+    func addDeviceCell(with data: CreateDeviceData) {
+        
+        guard let output = self.output else {
+            print("!delegate is nil!")
+            return
+        }
 
         model.seeAllDevices { result in
             switch result {
@@ -49,17 +64,17 @@ extension AllDevicesPresenter {
                 self.deviceCellViewObjects = devices
 
                 for device in self.deviceCellViewObjects {
-                    if device.name == name {
+                    if device.name == data.name {
                         // Почему не работает???
                         self.output?.errorMessage(error: "This device was already add")
                         return
                     }
                 }
-
-                self.model.addDevice(device: CreateDeviceData(name: name)) { result in
+                    
+                self.model.addDevice(device: data) { result in
                     switch result {
                     case .success:
-                        self.output?.reloadData()
+                        output.reloadData()
                         break
                     case .failure(let error):
                         print(error)
@@ -73,10 +88,16 @@ extension AllDevicesPresenter {
             }
         }
     }
+        
 
     func delDeviceCell(with name: String) {
+        
+        guard let output = self.output else {
+            print("!delegate is nil!")
+            return
+        }
 
-        model.delDevice(device: CreateDeviceData(name: name)) { result in
+        model.delDevice(device: CreateDeviceData(name: name, type: nil, deviceID: nil)) { result in
             switch result {
             case .success:
                 self.model.seeAllGroups { result in
@@ -93,10 +114,10 @@ extension AllDevicesPresenter {
 
                                     for device in devices{
                                         if device.name == name {
-                                            self.model.delDeviceFromGroup(group: group.name, device: CreateDeviceData(name: name)) { result in
+                                            self.model.delDeviceFromGroup(group: group.name, device: CreateDeviceData(name: name, type: nil, deviceID: nil)) { result in
                                                 switch result {
                                                 case .success:
-                                                    self.output?.reloadData()
+                                                    output.reloadData()
                                                     break
                                                 case .failure(let error):
                                                     print(error)
