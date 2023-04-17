@@ -40,10 +40,10 @@ final class AddDeviceAlertController: UIViewController {
         titleLabel.textAlignment = .center
         
         addButton.setTitle("Add", for: .normal)
-        addButton.setTitleColor(.customBlue, for: .normal)
+        addButton.setTitleColor(.AddDeviceTextColorBlueButton, for: .normal)
         addButton.backgroundColor = .customBackgroundColor
         addButton.layer.borderWidth = 2
-        addButton.layer.borderColor = UIColor.customBlue.cgColor
+        addButton.layer.borderColor = UIColor.AddDeviceTextColorBlueButton.cgColor
         addButton.layer.cornerRadius = 10
         addButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
         

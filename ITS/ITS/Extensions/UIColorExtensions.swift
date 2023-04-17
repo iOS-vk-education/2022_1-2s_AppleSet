@@ -57,6 +57,9 @@ extension UIColor {
     static let customBackgroundColor: UIColor = Color(lightValue: .init(red: 255, green: 255, blue: 255, alpha: 1)
                                                 ,darkValue: .init(red: 0, green: 0, blue: 0, alpha: 1)).value
     
+    static let arrowAndIconsBackOnNavbar: UIColor = Color(lightValue: .init(red: 255, green: 255, blue: 255, alpha: 1)
+                                                ,darkValue: .init(red: 255, green: 255, blue: 255, alpha: 1)).value
+    
     static let customBackgroundDeviceColor: UIColor = Color(lightValue: .init(red: 255, green: 255, blue: 255, alpha: 1)
                                                             ,darkValue: .init(white: 0.1, alpha: 1)).value
     
@@ -64,8 +67,8 @@ extension UIColor {
     static let customTextColor: UIColor = Color(lightValue: .init(red: 0, green: 0, blue: 0, alpha: 1)
                                                 ,darkValue: .init(red: 255, green: 255, blue: 255, alpha: 1)).value
     
-    static let AddDeviceTextColorBlueButton: UIColor = Color(lightValue: .init(red: 228, green: 229, blue: 234)
-                                                             ,darkValue: .init(red: 0x03, green: 0x42, blue: 0x50)).value
+    static let AddDeviceTextColorBlueButton: UIColor = Color(lightValue: .init(red: 0x2b, green: 0x70, blue: 0x9a)
+                                                             ,darkValue: .init(red: 0x3d, green: 0x83, blue: 0xc9)).value
 //    static let customTextColorDevice: UIColor = Color(lightValue: .init(red: 0x03, green: 0x42, blue: 0x75)
 //                                                ,darkValue: .init(red: 255, green: 255, blue: 255, alpha: 1)).value
     
