@@ -17,8 +17,8 @@ struct Color {
     }
     
     var value: UIColor {
-        return UIColor {(traitCollection: UITraitCollection) -> UIColor in
-            if traitCollection.userInterfaceStyle == .dark{
+        return UIColor { (traitCollection: UITraitCollection) -> UIColor in
+            if traitCollection.userInterfaceStyle == .dark {
                 return darkValue
             } else {
                 return lightValue

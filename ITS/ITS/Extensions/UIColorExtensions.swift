@@ -28,11 +28,8 @@ extension UIColor {
 //    static let customBlue: UIColor = Color(lightValue: .init(red: 0xd6, green: 0xe6, blue: 0xf2, alpha: 1)
 //                                           ,darkValue: .init(red: 0xAC, green: 0xC7, blue: 0xE1, alpha: 1)).value
     
-    static let customBlue = UIColor(red: 0xac / 255,
-                                    green: 0xc7 / 255,
-                                    blue: 0xe1 / 255,
-                                    alpha: 1)
-    
+    static let customBlue: UIColor = Color(lightValue: .init(red: 228, green: 229, blue: 234)
+                                           ,darkValue: .init(red: 0x03, green: 0x42, blue: 0x75)).value
     // f28482
     static let customRed = UIColor(red: 0xf2 / 255,
                                    green: 0x84 / 255,
@@ -44,9 +41,24 @@ extension UIColor {
                                         blue: 0x9e / 255,
                                         alpha: 1)
     
+    static let tapBarbutton: UIColor = Color(lightValue: .init(red: 0, green: 0, blue: 0, alpha: 1)
+                                            ,darkValue: .init(red: 255, green: 255, blue: 255, alpha: 1)).value
+    
+    static let tapBarBackground: UIColor = Color(lightValue: UIColor(red: 217, green: 217, blue: 217),
+                                       darkValue: UIColor(red: 0, green: 0, blue: 0)).value
+
+    static let navigationBarBackground: UIColor = Color(lightValue: UIColor(red: 50, green: 51, blue: 52, alpha: 100),
+                                                      darkValue: UIColor(red: 0, green: 0, blue: 0)).value
+    
+    static let TextOnnavigationBar: UIColor = Color(lightValue: UIColor(red: 255, green: 255, blue: 255),
+                                                    darkValue: UIColor(red: 255, green: 255, blue: 255)).value
+    
     
     static let customBackgroundColor: UIColor = Color(lightValue: .init(red: 255, green: 255, blue: 255, alpha: 1)
                                                 ,darkValue: .init(red: 0, green: 0, blue: 0, alpha: 1)).value
+    
+    static let arrowAndIconsBackOnNavbar: UIColor = Color(lightValue: .init(red: 255, green: 255, blue: 255, alpha: 1)
+                                                ,darkValue: .init(red: 255, green: 255, blue: 255, alpha: 1)).value
     
     static let customBackgroundDeviceColor: UIColor = Color(lightValue: .init(red: 255, green: 255, blue: 255, alpha: 1)
                                                             ,darkValue: .init(white: 0.1, alpha: 1)).value
@@ -54,6 +66,11 @@ extension UIColor {
     
     static let customTextColor: UIColor = Color(lightValue: .init(red: 0, green: 0, blue: 0, alpha: 1)
                                                 ,darkValue: .init(red: 255, green: 255, blue: 255, alpha: 1)).value
+    
+    static let AddDeviceTextColorBlueButton: UIColor = Color(lightValue: .init(red: 0x2b, green: 0x70, blue: 0x9a)
+                                                             ,darkValue: .init(red: 0x3d, green: 0x83, blue: 0xc9)).value
+//    static let customTextColorDevice: UIColor = Color(lightValue: .init(red: 0x03, green: 0x42, blue: 0x75)
+//                                                ,darkValue: .init(red: 255, green: 255, blue: 255, alpha: 1)).value
     
     static let customGrey: UIColor = Color(lightValue: .darkGray
                                            ,darkValue: .init(red: 255, green: 255, blue: 255, alpha: 1)).value
@@ -64,15 +81,7 @@ extension UIColor {
     
     static let customButtonShadowColor: UIColor = Color(lightValue: .systemGray,
                                                         darkValue: .init(white: 0.3, alpha: 1)).value
-//    static let customBackgroundColor = UIColor(red: 255 / 255,
-//                                               green: 255 / 255,
-//                                               blue: 255 / 255,
-//                                               alpha: 1)
-//
-//    static let customTextColor = UIColor(red: 0 / 255,
-//                                           green: 0 / 255,
-//                                           blue: 0 / 255,
-//                                           alpha: 1)
+                        
     
     func rgb() -> (red:Int, green:Int, blue:Int, alpha:Int)? {
             var fRed : CGFloat = 0

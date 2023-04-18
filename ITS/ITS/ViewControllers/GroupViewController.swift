@@ -109,7 +109,7 @@ class GroupViewController: CustomViewController {
     
     private func setupNavBar() {
         
-        navigationController?.navigationBar.tintColor = .customGrey
+        navigationController?.navigationBar.tintColor = .arrowAndIconsBackOnNavbar
         
     }
     

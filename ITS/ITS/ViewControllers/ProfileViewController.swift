@@ -42,7 +42,7 @@ final class ProfileViewController: UIViewController
         mail.textAlignment = .center
         
         logOutButton.backgroundColor = .customBlue.withAlphaComponent(0.8)
-        logOutButton.setTitleColor(.black, for: .normal)
+        logOutButton.setTitleColor(.customTextColor, for: .normal)
         logOutButton.layer.cornerRadius = Constans.EditButton.cornerRadius
         logOutButton.setTitle("Logout", for: .normal)
         
