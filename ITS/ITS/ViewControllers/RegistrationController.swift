@@ -25,6 +25,7 @@ class RegistrationController: UIViewController {
         emailField.textColor = .black
         emailField.placeholder = "Email Addres"
         emailField.autocapitalizationType = .none
+        emailField.autocorrectionType = .no
         emailField.layer.cornerRadius = 10
         
         emailField.layer.borderWidth = 1
@@ -46,6 +47,7 @@ class RegistrationController: UIViewController {
     private let userName: UITextField = {
         let userName = UITextField()
         userName.textColor = .black
+        userName.autocorrectionType = .no
         userName.placeholder = "User name"
         userName.autocapitalizationType = .none
         
@@ -62,6 +64,7 @@ class RegistrationController: UIViewController {
     private let passwordField: UITextField = {
         let passField = UITextField()
         passField.textColor = .black
+        passField.autocorrectionType = .no
         passField.placeholder = "Password"
         passField.isSecureTextEntry = true
         

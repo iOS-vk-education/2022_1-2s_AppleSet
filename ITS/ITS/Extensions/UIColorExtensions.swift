@@ -45,10 +45,10 @@ extension UIColor {
                                             ,darkValue: .init(red: 255, green: 255, blue: 255, alpha: 1)).value
     
     static let tapBarBackground: UIColor = Color(lightValue: UIColor(red: 217, green: 217, blue: 217),
-                                       darkValue: UIColor(red: 0, green: 0, blue: 0)).value
+                                       darkValue: UIColor(white: 0.1, alpha: 1)).value
 
     static let navigationBarBackground: UIColor = Color(lightValue: UIColor(red: 50, green: 51, blue: 52, alpha: 100),
-                                                      darkValue: UIColor(red: 0, green: 0, blue: 0)).value
+                                                        darkValue: UIColor(white: 0.1, alpha: 1)).value
     
     static let TextOnnavigationBar: UIColor = Color(lightValue: UIColor(red: 255, green: 255, blue: 255),
                                                     darkValue: UIColor(red: 255, green: 255, blue: 255)).value
@@ -61,7 +61,7 @@ extension UIColor {
                                                 ,darkValue: .init(red: 255, green: 255, blue: 255, alpha: 1)).value
     
     static let customBackgroundDeviceColor: UIColor = Color(lightValue: .init(red: 255, green: 255, blue: 255, alpha: 1)
-                                                            ,darkValue: .init(white: 0.1, alpha: 1)).value
+                                                            ,darkValue: .init(red: 0, green: 0, blue: 0, alpha: 1)).value
     
     
     static let customTextColor: UIColor = Color(lightValue: .init(red: 0, green: 0, blue: 0, alpha: 1)

@@ -25,6 +25,7 @@ final class AuthorizationViewController:UIViewController{
         emailField.textColor = .customTextColor
         emailField.placeholder = "Email Addres"
         emailField.autocapitalizationType = .none
+        emailField.autocorrectionType = .no
         
         emailField.layer.borderWidth = 1
         emailField.layer.backgroundColor = UIColor.customBackgroundLayer.cgColor
@@ -52,6 +53,7 @@ final class AuthorizationViewController:UIViewController{
         userName.textColor = .customTextColor
         userName.placeholder = "User name"
         userName.autocapitalizationType = .none
+        userName.autocorrectionType = .no
         userName.layer.borderWidth = 1
         
         userName.layer.cornerRadius = 10
@@ -79,6 +81,7 @@ final class AuthorizationViewController:UIViewController{
         passField.textColor = .customTextColor
         passField.placeholder = "Password"
         passField.isSecureTextEntry = true
+        passField.autocorrectionType = .no
         passField.layer.borderWidth = 1
         
         passField.layer.cornerRadius = 10

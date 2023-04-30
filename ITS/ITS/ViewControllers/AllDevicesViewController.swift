@@ -30,7 +30,9 @@ class AllDevicesViewController: CustomViewController {
     }()
     
 //    let Gif = UIImage.gifImageWithName("backgoundGif")
-    let imageGif = UIImageView(image: UIImage.gifImageWithName("tulenLight"))
+    
+//    let imageGif = UIImageView(image: UIImage.gifImageWithName("tulenLight"))
+    var imageGif = UIImageView(image: UIImage.gifImageWithName("tulenLight"))
     
     private var deviceCellViewObjects: [DeviceCellViewObject] {
         presenter.deviceCellViewObjects
@@ -46,7 +48,7 @@ class AllDevicesViewController: CustomViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
+    
        
         imageGif.frame = CGRect(x: 1.0, y: 260.0, width: self.view.frame.size.width - 40, height: 400.0) //Giiiiffff
 
@@ -72,9 +74,13 @@ class AllDevicesViewController: CustomViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //navigation bar
-        view.backgroundColor = .customBackgroundColor // 
-//        let queue = DispatchQueue.global(qos: .utility)
-//        queue.sync{
+        view.backgroundColor = .customBackgroundColor
+        if traitCollection.userInterfaceStyle == .light
+        {
+            imageGif = UIImageView(image: UIImage.gifImageWithName("tulenLight"))
+        } else {
+            imageGif = UIImageView(image: UIImage.gifImageWithName("tulenDarck"))
+        }
             presenter.didLoadView()
             setupCollectionView()
   
@@ -252,6 +258,7 @@ extension AllDevicesViewController: AllDevicesPresenterOutput {
         } else {
             imageGif.isHidden = false
         }
+        
         collectionView.reloadData()
     }
     
