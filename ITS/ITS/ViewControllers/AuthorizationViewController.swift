@@ -203,18 +203,10 @@ final class AuthorizationViewController:UIViewController{
                 }
                 let db = Firestore.firestore()
                 db.collection("users").document(email).setData(["username": username, "email": email, "uid":result!.user.uid, "avatarImageName": "avatar"])
-                
-
-//                strongSelf.label.isHidden = true
-//                strongSelf.button.isHidden = true
-//                strongSelf.emailField.isHidden = true
-//                strongSelf.passwordField.isHidden = true
-//                strongSelf.Regbutton.isHidden = true
-//                strongSelf.userName.isHidden = true
-                
 
                 strongSelf.emailField.resignFirstResponder()
                 strongSelf.passwordField.resignFirstResponder()
+                
                 
                 let toMainController = RootTabBarViewController()
                 
@@ -227,9 +219,9 @@ final class AuthorizationViewController:UIViewController{
                                                         right: -safeAreaInsets.right)
                 
                 navigationController.additionalSafeAreaInsets = safeAreaCompensation
-                
                 navigationController.modalPresentationStyle = .fullScreen
                 self?.present(navigationController, animated: true)
+                
             })
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {_ in }))

@@ -256,7 +256,7 @@ extension AllDevicesViewController: AllDevicesPresenterOutput {
         if deviceCellViewObjects.count > 0{
             imageGif.isHidden = true
         } else {
-            imageGif.isHidden = false
+            imageGif.isHidden = false 
         }
         
         collectionView.reloadData()

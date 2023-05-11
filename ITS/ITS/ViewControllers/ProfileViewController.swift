@@ -18,7 +18,7 @@ final class ProfileViewController: UIViewController
     private let mail: UILabel = UILabel()
     private let username: UILabel = UILabel()
     private let logOutButton: UIButton = UIButton()
-//    private let ChangePassword: UIButton = UIButton()
+    private let ChangePassword: UIButton = UIButton()
     private let UserPhoto: UIButton = UIButton()
     
     private let imageService = ImageService()
@@ -46,24 +46,26 @@ final class ProfileViewController: UIViewController
         logOutButton.layer.cornerRadius = Constans.EditButton.cornerRadius
         logOutButton.setTitle("Logout", for: .normal)
         
-//        ChangePassword.backgroundColor = .customBlue.withAlphaComponent(0.8)
-//        ChangePassword.setTitleColor(.black, for: .normal)
-//        ChangePassword.layer.cornerRadius = Constans.EditButton.cornerRadius
-//        ChangePassword.setTitle("Change password", for: .normal)
+        ChangePassword.backgroundColor = .customBlue.withAlphaComponent(0.8)
+        ChangePassword.setTitleColor(.black, for: .normal)
+        ChangePassword.layer.cornerRadius = Constans.EditButton.cornerRadius
+        ChangePassword.setTitle("Change password", for: .normal)
         
-        UserPhoto.backgroundColor = .customBackgroundColor
-        UserPhoto.setTitleColor(.customDarkBlue, for: .normal)
+        UserPhoto.backgroundColor = .customBlue
+        UserPhoto.layer.cornerRadius = 5
+        UserPhoto.setTitleColor(.customTextColor, for: .normal)
         UserPhoto.setTitle("Choose photo", for: .normal)
         
         view.addSubview(mail)
         view.addSubview(avatarImage)
         view.addSubview(username)
         view.addSubview(logOutButton)
-      //  view.addSubview(ChangePassword)
+        view.addSubview(ChangePassword)
         view.addSubview(UserPhoto)
 //
         logOutButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
         UserPhoto.addTarget(self, action: #selector(ChooseUserPhoto), for: .touchUpInside)
+        ChangePassword.addTarget(self, action: #selector(ChangePasswordFunction), for: .touchUpInside)
         username.text = "Username"
          
         view.backgroundColor = .customBackgroundColor
@@ -124,7 +126,7 @@ final class ProfileViewController: UIViewController
         view.addSubview(avatarImage)
         view.addSubview(username)
         view.addSubview(logOutButton)
-//        view.addSubview(ChangePassword)
+        view.addSubview(ChangePassword)
         view.addSubview(UserPhoto)
     }
     
@@ -141,8 +143,17 @@ final class ProfileViewController: UIViewController
                                          action: #selector(didTapBackButton))
         
         navigationItem.leftBarButtonItem = backButton
-        navigationController?.navigationBar.tintColor = .customTextColor
+        navigationController?.navigationBar.tintColor = .navigationBarBackground
         title = "Profile"
+        
+//        let transition = CATransition()
+//
+//        transition.duration = 2.35
+//        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+//        transition.type = CATransitionType.fade
+//        self.navigationController?.view.layer.add(transition, forKey: nil)
+//        self.navigationController?.pushViewController(ChangePassword(), animated: false)
+       
     }
     
    
@@ -165,6 +176,7 @@ final class ProfileViewController: UIViewController
         
         UserPhoto.pin
             .below(of: avatarImage)
+            .marginTop(15)
             .height(Constans.EditButton.height)
             .horizontally(Constans.EditButton.marginHorizontal)
 
@@ -180,11 +192,11 @@ final class ProfileViewController: UIViewController
             .horizontally(Constans.NameTitle.marginHorizontal)
             .sizeToFit(.width)
         
-//        ChangePassword.pin
-//            .bottom()
-//            .marginBottom(view.safeAreaInsets.bottom + Constans.EditButton.marginBottom + 110)
-//            .height(Constans.EditButton.height)
-//            .horizontally(Constans.EditButton.marginHorizontal)
+        ChangePassword.pin
+            .bottom()
+            .marginBottom(view.safeAreaInsets.bottom + Constans.EditButton.marginBottom + 110)
+            .height(Constans.EditButton.height)
+            .horizontally(Constans.EditButton.marginHorizontal)
         
         logOutButton.pin
             .bottom()
@@ -199,16 +211,31 @@ final class ProfileViewController: UIViewController
         dismiss(animated: true)
     }
     
+    @objc func ChangePasswordFunction()
+    {
+        let transition = CATransition()
+        
+        transition.duration = 1.2
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.fade
+        self.navigationController?.view.layer.add(transition, forKey: nil)
+        self.navigationController?.pushViewController(ITS.ChangePassword(), animated: false)
+    }
+    
     @objc func logOut()
     {
         do {
-            try FirebaseAuth.Auth.auth().signOut()
+            try FirebaseAuth.Auth.auth().signOut() 
             logOutButton.removeFromSuperview()
             
-            let toMainController = RegistrationController()
-            let navigationController = UINavigationController(rootViewController: toMainController)
-            navigationController.modalPresentationStyle = .fullScreen
-            self.present(navigationController, animated: true)
+            
+            let transition = CATransition()
+            
+            transition.duration = 1.2
+            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            transition.type = CATransitionType.fade
+            self.navigationController?.view.layer.add(transition, forKey: nil)
+            self.navigationController?.pushViewController(ITS.RegistrationController(), animated: false)
         }
         catch {
             print("An error occurred")
