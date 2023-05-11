@@ -26,6 +26,7 @@ final class ChangePassword:UIViewController{
         let emailField = UITextField()
         emailField.textColor = .customTextColor
         emailField.placeholder = "Email Addres"
+        emailField.autocorrectionType = .no
         emailField.layer.borderWidth = 1
         emailField.layer.backgroundColor = UIColor.customBackgroundLayer.cgColor
 
