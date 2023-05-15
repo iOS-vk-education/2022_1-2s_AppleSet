@@ -5,112 +5,203 @@
 //  Created by Всеволод on 09.04.2023.
 //
 
-import Foundation
-
-
-enum SendFunction: String {
-    case state = "state"
-    case brightness = "brightness"
-    case color = "color"
-}
+import UIKit
 
 
 protocol SmartLightPresenterOutput: AnyObject {
-    func updateState(for function: SendFunction, message: String)
-    func getState() -> SmartLight.State
-    func setUIEnabled()
-    func setUIDisabled()
+    func setConnected()
+    func setConnecting()
     func setDisconnected()
+    func setupMode(mode: SmartLight.Mode)
+    func setupState(state: SmartLight.State)
+    func setupColor(color: String)
+    func setupBrightness(brightness: UInt8)
 }
 
 final class SmartLightPresenter {
     
     private weak var output: SmartLightPresenterOutput?
     private lazy var model = MQTTModel(output: self)
-    private var deviceID: String?
+    private var smartLight: SmartLight?
     
-    private var functionTopics: [SendFunction : String] = [:]
-    private var statusFunctions: [String : SendFunction] = [:]
-    
-    private var mode: Mode = .DISCONNECTED
-    
+    private var functionTopics: [SmartLight.Function : String] = [:]
     
     init(output: SmartLightPresenterOutput) {
         self.output = output
     }
     
-    func setup(with deviceID: String) {
-        self.deviceID = deviceID
-        model.setup(with: deviceID)
-    }
-    
-    func didLoadView(with functionTopics: [String : String], statusTopics: [String : String], connectionTopics: [String : String]) {
-        
-        setFunctionTopics(from: functionTopics)
-        setStatusTopics(from: statusTopics)
-        
-        if output?.getState() == .disconnected {
-            output?.setDisconnected()
-            
-            model.setConnectionTopics(from: connectionTopics)
-            model.startConnecting(to: statusFunctions.keys.shuffled())
-        } else {
-            setReady()
-        }
-    }
-    
-    func send(from sender: SendFunction, message: String) {
-        guard let sendTopic = functionTopics[sender] else {
+    func setup(with deviceName: String) {
+        guard let smartLight = DevicesManager.shared.getSmartLightStatus(name: deviceName) else {
             return
         }
         
-        model.send(message: message, to: sendTopic)
+        self.smartLight = smartLight
+        model.setup(with: smartLight.deviceID)
+        
+        setFunctionTopics()
+    }
+    
+    func didLoadView() {
+        guard let smartLight else {
+            return
+        }
+        
+        if smartLight.state == .disconnected {
+            output?.setConnecting()
+            model.startConnecting(to: nil)
+        } else {
+            output?.setConnected()
+            setupView()
+        }
+    }
+    
+//    func send(from sender: SmartLight.Function, message: String) {
+//        guard let sendTopic = functionTopics[sender] else {
+//            return
+//        }
+//
+//        switch sender {
+//        case .state:
+//            print(#function)
+//        case .mode:
+//            print(#function)
+//        case .brightness:
+//            print(#function)
+//        case .color:
+//            print(#function)
+//        }
+//
+//        model.send(message: message, to: sendTopic)
+//    }
+    
+    func didStateChanged() {
+        smartLight?.state.switchState()
+        
+        guard let topic = functionTopics[.state],
+              let state = smartLight?.state.rawValue
+        else {
+            return
+        }
+        model.send(message: state, to: topic)
+        
+        output?.setupState(state: smartLight?.state ?? .disconnected)
+        
+        guard let smartLight else {
+            return
+        }
+        DevicesManager.shared.updateSmartLightStatus(status: smartLight)
+    }
+    
+    func didModeSelected(mode: SmartLight.Mode) {
+        smartLight?.mode = mode
+        
+        guard let topic = functionTopics[.mode] else {
+            return
+        }
+        model.send(message: mode.rawValue, to: topic)
+        
+        output?.setupMode(mode: mode)
+        
+        guard let smartLight else {
+            return
+        }
+        DevicesManager.shared.updateSmartLightStatus(status: smartLight)
+    }
+    
+    func didColorChanged(color: UIColor) {
+        guard let hex = color.toHex(),
+              let currentColor = smartLight?.color,
+              let topic = functionTopics[.color]
+        else {
+            return
+        }
+
+        if hex != currentColor {
+            smartLight?.color = hex
+            model.send(message: hex, to: topic)
+            
+            guard let smartLight else {
+                return
+            }
+            DevicesManager.shared.updateSmartLightStatus(status: smartLight)
+        }
+    }
+    
+    func didBrightnessChanged(brightness: Float) {
+        guard let topic = functionTopics[.brightness] else {
+            return
+        }
+        
+        model.send(message: String(Int(brightness)), to: topic)
+        
+        guard let smartLight else {
+            return
+        }
+        DevicesManager.shared.updateSmartLightStatus(status: smartLight)
+    }
+    
+    func getSmartLightMode() -> SmartLight.Mode {
+        return smartLight?.mode ?? .light
     }
 
     
-    private func setFunctionTopics(from functions: [String : String]) {
-        functions.forEach { functionString, topic in
-            if let function = SendFunction(rawValue: functionString) {
-                functionTopics[function] = topic
-            } else {
-                print("[DEBUG] unknown function: " + functionString + " ### of topic: " + topic)
-            }
+    private func setFunctionTopics() {
+        guard let smartLight else {
+            return
+        }
+        
+        SmartLight.Function.allCases.forEach { function in
+            functionTopics[function] = smartLight.deviceID + "/\(function.rawValue)"
         }
     }
     
-    private func setStatusTopics(from statusTopics: [String : String]) {
-        statusTopics.forEach { functionString, statusTopic in
-            if let function = SendFunction(rawValue: functionString) {
-                statusFunctions[statusTopic] = function
-            } else {
-                print("[DEBUG] unknown send function: " + functionString + " ### of status topic: " + statusTopic)
-            }
-            
+    private func setupView() {
+        guard let smartLight else {
+            return
         }
+        output?.setupState(state: smartLight.state)
+        guard let mode = smartLight.mode,
+              let brightness = smartLight.brightness,
+              let color = smartLight.color
+        else {
+            return
+        }
+        output?.setupMode(mode: mode)
+        output?.setupBrightness(brightness: brightness)
+        output?.setupColor(color: color)
     }
 }
 
 extension SmartLightPresenter: MQTTModelOutput {
-    func update(for topic: String, message: String) {
-        guard mode == .READY, let statusFunction = statusFunctions[topic] else {
+    func updateStatus(with status: String) {
+        output?.setConnected()
+        
+        let SLStatus = status.split(separator: "#").map { String($0) }
+        smartLight?.state = SmartLight.State(rawValue: SLStatus[0]) ?? .disconnected
+        smartLight?.mode = SmartLight.Mode(rawValue: SLStatus[1])
+        smartLight?.brightness = UInt8(SLStatus[2])
+        smartLight?.color = SLStatus[3]
+        
+        setupView()
+        
+        guard let smartLight else {
             return
         }
-        
-        output?.updateState(for: statusFunction, message: message)
+        DevicesManager.shared.updateSmartLightStatus(status: smartLight)
     }
     
     func setReady() {
-        mode = .READY
-        output?.setUIEnabled()
-    }
-    
-    func setChecking() {
-        mode = .CHECKING
-        output?.setUIDisabled()
+        model.getStatus()
     }
     
     func setDisconnected() {
-        mode = .DISCONNECTED
-        output?.setDisconnected()
+        print(#function)
+    }
+    
+    
+    
+    //not realized in SmartLight
+    func update(for topic: String, message: String) {
+        return
     }
 }
