@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		225A17E64191B584B0ED7DD1 /* Pods_ITS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CCD278E298D50A4C92E33B /* Pods_ITS.framework */; };
-		A014DCA72A0E9750000DB1DE /* dots.json in Resources */ = {isa = PBXBuildFile; fileRef = A014DCA62A0E974F000DB1DE /* dots.json */; };
 		A0160F4D29D220D9005662E1 /* MqttTestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0160F4C29D220D9005662E1 /* MqttTestPresenter.swift */; };
 		A0160F4F29D22110005662E1 /* MqttTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0160F4E29D22110005662E1 /* MqttTestModel.swift */; };
 		A0160F5129D22138005662E1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0160F5029D22138005662E1 /* String.swift */; };
@@ -26,6 +25,7 @@
 		A0EFD1CE29E4B73D0048C249 /* DevicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1CD29E4B73D0048C249 /* DevicesManager.swift */; };
 		A0EFD1D029E4CA6C0048C249 /* AddDeviceAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1CF29E4CA6C0048C249 /* AddDeviceAlertController.swift */; };
 		D511F79A295A1B2D005862AA /* UserViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D511F799295A1B2D005862AA /* UserViewObject.swift */; };
+		D54E0EB42A12BD2E00C98EE1 /* dots.json in Resources */ = {isa = PBXBuildFile; fileRef = D54E0EB32A12BD2D00C98EE1 /* dots.json */; };
 		D55BBE8529B4C375002441D1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55BBE8429B4C375002441D1 /* Color.swift */; };
 		D55BBE8729B4C593002441D1 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55BBE8629B4C593002441D1 /* UIColor+RGB.swift */; };
 		D560D7E929573E2900C2BE5E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D560D7E829573E2900C2BE5E /* ProfileViewController.swift */; };
@@ -64,7 +64,6 @@
 /* Begin PBXFileReference section */
 		4D0CDDBC1BB55DDD6E0FEB25 /* Pods-ITS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITS.debug.xcconfig"; path = "Target Support Files/Pods-ITS/Pods-ITS.debug.xcconfig"; sourceTree = "<group>"; };
 		55CCD278E298D50A4C92E33B /* Pods_ITS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A014DCA62A0E974F000DB1DE /* dots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = dots.json; path = ../../../../../../../Downloads/dots.json; sourceTree = "<group>"; };
 		A0160F4C29D220D9005662E1 /* MqttTestPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttTestPresenter.swift; sourceTree = "<group>"; };
 		A0160F4E29D22110005662E1 /* MqttTestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttTestModel.swift; sourceTree = "<group>"; };
 		A0160F5029D22138005662E1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -85,6 +84,7 @@
 		A0EFD1CF29E4CA6C0048C249 /* AddDeviceAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceAlertController.swift; sourceTree = "<group>"; };
 		CABA6EBE88E717B96C3A5747 /* Pods-ITS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITS.release.xcconfig"; path = "Target Support Files/Pods-ITS/Pods-ITS.release.xcconfig"; sourceTree = "<group>"; };
 		D511F799295A1B2D005862AA /* UserViewObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewObject.swift; sourceTree = "<group>"; };
+		D54E0EB32A12BD2D00C98EE1 /* dots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dots.json; sourceTree = "<group>"; };
 		D55BBE8429B4C375002441D1 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D55BBE8629B4C593002441D1 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
 		D560D7E829573E2900C2BE5E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 		E128A744292912B30005011A /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				A014DCA62A0E974F000DB1DE /* dots.json */,
+				D54E0EB32A12BD2D00C98EE1 /* dots.json */,
 				A04FFF2A2913034400BC96A7 /* AppDelegate.swift */,
 				A04FFF2C2913034400BC96A7 /* SceneDelegate.swift */,
 				A04FFF332913034400BC96A7 /* Assets.xcassets */,
@@ -380,10 +380,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D563495229EE813500BE67F4 /* tulenDarck.gif in Resources */,
-				A014DCA72A0E9750000DB1DE /* dots.json in Resources */,
 				A04FFF372913034400BC96A7 /* LaunchScreen.storyboard in Resources */,
 				A04FFF342913034400BC96A7 /* Assets.xcassets in Resources */,
 				D563495029EE813100BE67F4 /* tulenLight.gif in Resources */,
+				D54E0EB42A12BD2E00C98EE1 /* dots.json in Resources */,
 				D5E4A516293C85F400F0E9F8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

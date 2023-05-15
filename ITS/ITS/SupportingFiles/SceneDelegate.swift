@@ -66,3 +66,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+extension SceneDelegate{
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else {return}
+        if FirebaseAuth.Auth.auth().currentUser != nil {
+            switch url.host{
+            case "profile":
+                window?.rootViewController = ProfileViewController()
+            case "registration":
+                    window?.rootViewController = RegistrationController()
+            case .none:
+                window?.rootViewController = AllDevicesViewController()
+            case .some(_):
+                print("Error link")
+            }
+        } else {
+            window?.rootViewController = RegistrationController()
+        }
+    }
+}

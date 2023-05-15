@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RAMAnimatedTabBarController
 
 class RootTabBarViewController: UITabBarController, RootTabBarDelegate {
 
@@ -214,4 +213,3 @@ class RootNavigationController: UINavigationController{
         self.popViewController(animated:true)
     }
 }
-
