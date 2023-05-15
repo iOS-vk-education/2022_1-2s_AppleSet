@@ -11,9 +11,9 @@ struct SmartLight {
     var name: String
     var deviceID: String
     var state: State = .disconnected
-    var bright: UInt8?
+    var mode: Mode?
+    var brightness: UInt8?
     var color: String?
-    var mode: String?
     
     enum State: String {
         case on
@@ -25,8 +25,23 @@ struct SmartLight {
                 self = .off
             } else if self == .off {
                 self = .on
+            } else {
+                return
             }
         }
+    }
+    
+    enum Mode: String, CaseIterable {
+        case light
+        case multicolor
+//        case rainbow
+    }
+    
+    enum Function: String, CaseIterable {
+        case state
+        case brightness
+        case color
+        case mode
     }
 }
 
@@ -49,8 +64,8 @@ struct DeviceData {
 protocol DevicesManagerDescription {
     func loadDevicesData()
     func getTypeByName(name: String) -> CreateDeviceData.DeviceType?
-    func getSmartLightState(name: String) -> SmartLight?
-    func updateSmartLightState(state: SmartLight)
+    func getSmartLightStatus(name: String) -> SmartLight?
+    func updateSmartLightStatus(status: SmartLight)
 }
 
 
@@ -100,7 +115,7 @@ final class DevicesManager: DevicesManagerDescription {
         return type
     }
     
-    func getSmartLightState(name: String) -> SmartLight? {
+    func getSmartLightStatus(name: String) -> SmartLight? {
         guard let smartLight = smartLights[name] else {
             return nil
         }
@@ -108,7 +123,7 @@ final class DevicesManager: DevicesManagerDescription {
         return smartLight
     }
     
-    func updateSmartLightState(state: SmartLight) {
-        smartLights[state.name] = state
+    func updateSmartLightStatus(status: SmartLight) {
+        smartLights[status.name] = status
     }
 }
