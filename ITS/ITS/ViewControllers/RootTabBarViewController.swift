@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RAMAnimatedTabBarController
 
 class RootTabBarViewController: UITabBarController, RootTabBarDelegate {
 
