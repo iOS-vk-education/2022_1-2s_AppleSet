@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		225A17E64191B584B0ED7DD1 /* Pods_ITS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CCD278E298D50A4C92E33B /* Pods_ITS.framework */; };
+		A014DCA72A0E9750000DB1DE /* dots.json in Resources */ = {isa = PBXBuildFile; fileRef = A014DCA62A0E974F000DB1DE /* dots.json */; };
 		A0160F4D29D220D9005662E1 /* MqttTestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0160F4C29D220D9005662E1 /* MqttTestPresenter.swift */; };
 		A0160F4F29D22110005662E1 /* MqttTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0160F4E29D22110005662E1 /* MqttTestModel.swift */; };
 		A0160F5129D22138005662E1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0160F5029D22138005662E1 /* String.swift */; };
@@ -18,11 +19,10 @@
 		A04FFF2F2913034400BC96A7 /* AllDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04FFF2E2913034400BC96A7 /* AllDevicesViewController.swift */; };
 		A04FFF342913034400BC96A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A04FFF332913034400BC96A7 /* Assets.xcassets */; };
 		A04FFF372913034400BC96A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A04FFF352913034400BC96A7 /* LaunchScreen.storyboard */; };
+		A0BFDE8529FD3EEC0033C30D /* SmartLightModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFDE8429FD3EEC0033C30D /* SmartLightModeCell.swift */; };
 		A0EFD1C329E340C70048C249 /* SmartLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C229E340C70048C249 /* SmartLightViewController.swift */; };
 		A0EFD1C529E341C20048C249 /* SmartLightPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C429E341C20048C249 /* SmartLightPresenter.swift */; };
-		A0EFD1C829E343610048C249 /* DeviceModes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C729E343610048C249 /* DeviceModes.swift */; };
 		A0EFD1CA29E345440048C249 /* MQTTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C929E345440048C249 /* MQTTModel.swift */; };
-		A0EFD1CC29E35A9A0048C249 /* ConnectionTopicTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1CB29E35A9A0048C249 /* ConnectionTopicTypes.swift */; };
 		A0EFD1CE29E4B73D0048C249 /* DevicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1CD29E4B73D0048C249 /* DevicesManager.swift */; };
 		A0EFD1D029E4CA6C0048C249 /* AddDeviceAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1CF29E4CA6C0048C249 /* AddDeviceAlertController.swift */; };
 		D511F79A295A1B2D005862AA /* UserViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D511F799295A1B2D005862AA /* UserViewObject.swift */; };
@@ -64,6 +64,7 @@
 /* Begin PBXFileReference section */
 		4D0CDDBC1BB55DDD6E0FEB25 /* Pods-ITS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITS.debug.xcconfig"; path = "Target Support Files/Pods-ITS/Pods-ITS.debug.xcconfig"; sourceTree = "<group>"; };
 		55CCD278E298D50A4C92E33B /* Pods_ITS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A014DCA62A0E974F000DB1DE /* dots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = dots.json; path = ../../../../../../../Downloads/dots.json; sourceTree = "<group>"; };
 		A0160F4C29D220D9005662E1 /* MqttTestPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttTestPresenter.swift; sourceTree = "<group>"; };
 		A0160F4E29D22110005662E1 /* MqttTestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttTestModel.swift; sourceTree = "<group>"; };
 		A0160F5029D22138005662E1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -76,11 +77,10 @@
 		A04FFF332913034400BC96A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A04FFF362913034400BC96A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A04FFF382913034400BC96A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0BFDE8429FD3EEC0033C30D /* SmartLightModeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLightModeCell.swift; sourceTree = "<group>"; };
 		A0EFD1C229E340C70048C249 /* SmartLightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLightViewController.swift; sourceTree = "<group>"; };
 		A0EFD1C429E341C20048C249 /* SmartLightPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLightPresenter.swift; sourceTree = "<group>"; };
-		A0EFD1C729E343610048C249 /* DeviceModes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModes.swift; sourceTree = "<group>"; };
 		A0EFD1C929E345440048C249 /* MQTTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTModel.swift; sourceTree = "<group>"; };
-		A0EFD1CB29E35A9A0048C249 /* ConnectionTopicTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionTopicTypes.swift; sourceTree = "<group>"; };
 		A0EFD1CD29E4B73D0048C249 /* DevicesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesManager.swift; sourceTree = "<group>"; };
 		A0EFD1CF29E4CA6C0048C249 /* AddDeviceAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceAlertController.swift; sourceTree = "<group>"; };
 		CABA6EBE88E717B96C3A5747 /* Pods-ITS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITS.release.xcconfig"; path = "Target Support Files/Pods-ITS/Pods-ITS.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,7 +161,6 @@
 		A04FFF292913034400BC96A7 /* ITS */ = {
 			isa = PBXGroup;
 			children = (
-				A0EFD1C629E3433A0048C249 /* Entity */,
 				E1004FD029C59C0200EE45B9 /* CustomComponents */,
 				E128A745292912D40005011A /* ViewControllers */,
 				E1F277D429A7A8D1009F3237 /* Presenters */,
@@ -183,15 +182,6 @@
 				CABA6EBE88E717B96C3A5747 /* Pods-ITS.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		A0EFD1C629E3433A0048C249 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				A0EFD1C729E343610048C249 /* DeviceModes.swift */,
-				A0EFD1CB29E35A9A0048C249 /* ConnectionTopicTypes.swift */,
-			);
-			path = Entity;
 			sourceTree = "<group>";
 		};
 		D55BBE8329B4C33E002441D1 /* Helpers */ = {
@@ -235,6 +225,7 @@
 		E128A744292912B30005011A /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				A014DCA62A0E974F000DB1DE /* dots.json */,
 				A04FFF2A2913034400BC96A7 /* AppDelegate.swift */,
 				A04FFF2C2913034400BC96A7 /* SceneDelegate.swift */,
 				A04FFF332913034400BC96A7 /* Assets.xcassets */,
@@ -282,6 +273,7 @@
 				E15DC1D6292A04BB00FE1818 /* FunctionCell.swift */,
 				E10A716C2931E88400653EA3 /* DeviceCell.swift */,
 				E1DC0C9D2958E9F40090FDAE /* DeviceInGroupCell.swift */,
+				A0BFDE8429FD3EEC0033C30D /* SmartLightModeCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -388,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D563495229EE813500BE67F4 /* tulenDarck.gif in Resources */,
+				A014DCA72A0E9750000DB1DE /* dots.json in Resources */,
 				A04FFF372913034400BC96A7 /* LaunchScreen.storyboard in Resources */,
 				A04FFF342913034400BC96A7 /* Assets.xcassets in Resources */,
 				D563495029EE813100BE67F4 /* tulenLight.gif in Resources */,
@@ -444,7 +437,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0EFD1C829E343610048C249 /* DeviceModes.swift in Sources */,
 				E1F277D629A7A8F6009F3237 /* AllDevicesPresenter.swift in Sources */,
 				D55BBE8729B4C593002441D1 /* UIColor+RGB.swift in Sources */,
 				E1DC0C9E2958E9F40090FDAE /* DeviceInGroupCell.swift in Sources */,
@@ -467,6 +459,7 @@
 				D511F79A295A1B2D005862AA /* UserViewObject.swift in Sources */,
 				E1004FD529C59CE300EE45B9 /* ErrorView.swift in Sources */,
 				E17633D929AB2B1B0080CD99 /* GroupPresenter.swift in Sources */,
+				A0BFDE8529FD3EEC0033C30D /* SmartLightModeCell.swift in Sources */,
 				A0160F4D29D220D9005662E1 /* MqttTestPresenter.swift in Sources */,
 				E14CC47E2933ADD50061F262 /* UIColorExtensions.swift in Sources */,
 				D5E4A518293C954B00F0E9F8 /* RegistrationController.swift in Sources */,
@@ -481,7 +474,6 @@
 				A0EFD1C329E340C70048C249 /* SmartLightViewController.swift in Sources */,
 				E15DC1DD292A050300FE1818 /* DeviceViewController.swift in Sources */,
 				E15DC1D5292A04A000FE1818 /* GroupCell.swift in Sources */,
-				A0EFD1CC29E35A9A0048C249 /* ConnectionTopicTypes.swift in Sources */,
 				E1004FD229C59C2E00EE45B9 /* CustomViewController.swift in Sources */,
 				E15DC1E0292A089A00FE1818 /* UIViewExtensions.swift in Sources */,
 				E10A716D2931E88400653EA3 /* DeviceCell.swift in Sources */,

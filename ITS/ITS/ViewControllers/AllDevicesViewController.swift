@@ -214,8 +214,7 @@ extension AllDevicesViewController: UICollectionViewDataSource, UICollectionView
         
         switch type {
         case .SmartLight:
-            let deviceViewController = SmartLightViewController()
-            deviceViewController.configure(with: name)
+            let deviceViewController = SmartLightViewController(name: name)
             self.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(deviceViewController, animated: true)
             self.hidesBottomBarWhenPushed = false
@@ -247,7 +246,7 @@ extension AllDevicesViewController: UICollectionViewDelegateFlowLayout {
 extension AllDevicesViewController: AllDevicesPresenterOutput {
     
     func reloadData() {
-        if deviceCellViewObjects.count > 0{
+        if deviceCellViewObjects.count > 0 {
             imageGif.isHidden = true
         } else {
             imageGif.isHidden = false
