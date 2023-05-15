@@ -130,6 +130,7 @@ final class ProfileViewController: UIViewController
         view.addSubview(UserPhoto)
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -229,13 +230,10 @@ final class ProfileViewController: UIViewController
             logOutButton.removeFromSuperview()
             
             
-            let transition = CATransition()
-            
-            transition.duration = 1.2
-            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-            transition.type = CATransitionType.fade
-            self.navigationController?.view.layer.add(transition, forKey: nil)
-            self.navigationController?.pushViewController(ITS.RegistrationController(), animated: false)
+            let toMainController = RegistrationController()
+            let navigationController = UINavigationController(rootViewController: toMainController)
+            navigationController.modalPresentationStyle = .fullScreen
+            self.present(navigationController, animated: true)
         }
         catch {
             print("An error occurred")
