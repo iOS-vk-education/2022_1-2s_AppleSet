@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RAMAnimatedTabBarController
 
 class RootTabBarViewController: UITabBarController, RootTabBarDelegate {
 
@@ -26,22 +27,11 @@ class RootTabBarViewController: UITabBarController, RootTabBarDelegate {
     func addClick() {
         if (self.tabBar.selectedItem?.title == "All devices") {
             
-            let alertController  = UIAlertController(title: "Add device", message: "Input device`s name", preferredStyle: .alert)
+            let alertController = AddDeviceAlertController()
             
-            alertController.addTextField()
-            
-            let okAction = UIAlertAction(title: "Add", style: .default) { _ in
-                guard let text = alertController.textFields?.first?.text else {
-                    return
-                }
-        
-                AllDevicesViewController().addDeviceCell(with: text)
-            }
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
-            
-            alertController.addAction(okAction)
-            alertController.addAction(cancelAction)
+            alertController.onAddAction(completion: { name, type, id in
+                AllDevicesViewController().addDeviceCell(with: CreateDeviceData(name: name, type: type, deviceID: id))
+            })
             
             present(alertController, animated: true)
             
@@ -69,8 +59,8 @@ class RootTabBarViewController: UITabBarController, RootTabBarDelegate {
     
     func setRootTabbarConntroller(){
         
-        self.tabBar.tintColor = .customGrey // bottom button
-        self.tabBar.backgroundColor = .customBackgroundColor
+        self.tabBar.tintColor = .tapBarbutton // bottom button
+        self.tabBar.backgroundColor = .tapBarBackground
         
         var vc: UIViewController?
         
@@ -87,15 +77,19 @@ class RootTabBarViewController: UITabBarController, RootTabBarDelegate {
 
             let nav = RootNavigationController.init(rootViewController: vc!)
 
-            let barItem = UITabBarItem.init(title: self.tabBarTitles[i], image: UIImage.init(systemName: self.tabBarNormalImages[i])?.withTintColor(.customLightGrey, renderingMode: .alwaysOriginal), selectedImage: UIImage.init(systemName: self.tabBarSelectedImages[i])?.withRenderingMode(.alwaysOriginal))
-            
+            let barItem = UITabBarItem.init(title: self.tabBarTitles[i],
+                                            image: UIImage.init(systemName: self.tabBarNormalImages[i])?.withTintColor(.TextOnnavigationBar, renderingMode: .alwaysOriginal),
+                                            selectedImage: UIImage.init(systemName: self.tabBarSelectedImages[i])?.withRenderingMode(.alwaysOriginal))
+
             barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.customLightGrey], for: .normal)
             barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.customGrey], for: .selected)
 
             vc?.title = self.tabBarTitles[i]
 
             vc?.tabBarItem = barItem
-
+//            vc?.tabBarItem = RAMAnimatedTabBarItem(title: self.tabBarTitles[i], image: UIImage.init(systemName: self.tabBarNormalImages[i])?.withTintColor(.TextOnnavigationBar, renderingMode: .alwaysOriginal),
+//                                                   tag: 1)
+//            (vc?.tabBarItem as? RAMAnimatedTabBarItem)?.animation = RAMBounceAnimation()
             self.addChild(nav)
         }
     }
@@ -134,7 +128,7 @@ class RootTabBar: UITabBar {
     }
     
     @objc func addButtonClick(){
-        if addDelegate != nil{
+        if addDelegate != nil {
             addDelegate?.addClick()
         }
     }
@@ -191,13 +185,13 @@ class RootNavigationController: UINavigationController{
     
     func defaultSetting() {
         
-        view.backgroundColor = .customBackgroundColor
+        view.backgroundColor = .navigationBarBackground
         self.navigationBar.barStyle = .default
         self.navigationController?.navigationBar.backgroundColor = .red ///??
         self.navigationBar.tintColor = .red
         self.toolbar.tintColor = .red
         self.navigationBar.isTranslucent = false
-        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.customGrey,
+        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.TextOnnavigationBar,
                                                   NSAttributedString.Key.font: UIFont.systemFont(ofSize:17)]
         
     }
@@ -220,3 +214,4 @@ class RootNavigationController: UINavigationController{
         self.popViewController(animated:true)
     }
 }
+

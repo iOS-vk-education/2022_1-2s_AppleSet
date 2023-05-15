@@ -42,7 +42,7 @@ final class DeviceCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         
         nameLabel = UILabel()
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.textColor = .customGrey
+        nameLabel.textColor = .red //????????
         nameLabel.font = Constants.DeviceCell.nameLabelFont
         addSubview(nameLabel)
         
@@ -113,7 +113,7 @@ final class DeviceCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     func configure(with viewObject: DeviceCellViewObject) {
         self.viewObject = viewObject
         nameLabel.text = viewObject.name
-        nameLabel.textColor = .black
+        nameLabel.textColor = .customTextColor
     }
 }
 

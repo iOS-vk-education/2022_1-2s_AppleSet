@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 import FirebaseAuth
 
 class RegistrationController: UIViewController {
@@ -26,6 +25,7 @@ class RegistrationController: UIViewController {
         emailField.textColor = .black
         emailField.placeholder = "Email Addres"
         emailField.autocapitalizationType = .none
+        emailField.autocorrectionType = .no
         emailField.layer.cornerRadius = 10
         
         emailField.layer.borderWidth = 1
@@ -47,6 +47,7 @@ class RegistrationController: UIViewController {
     private let userName: UITextField = {
         let userName = UITextField()
         userName.textColor = .black
+        userName.autocorrectionType = .no
         userName.placeholder = "User name"
         userName.autocapitalizationType = .none
         
@@ -63,6 +64,7 @@ class RegistrationController: UIViewController {
     private let passwordField: UITextField = {
         let passField = UITextField()
         passField.textColor = .black
+        passField.autocorrectionType = .no
         passField.placeholder = "Password"
         passField.isSecureTextEntry = true
         
@@ -229,7 +231,7 @@ class RegistrationController: UIViewController {
             return
         }
         
-        Firebase.Auth.auth().signIn(withEmail: email, password: password, completion: { [weak self] result, error in
+        Auth.auth().signIn(withEmail: email, password: password, completion: { [weak self] result, error in
             guard let strongSelf = self else{
 
                 return

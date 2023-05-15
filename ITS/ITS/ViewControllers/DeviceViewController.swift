@@ -97,7 +97,7 @@ final class DeviceViewController: UIViewController {
     
     private func setupNavBar() {
         
-        navigationController?.navigationBar.tintColor = .customGrey
+        navigationController?.navigationBar.tintColor = .arrowAndIconsBackOnNavbar
         
     }
     

@@ -29,6 +29,11 @@ class AllDevicesViewController: CustomViewController {
         
     }()
     
+//    let Gif = UIImage.gifImageWithName("backgoundGif")
+    
+//    let imageGif = UIImageView(image: UIImage.gifImageWithName("tulenLight"))
+    var imageGif = UIImageView(image: UIImage.gifImageWithName("tulenLight"))
+    
     private var deviceCellViewObjects: [DeviceCellViewObject] {
         presenter.deviceCellViewObjects
     }
@@ -43,9 +48,8 @@ class AllDevicesViewController: CustomViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        let Gif = UIImage.gifImageWithName("backgoundGif")
-        let imageGif = UIImageView(image: Gif)
+    
+       
         imageGif.frame = CGRect(x: 1.0, y: 260.0, width: self.view.frame.size.width - 40, height: 400.0) //Giiiiffff
 
       
@@ -70,12 +74,16 @@ class AllDevicesViewController: CustomViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //navigation bar
-        view.backgroundColor = .customBackgroundColor // 
-        let queue = DispatchQueue.global(qos: .utility)
-        queue.sync{
+        view.backgroundColor = .customBackgroundColor
+        if traitCollection.userInterfaceStyle == .light
+        {
+            imageGif = UIImageView(image: UIImage.gifImageWithName("tulenLight"))
+        } else {
+            imageGif = UIImageView(image: UIImage.gifImageWithName("tulenDarck"))
+        }
             presenter.didLoadView()
             setupCollectionView()
-        }
+  
        
         
     }
@@ -109,7 +117,7 @@ class AllDevicesViewController: CustomViewController {
                                                                   action: #selector(didTapQuestionButton))
         
         navigationItem.rightBarButtonItem = rightBarButtonItem
-        navigationItem.rightBarButtonItem?.tintColor = .customGrey // sing ?
+        navigationItem.rightBarButtonItem?.tintColor = .arrowAndIconsBackOnNavbar // sing ?
         
         let leftBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"),
                                                                  style: .plain,
@@ -117,7 +125,7 @@ class AllDevicesViewController: CustomViewController {
                                                                  action: #selector(didTapProfileButton))
         
         navigationItem.leftBarButtonItem = leftBarButtonItem
-        navigationItem.leftBarButtonItem?.tintColor = .customGrey  // avatar
+        navigationItem.leftBarButtonItem?.tintColor = .arrowAndIconsBackOnNavbar  // avatar
         
     }
     
@@ -134,9 +142,9 @@ class AllDevicesViewController: CustomViewController {
     
     // MARK: - add device cell
 
-    func addDeviceCell(with name: String) {
+    func addDeviceCell(with data: CreateDeviceData) {
     
-            presenter.addDeviceCell(with: name)
+            presenter.addDeviceCell(with: data)
     }
 
     func delDeviceCell(name: String) {
@@ -206,13 +214,26 @@ extension AllDevicesViewController: UICollectionViewDataSource, UICollectionView
     
     // Переход в контроллер ячейки
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let name = deviceCellViewObjects[indexPath.row].name
+        let type = DevicesManager.shared.getTypeByName(name: name)
+        
+        switch type {
+        case .SmartLight:
+            let deviceViewController = SmartLightViewController()
+            deviceViewController.configure(with: name)
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(deviceViewController, animated: true)
+            self.hidesBottomBarWhenPushed = false
+        default:
+            let deviceViewController = DeviceViewController()
+            deviceViewController.title = name
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(deviceViewController, animated: true)
+            self.hidesBottomBarWhenPushed = false
+        }
 
-        let deviceViewController = DeviceViewController()
-        deviceViewController.title = deviceCellViewObjects[indexPath.row].name
-
-        self.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(deviceViewController, animated: true)
-        self.hidesBottomBarWhenPushed = false
+        
 
     }
     
@@ -232,6 +253,12 @@ extension AllDevicesViewController: UICollectionViewDelegateFlowLayout {
 extension AllDevicesViewController: AllDevicesPresenterOutput {
     
     func reloadData() {
+        if deviceCellViewObjects.count > 0{
+            imageGif.isHidden = true
+        } else {
+            imageGif.isHidden = false 
+        }
+        
         collectionView.reloadData()
     }
     

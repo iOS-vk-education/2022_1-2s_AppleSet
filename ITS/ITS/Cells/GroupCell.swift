@@ -109,7 +109,7 @@ final class GroupCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     func configure(with model: GroupCellViewObject) {
         self.model = model
         nameLabel.text = model.name
-        nameLabel.textColor = .black
+        nameLabel.textColor = .customTextColor
     }
 }
 

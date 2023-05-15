@@ -5,6 +5,8 @@
 //  Created by Natalia on 23.02.2023.
 //
 
+import Foundation
+
 protocol AllDevicesPresenterOutput: AnyObject {
     func reloadData()
     func errorMessage(error: String)
@@ -23,6 +25,8 @@ class AllDevicesPresenter {
     
     func didLoadView() {
         loadDevices()
+        MQTTManager.shared.start()
+        DevicesManager.shared.loadDevicesData()
     }
 }
 
@@ -47,7 +51,7 @@ extension AllDevicesPresenter {
         }
     }
     
-    func addDeviceCell(with name: String) {
+    func addDeviceCell(with data: CreateDeviceData) {
         
         guard let output = self.output else {
             print("!delegate is nil!")
@@ -60,13 +64,14 @@ extension AllDevicesPresenter {
                 self.deviceCellViewObjects = devices
 
                 for device in self.deviceCellViewObjects {
-                    if device.name == name {
-                        output.errorMessage(error: "This device was already add")
+                    if device.name == data.name {
+                        // Почему не работает???
+                        self.output?.errorMessage(error: "This device was already add")
                         return
                     }
                 }
-
-                self.model.addDevice(device: CreateDeviceData(name: name)) { result in
+                    
+                self.model.addDevice(device: data) { result in
                     switch result {
                     case .success:
                         output.reloadData()
@@ -83,6 +88,7 @@ extension AllDevicesPresenter {
             }
         }
     }
+        
 
     func delDeviceCell(with name: String) {
         
@@ -91,7 +97,7 @@ extension AllDevicesPresenter {
             return
         }
 
-        model.delDevice(device: CreateDeviceData(name: name)) { result in
+        model.delDevice(device: CreateDeviceData(name: name, type: nil, deviceID: nil)) { result in
             switch result {
             case .success:
                 self.model.seeAllGroups { result in
@@ -108,7 +114,7 @@ extension AllDevicesPresenter {
 
                                     for device in devices{
                                         if device.name == name {
-                                            self.model.delDeviceFromGroup(group: group.name, device: CreateDeviceData(name: name)) { result in
+                                            self.model.delDeviceFromGroup(group: group.name, device: CreateDeviceData(name: name, type: nil, deviceID: nil)) { result in
                                                 switch result {
                                                 case .success:
                                                     output.reloadData()
