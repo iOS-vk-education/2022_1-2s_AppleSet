@@ -45,9 +45,26 @@ struct SmartLight {
     }
 }
 
-private struct AirController {
+struct AirController {
     var name: String
     var deviceID: String
+    var state: State = .disconnected
+    var temperature: Float?
+    var humidity: Float?
+    var pressure: Float?
+    var height: Float?
+    
+    enum State {
+        case connected
+        case disconnected
+    }
+    
+    enum Function: String, CaseIterable {
+        case temperature
+        case humidity
+        case pressure
+        case height
+    }
 }
 
 private struct None {
@@ -65,7 +82,9 @@ protocol DevicesManagerDescription {
     func loadDevicesData()
     func getTypeByName(name: String) -> CreateDeviceData.DeviceType?
     func getSmartLightStatus(name: String) -> SmartLight?
+    func getAirControllerStatus(name: String) -> AirController?
     func updateSmartLightStatus(status: SmartLight)
+    func updateAirControllerStatus(status: AirController)
 }
 
 
@@ -123,7 +142,19 @@ final class DevicesManager: DevicesManagerDescription {
         return smartLight
     }
     
+    func getAirControllerStatus(name: String) -> AirController? {
+        guard let airController = airControllers[name] else {
+            return nil
+        }
+        
+        return airController
+    }
+    
     func updateSmartLightStatus(status: SmartLight) {
         smartLights[status.name] = status
+    }
+    
+    func updateAirControllerStatus(status: AirController) {
+        airControllers[status.name] = status
     }
 }

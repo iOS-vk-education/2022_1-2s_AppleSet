@@ -18,6 +18,9 @@
 		A04FFF2F2913034400BC96A7 /* AllDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04FFF2E2913034400BC96A7 /* AllDevicesViewController.swift */; };
 		A04FFF342913034400BC96A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A04FFF332913034400BC96A7 /* Assets.xcassets */; };
 		A04FFF372913034400BC96A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A04FFF352913034400BC96A7 /* LaunchScreen.storyboard */; };
+		A06AD70D2A12A3D800517D50 /* AirControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06AD70C2A12A3D800517D50 /* AirControlViewController.swift */; };
+		A06AD70F2A12A3EF00517D50 /* AirControlPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06AD70E2A12A3EF00517D50 /* AirControlPresenter.swift */; };
+		A06AD7112A12A84200517D50 /* AirControlFunctionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06AD7102A12A84200517D50 /* AirControlFunctionCell.swift */; };
 		A0BFDE8529FD3EEC0033C30D /* SmartLightModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFDE8429FD3EEC0033C30D /* SmartLightModeCell.swift */; };
 		A0EFD1C329E340C70048C249 /* SmartLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C229E340C70048C249 /* SmartLightViewController.swift */; };
 		A0EFD1C529E341C20048C249 /* SmartLightPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C429E341C20048C249 /* SmartLightPresenter.swift */; };
@@ -76,6 +79,9 @@
 		A04FFF332913034400BC96A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A04FFF362913034400BC96A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A04FFF382913034400BC96A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A06AD70C2A12A3D800517D50 /* AirControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirControlViewController.swift; sourceTree = "<group>"; };
+		A06AD70E2A12A3EF00517D50 /* AirControlPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirControlPresenter.swift; sourceTree = "<group>"; };
+		A06AD7102A12A84200517D50 /* AirControlFunctionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirControlFunctionCell.swift; sourceTree = "<group>"; };
 		A0BFDE8429FD3EEC0033C30D /* SmartLightModeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLightModeCell.swift; sourceTree = "<group>"; };
 		A0EFD1C229E340C70048C249 /* SmartLightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLightViewController.swift; sourceTree = "<group>"; };
 		A0EFD1C429E341C20048C249 /* SmartLightPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLightPresenter.swift; sourceTree = "<group>"; };
@@ -250,6 +256,7 @@
 				D5FDF91B2963104600CC5E57 /* ChangePassword.swift */,
 				A0EFD1C229E340C70048C249 /* SmartLightViewController.swift */,
 				A0EFD1CF29E4CA6C0048C249 /* AddDeviceAlertController.swift */,
+				A06AD70C2A12A3D800517D50 /* AirControlViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -274,6 +281,7 @@
 				E10A716C2931E88400653EA3 /* DeviceCell.swift */,
 				E1DC0C9D2958E9F40090FDAE /* DeviceInGroupCell.swift */,
 				A0BFDE8429FD3EEC0033C30D /* SmartLightModeCell.swift */,
+				A06AD7102A12A84200517D50 /* AirControlFunctionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -309,6 +317,7 @@
 				E17633D629AB1BF50080CD99 /* GroupsPresenter.swift */,
 				E17633D829AB2B1B0080CD99 /* GroupPresenter.swift */,
 				A0EFD1C429E341C20048C249 /* SmartLightPresenter.swift */,
+				A06AD70E2A12A3EF00517D50 /* AirControlPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -439,6 +448,7 @@
 			files = (
 				E1F277D629A7A8F6009F3237 /* AllDevicesPresenter.swift in Sources */,
 				D55BBE8729B4C593002441D1 /* UIColor+RGB.swift in Sources */,
+				A06AD7112A12A84200517D50 /* AirControlFunctionCell.swift in Sources */,
 				E1DC0C9E2958E9F40090FDAE /* DeviceInGroupCell.swift in Sources */,
 				A0EFD1CE29E4B73D0048C249 /* DevicesManager.swift in Sources */,
 				A04FFF2F2913034400BC96A7 /* AllDevicesViewController.swift in Sources */,
@@ -454,6 +464,7 @@
 				E15DC1D1292A045600FE1818 /* GroupCellViewObject.swift in Sources */,
 				E15DC1D7292A04BB00FE1818 /* FunctionCell.swift in Sources */,
 				E15DC1DB292A04E100FE1818 /* FunctionCellDataViewObject.swift in Sources */,
+				A06AD70F2A12A3EF00517D50 /* AirControlPresenter.swift in Sources */,
 				A0160F5129D22138005662E1 /* String.swift in Sources */,
 				A04FFF2B2913034400BC96A7 /* AppDelegate.swift in Sources */,
 				D511F79A295A1B2D005862AA /* UserViewObject.swift in Sources */,
@@ -468,6 +479,7 @@
 				D55BBE8529B4C375002441D1 /* Color.swift in Sources */,
 				A04FFF2D2913034400BC96A7 /* SceneDelegate.swift in Sources */,
 				E1178E9629489DFB00DE42CB /* DatabaseManager.swift in Sources */,
+				A06AD70D2A12A3D800517D50 /* AirControlViewController.swift in Sources */,
 				D5FDF91A29630B5600CC5E57 /* AuthorizationViewController.swift in Sources */,
 				D5FDF91C2963104600CC5E57 /* ChangePassword.swift in Sources */,
 				E19F7B4B29AA006000E9A45B /* DevicesAndGroupsModel.swift in Sources */,
