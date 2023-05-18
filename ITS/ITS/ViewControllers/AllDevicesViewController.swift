@@ -218,6 +218,11 @@ extension AllDevicesViewController: UICollectionViewDataSource, UICollectionView
             self.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(deviceViewController, animated: true)
             self.hidesBottomBarWhenPushed = false
+        case .AirControl:
+            let deviceViewController = AirControlViewController(name: name)
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(deviceViewController, animated: true)
+            self.hidesBottomBarWhenPushed = false
         default:
             let deviceViewController = DeviceViewController()
             deviceViewController.title = name

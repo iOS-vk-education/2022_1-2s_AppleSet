@@ -55,25 +55,6 @@ final class SmartLightPresenter {
         }
     }
     
-//    func send(from sender: SmartLight.Function, message: String) {
-//        guard let sendTopic = functionTopics[sender] else {
-//            return
-//        }
-//
-//        switch sender {
-//        case .state:
-//            print(#function)
-//        case .mode:
-//            print(#function)
-//        case .brightness:
-//            print(#function)
-//        case .color:
-//            print(#function)
-//        }
-//
-//        model.send(message: message, to: sendTopic)
-//    }
-    
     func didStateChanged() {
         smartLight?.state.switchState()
         

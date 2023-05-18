@@ -13,7 +13,7 @@ import Lottie
 
 
 final class SmartLightViewController: UIViewController {
-    private var deviceName: String
+    private let deviceName: String
     
     private lazy var presenter = SmartLightPresenter(output: self)
     
