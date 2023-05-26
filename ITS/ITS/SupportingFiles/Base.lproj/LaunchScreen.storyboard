@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,32 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="1wf-uC-2em">
-                                <rect key="frame" x="-14" y="0.0" width="418" height="844"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blueBackground" translatesAutoresizingMaskIntoConstraints="NO" id="uWP-YW-J5o">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Turn your mind into reality" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XtG-vD-TXT">
-                                <rect key="frame" x="38" y="693" width="314" height="34"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" translatesAutoresizingMaskIntoConstraints="NO" id="sev-f3-0xm">
+                                <rect key="frame" x="75" y="358" width="240" height="128"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Turn your mind into reality" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v1z-C1-tyr">
+                                <rect key="frame" x="75" y="546" width="243" height="48"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="XtG-vD-TXT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="38" id="JWr-39-jh6"/>
-                            <constraint firstAttribute="trailing" secondItem="1wf-uC-2em" secondAttribute="trailing" constant="-14" id="K1X-h2-vtA"/>
-                            <constraint firstItem="XtG-vD-TXT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="646" id="W6x-dW-Yqu"/>
-                            <constraint firstAttribute="trailing" secondItem="1wf-uC-2em" secondAttribute="trailing" constant="-14" id="Xeq-xq-ilf"/>
-                            <constraint firstAttribute="trailing" secondItem="1wf-uC-2em" secondAttribute="trailing" constant="-14" id="cG1-VO-QTS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XtG-vD-TXT" secondAttribute="bottom" constant="83" id="dlv-31-Hld"/>
-                            <constraint firstAttribute="bottom" secondItem="1wf-uC-2em" secondAttribute="bottom" id="hKW-tS-Jdz"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XtG-vD-TXT" secondAttribute="trailing" constant="38" id="hxu-Fg-IdY"/>
-                            <constraint firstAttribute="bottom" secondItem="1wf-uC-2em" secondAttribute="bottom" id="jlE-sy-nQD"/>
-                            <constraint firstItem="1wf-uC-2em" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="nVQ-0D-uGl"/>
-                            <constraint firstItem="1wf-uC-2em" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="-14" id="tfu-pZ-xpM"/>
-                            <constraint firstItem="1wf-uC-2em" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="-14" id="yPb-z2-d6q"/>
-                            <constraint firstItem="1wf-uC-2em" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="zc5-ut-zfo"/>
+                            <constraint firstItem="v1z-C1-tyr" firstAttribute="top" secondItem="sev-f3-0xm" secondAttribute="bottom" constant="60" id="9iS-pt-K4R"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sev-f3-0xm" secondAttribute="trailing" constant="75" id="C1N-R0-0Kk"/>
+                            <constraint firstAttribute="bottom" secondItem="uWP-YW-J5o" secondAttribute="bottom" id="LdA-vh-Pe1"/>
+                            <constraint firstItem="uWP-YW-J5o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Mbv-fI-0Xz"/>
+                            <constraint firstItem="uWP-YW-J5o" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="N1H-jf-hHW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="v1z-C1-tyr" secondAttribute="bottom" constant="216" id="P9r-gq-PuD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="v1z-C1-tyr" secondAttribute="trailing" constant="72" id="SYf-A8-AcZ"/>
+                            <constraint firstItem="uWP-YW-J5o" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fBT-aw-AJZ"/>
+                            <constraint firstItem="sev-f3-0xm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="311" id="kqK-u1-Dzu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sev-f3-0xm" secondAttribute="bottom" constant="324" id="oll-sa-JYL"/>
+                            <constraint firstItem="v1z-C1-tyr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="75" id="qPk-u3-YtW"/>
+                            <constraint firstItem="sev-f3-0xm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="75" id="xhY-vX-u9w"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -50,6 +52,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background" width="1280" height="1153"/>
+        <image name="blueBackground" width="333.33334350585938" height="190.66667175292969"/>
+        <image name="cloud" width="666.66668701171875" height="666.66668701171875"/>
     </resources>
 </document>
