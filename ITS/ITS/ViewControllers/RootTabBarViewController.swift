@@ -80,15 +80,19 @@ class RootTabBarViewController: UITabBarController, RootTabBarDelegate {
 
             let nav = RootNavigationController.init(rootViewController: vc!)
 
-            let barItem = UITabBarItem.init(title: self.tabBarTitles[i], image: UIImage.init(systemName: self.tabBarNormalImages[i])?.withTintColor(.TextOnnavigationBar, renderingMode: .alwaysOriginal), selectedImage: UIImage.init(systemName: self.tabBarSelectedImages[i])?.withRenderingMode(.alwaysOriginal))
-            
+            let barItem = UITabBarItem.init(title: self.tabBarTitles[i],
+                                            image: UIImage.init(systemName: self.tabBarNormalImages[i])?.withTintColor(.TextOnnavigationBar, renderingMode: .alwaysOriginal),
+                                            selectedImage: UIImage.init(systemName: self.tabBarSelectedImages[i])?.withRenderingMode(.alwaysOriginal))
+
             barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.customLightGrey], for: .normal)
             barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.customGrey], for: .selected)
 
             vc?.title = self.tabBarTitles[i]
 
             vc?.tabBarItem = barItem
-
+//            vc?.tabBarItem = RAMAnimatedTabBarItem(title: self.tabBarTitles[i], image: UIImage.init(systemName: self.tabBarNormalImages[i])?.withTintColor(.TextOnnavigationBar, renderingMode: .alwaysOriginal),
+//                                                   tag: 1)
+//            (vc?.tabBarItem as? RAMAnimatedTabBarItem)?.animation = RAMBounceAnimation()
             self.addChild(nav)
         }
     }
@@ -213,4 +217,3 @@ class RootNavigationController: UINavigationController{
         self.popViewController(animated:true)
     }
 }
-
