@@ -45,13 +45,20 @@ final class SearchPresenter {
         model.checkConnectionToDevice { [weak self] result in
             switch result {
             case .success(let settings):
-                DevicesManager.shared.createTempDevice(with: settings.id, type: settings.type)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                    self?.output?.stopLoading()
-                    self?.output?.showSuccess()
-                })
+                DevicesManager.shared.createTempDevice(with: settings.id, type: settings.type) { isExist in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                        self?.output?.stopLoading()
+                        if isExist {
+                            self?.output?.showAlert(message: "This device is exist")
+                        } else {
+                            self?.output?.showSuccess()
+                        }
+                    })
+                }
             case .failure(let error):
                 DispatchQueue.main.async {
+                    self?.output?.stopLoading()
+                    self?.output?.enableConnect()
                     self?.showAlert(of: error)
                 }
                 
@@ -60,8 +67,6 @@ final class SearchPresenter {
     }
     
     private func showAlert(of error: SearchError) {
-        output?.stopLoading()
-        output?.enableConnect()
         switch error {
         case .deviceDisconnected:
             output?.showAlert(message: "You are not connected to Device")

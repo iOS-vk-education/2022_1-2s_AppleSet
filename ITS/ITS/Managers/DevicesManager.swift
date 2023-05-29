@@ -85,9 +85,10 @@ protocol DevicesManagerDescription {
     func getAirControllerStatus(name: String) -> AirController?
     func updateSmartLightStatus(status: SmartLight)
     func updateAirControllerStatus(status: AirController)
-    func createTempDevice(with id: String, type: String)
+    func createTempDevice(with id: String, type: String, completion: @escaping (Bool) -> Void)
     func getTempDevice() -> DeviceData?
-    func updateTempDevice(with name: String)
+    func updateTempDevice(with name: String, completion: @escaping (Bool) -> Void)
+    func finishCreate()
 }
 
 
@@ -95,6 +96,7 @@ final class DevicesManager: DevicesManagerDescription {
     static let shared: DevicesManagerDescription = DevicesManager()
     private let manager = DatabaseManager()
     private var deviceTypes = [String : CreateDeviceData.DeviceType]()
+    private var devicesID = Set<String>()
     private var smartLights = [String : SmartLight]()
     private var airControllers = [String : AirController]()
     private var tempDevice: DeviceData?
@@ -116,6 +118,7 @@ final class DevicesManager: DevicesManagerDescription {
                     }
                     
                     self.deviceTypes[device.name] = device.deviceType
+                    self.devicesID.insert(device.deviceID)
                     
                     switch device.deviceType {
                     case .SmartLight:
@@ -164,22 +167,63 @@ final class DevicesManager: DevicesManagerDescription {
         airControllers[status.name] = status
     }
     
-    func createTempDevice(with id: String, type: String) {
-        guard let deviceType = CreateDeviceData.DeviceType(rawValue: type) else {
+    func createTempDevice(with id: String, type: String, completion: @escaping (Bool) -> Void) {
+        guard
+            !devicesID.contains(id),
+            let deviceType = CreateDeviceData.DeviceType(rawValue: type)
+        else {
+            completion(true)
             return
         }
         
-        tempDevice = DeviceData(name: "", deviceType: deviceType, deviceID: id)
+        tempDevice = DeviceData(name: "Device \(devicesID.count + 1)", deviceType: deviceType, deviceID: id)
+        completion(false)
     }
     
     func getTempDevice() -> DeviceData? {
         return tempDevice
     }
     
-    func updateTempDevice(with name: String) {
+    func updateTempDevice(with name: String, completion: @escaping (Bool) -> Void) {
+        guard !deviceTypes.keys.contains(name) else {
+            completion(true)
+            return
+        }
+        
         tempDevice?.name = name
+        completion(false)
+    }
+    
+    func finishCreate() {
+        guard let tempDevice else {
+            return
+        }
+        
         NotificationCenter.default.post(name: Self.finishNotificationKey, object: nil, userInfo: nil)
+        let deviceData = CreateDeviceData(name: tempDevice.name, type: tempDevice.deviceType, deviceID: tempDevice.deviceID)
+        AllDevicesViewController().addDeviceCell(with: deviceData)
         
+        deviceTypes[tempDevice.name] = tempDevice.deviceType
+        devicesID.insert(tempDevice.deviceID)
+        switch tempDevice.deviceType {
+        case .AirControl:
+            airControllers[tempDevice.name] = .init(name: tempDevice.name, deviceID: tempDevice.deviceID)
+        case .SmartLight:
+            smartLights[tempDevice.name] = .init(name: tempDevice.name, deviceID: tempDevice.deviceID)
+        case .None:
+            return
+        }
         
+        let user = manager.getCurrentUser()
+        manager.addDevice(user: user, device: deviceData) { result in
+            switch result {
+            case .success:
+                print("successfully added")
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+        self.tempDevice = nil
     }
 }

@@ -26,8 +26,6 @@ final class CreateViewController: UIViewController {
             return
         }
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(finishCreate), name: DevicesManager.finishNotificationKey, object: nil)
-        
         typeLabel.text = tempDevice.deviceType.rawValue
         typeLabel.font = .systemFont(ofSize: 24)
         typeLabel.textColor = .black
@@ -77,17 +75,24 @@ final class CreateViewController: UIViewController {
                 return
             }
             
-            DevicesManager.shared.updateTempDevice(with: name)
+            DevicesManager.shared.updateTempDevice(with: name) { isExist in
+                DispatchQueue.main.async { [weak self] in
+                    if isExist {
+                        let alert = UIAlertController(title: "Alert", message: "Device with this name is exist", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "OK", style: .default)
+                        alert.addAction(ok)
+                        self?.present(alert, animated: true)
+                    } else {
+                        DevicesManager.shared.finishCreate()
+                    }
+                }
+            }
         }
         
         let no = UIAlertAction(title: "NO", style: .destructive)
         alert.addAction(ok)
         alert.addAction(no)
         self.present(alert, animated: true)
-    }
-    
-    @objc private func finishCreate() {
-        navigationController?.popViewController(animated: true)
     }
     
     private func disableCreateButton() {

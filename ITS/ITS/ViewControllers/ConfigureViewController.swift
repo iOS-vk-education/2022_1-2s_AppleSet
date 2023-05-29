@@ -38,8 +38,6 @@ final class ConfigureViewController: UIViewController {
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(finishConfigure), name: DevicesManager.finishNotificationKey, object: nil)
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(NetworkCell.self, forCellReuseIdentifier: "NetworkCell")
@@ -170,10 +168,6 @@ final class ConfigureViewController: UIViewController {
     
     @objc func hideKeyboard() {
         view.endEditing(true)
-    }
-    
-    @objc func finishConfigure() {
-        navigationController?.popViewController(animated: true)
     }
     
     private func disableSetupButton() {
