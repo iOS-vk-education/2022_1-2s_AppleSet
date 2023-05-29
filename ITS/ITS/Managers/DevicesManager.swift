@@ -85,6 +85,9 @@ protocol DevicesManagerDescription {
     func getAirControllerStatus(name: String) -> AirController?
     func updateSmartLightStatus(status: SmartLight)
     func updateAirControllerStatus(status: AirController)
+    func createTempDevice(with id: String, type: String)
+    func getTempDevice() -> DeviceData?
+    func updateTempDevice(with name: String)
 }
 
 
@@ -94,6 +97,9 @@ final class DevicesManager: DevicesManagerDescription {
     private var deviceTypes = [String : CreateDeviceData.DeviceType]()
     private var smartLights = [String : SmartLight]()
     private var airControllers = [String : AirController]()
+    private var tempDevice: DeviceData?
+    
+    static let finishNotificationKey: NSNotification.Name = .init(rawValue: "com.AppleSet.ITS.finishNotificationKey")
     
     
     private init() {}
@@ -156,5 +162,24 @@ final class DevicesManager: DevicesManagerDescription {
     
     func updateAirControllerStatus(status: AirController) {
         airControllers[status.name] = status
+    }
+    
+    func createTempDevice(with id: String, type: String) {
+        guard let deviceType = CreateDeviceData.DeviceType(rawValue: type) else {
+            return
+        }
+        
+        tempDevice = DeviceData(name: "", deviceType: deviceType, deviceID: id)
+    }
+    
+    func getTempDevice() -> DeviceData? {
+        return tempDevice
+    }
+    
+    func updateTempDevice(with name: String) {
+        tempDevice?.name = name
+        NotificationCenter.default.post(name: Self.finishNotificationKey, object: nil, userInfo: nil)
+        
+        
     }
 }
