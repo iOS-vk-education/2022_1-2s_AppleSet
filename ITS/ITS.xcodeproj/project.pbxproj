@@ -22,10 +22,6 @@
 		A06AD70F2A12A3EF00517D50 /* AirControlPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06AD70E2A12A3EF00517D50 /* AirControlPresenter.swift */; };
 		A06AD7112A12A84200517D50 /* AirControlFunctionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06AD7102A12A84200517D50 /* AirControlFunctionCell.swift */; };
 		A0BFDE8529FD3EEC0033C30D /* SmartLightModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFDE8429FD3EEC0033C30D /* SmartLightModeCell.swift */; };
-		A0C120EC2A23781800DB5C9A /* dots.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C120EB2A23781800DB5C9A /* dots.json */; };
-		A0C120EE2A23782600DB5C9A /* wifi.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C120ED2A23782600DB5C9A /* wifi.json */; };
-		A0C120F12A23782F00DB5C9A /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C120EF2A23782E00DB5C9A /* success.json */; };
-		A0C120F22A23782F00DB5C9A /* load.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C120F02A23782E00DB5C9A /* load.json */; };
 		A0C120F42A23786900DB5C9A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C120F32A23786900DB5C9A /* SearchViewController.swift */; };
 		A0C120F62A23789300DB5C9A /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C120F52A23789300DB5C9A /* SearchPresenter.swift */; };
 		A0C120F82A2378B100DB5C9A /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C120F72A2378B100DB5C9A /* SearchModel.swift */; };
@@ -35,13 +31,16 @@
 		A0C121002A23791600DB5C9A /* NetworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C120FF2A23791600DB5C9A /* NetworkCell.swift */; };
 		A0C121022A23793600DB5C9A /* WiFiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C121012A23793600DB5C9A /* WiFiManager.swift */; };
 		A0C121072A23E78E00DB5C9A /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C121062A23E78E00DB5C9A /* CreateViewController.swift */; };
+		A0C121432A24F5E300DB5C9A /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C1213F2A24F5E300DB5C9A /* success.json */; };
+		A0C121442A24F5E300DB5C9A /* load.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C121402A24F5E300DB5C9A /* load.json */; };
+		A0C121452A24F5E300DB5C9A /* dots.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C121412A24F5E300DB5C9A /* dots.json */; };
+		A0C121462A24F5E300DB5C9A /* wifi.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C121422A24F5E300DB5C9A /* wifi.json */; };
 		A0EFD1C329E340C70048C249 /* SmartLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C229E340C70048C249 /* SmartLightViewController.swift */; };
 		A0EFD1C529E341C20048C249 /* SmartLightPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C429E341C20048C249 /* SmartLightPresenter.swift */; };
 		A0EFD1CA29E345440048C249 /* MQTTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C929E345440048C249 /* MQTTModel.swift */; };
 		A0EFD1CE29E4B73D0048C249 /* DevicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1CD29E4B73D0048C249 /* DevicesManager.swift */; };
 		A0EFD1D029E4CA6C0048C249 /* AddDeviceAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1CF29E4CA6C0048C249 /* AddDeviceAlertController.swift */; };
 		D511F79A295A1B2D005862AA /* UserViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D511F799295A1B2D005862AA /* UserViewObject.swift */; };
-		D54E0EB42A12BD2E00C98EE1 /* dots.json in Resources */ = {isa = PBXBuildFile; fileRef = D54E0EB32A12BD2D00C98EE1 /* dots.json */; };
 		D55BBE8529B4C375002441D1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55BBE8429B4C375002441D1 /* Color.swift */; };
 		D55BBE8729B4C593002441D1 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55BBE8629B4C593002441D1 /* UIColor+RGB.swift */; };
 		D560D7E929573E2900C2BE5E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D560D7E829573E2900C2BE5E /* ProfileViewController.swift */; };
@@ -96,10 +95,6 @@
 		A06AD70E2A12A3EF00517D50 /* AirControlPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirControlPresenter.swift; sourceTree = "<group>"; };
 		A06AD7102A12A84200517D50 /* AirControlFunctionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirControlFunctionCell.swift; sourceTree = "<group>"; };
 		A0BFDE8429FD3EEC0033C30D /* SmartLightModeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLightModeCell.swift; sourceTree = "<group>"; };
-		A0C120EB2A23781800DB5C9A /* dots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = dots.json; path = ../../../../../../../Downloads/dots.json; sourceTree = "<group>"; };
-		A0C120ED2A23782600DB5C9A /* wifi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = wifi.json; path = ../../../../../../../Downloads/wifi.json; sourceTree = "<group>"; };
-		A0C120EF2A23782E00DB5C9A /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = success.json; path = ../../../../../../../Downloads/success.json; sourceTree = "<group>"; };
-		A0C120F02A23782E00DB5C9A /* load.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = load.json; path = ../../../../../../../Downloads/load.json; sourceTree = "<group>"; };
 		A0C120F32A23786900DB5C9A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A0C120F52A23789300DB5C9A /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		A0C120F72A2378B100DB5C9A /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
@@ -109,6 +104,10 @@
 		A0C120FF2A23791600DB5C9A /* NetworkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCell.swift; sourceTree = "<group>"; };
 		A0C121012A23793600DB5C9A /* WiFiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiManager.swift; sourceTree = "<group>"; };
 		A0C121062A23E78E00DB5C9A /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		A0C1213F2A24F5E300DB5C9A /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
+		A0C121402A24F5E300DB5C9A /* load.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = load.json; sourceTree = "<group>"; };
+		A0C121412A24F5E300DB5C9A /* dots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dots.json; sourceTree = "<group>"; };
+		A0C121422A24F5E300DB5C9A /* wifi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wifi.json; sourceTree = "<group>"; };
 		A0EFD1C229E340C70048C249 /* SmartLightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLightViewController.swift; sourceTree = "<group>"; };
 		A0EFD1C429E341C20048C249 /* SmartLightPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLightPresenter.swift; sourceTree = "<group>"; };
 		A0EFD1C929E345440048C249 /* MQTTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTModel.swift; sourceTree = "<group>"; };
@@ -193,7 +192,7 @@
 		A04FFF292913034400BC96A7 /* ITS */ = {
 			isa = PBXGroup;
 			children = (
-				A0C120EA2A23780600DB5C9A /* Animations */,
+				A0C1213E2A24F5D600DB5C9A /* Animations */,
 				E1004FD029C59C0200EE45B9 /* CustomComponents */,
 				E128A745292912D40005011A /* ViewControllers */,
 				E1F277D429A7A8D1009F3237 /* Presenters */,
@@ -217,13 +216,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		A0C120EA2A23780600DB5C9A /* Animations */ = {
+		A0C1213E2A24F5D600DB5C9A /* Animations */ = {
 			isa = PBXGroup;
 			children = (
-				A0C120EB2A23781800DB5C9A /* dots.json */,
-				A0C120ED2A23782600DB5C9A /* wifi.json */,
-				A0C120F02A23782E00DB5C9A /* load.json */,
-				A0C120EF2A23782E00DB5C9A /* success.json */,
+				A0C121412A24F5E300DB5C9A /* dots.json */,
+				A0C121402A24F5E300DB5C9A /* load.json */,
+				A0C1213F2A24F5E300DB5C9A /* success.json */,
+				A0C121422A24F5E300DB5C9A /* wifi.json */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -270,10 +269,7 @@
 		E128A744292912B30005011A /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-=======
 				D54E0EB32A12BD2D00C98EE1 /* dots.json */,
->>>>>>> prod
 				A04FFF2A2913034400BC96A7 /* AppDelegate.swift */,
 				A04FFF2C2913034400BC96A7 /* SceneDelegate.swift */,
 				A04FFF332913034400BC96A7 /* Assets.xcassets */,
@@ -438,19 +434,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0C121442A24F5E300DB5C9A /* load.json in Resources */,
 				D563495229EE813500BE67F4 /* tulenDarck.gif in Resources */,
-<<<<<<< HEAD
-				A0C120EC2A23781800DB5C9A /* dots.json in Resources */,
-=======
->>>>>>> prod
 				A04FFF372913034400BC96A7 /* LaunchScreen.storyboard in Resources */,
+				A0C121452A24F5E300DB5C9A /* dots.json in Resources */,
+				A0C121462A24F5E300DB5C9A /* wifi.json in Resources */,
 				A04FFF342913034400BC96A7 /* Assets.xcassets in Resources */,
-				A0C120F22A23782F00DB5C9A /* load.json in Resources */,
-				A0C120EE2A23782600DB5C9A /* wifi.json in Resources */,
-				A0C120F12A23782F00DB5C9A /* success.json in Resources */,
 				D563495029EE813100BE67F4 /* tulenLight.gif in Resources */,
-				D54E0EB42A12BD2E00C98EE1 /* dots.json in Resources */,
 				D5E4A516293C85F400F0E9F8 /* GoogleService-Info.plist in Resources */,
+				A0C121432A24F5E300DB5C9A /* success.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
