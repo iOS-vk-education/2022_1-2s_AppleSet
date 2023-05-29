@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		225A17E64191B584B0ED7DD1 /* Pods_ITS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CCD278E298D50A4C92E33B /* Pods_ITS.framework */; };
-		A014DCA72A0E9750000DB1DE /* dots.json in Resources */ = {isa = PBXBuildFile; fileRef = A014DCA62A0E974F000DB1DE /* dots.json */; };
 		A0160F4D29D220D9005662E1 /* MqttTestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0160F4C29D220D9005662E1 /* MqttTestPresenter.swift */; };
 		A0160F4F29D22110005662E1 /* MqttTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0160F4E29D22110005662E1 /* MqttTestModel.swift */; };
 		A0160F5129D22138005662E1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0160F5029D22138005662E1 /* String.swift */; };
@@ -23,6 +22,19 @@
 		A06AD70F2A12A3EF00517D50 /* AirControlPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06AD70E2A12A3EF00517D50 /* AirControlPresenter.swift */; };
 		A06AD7112A12A84200517D50 /* AirControlFunctionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06AD7102A12A84200517D50 /* AirControlFunctionCell.swift */; };
 		A0BFDE8529FD3EEC0033C30D /* SmartLightModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFDE8429FD3EEC0033C30D /* SmartLightModeCell.swift */; };
+		A0C120EC2A23781800DB5C9A /* dots.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C120EB2A23781800DB5C9A /* dots.json */; };
+		A0C120EE2A23782600DB5C9A /* wifi.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C120ED2A23782600DB5C9A /* wifi.json */; };
+		A0C120F12A23782F00DB5C9A /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C120EF2A23782E00DB5C9A /* success.json */; };
+		A0C120F22A23782F00DB5C9A /* load.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C120F02A23782E00DB5C9A /* load.json */; };
+		A0C120F42A23786900DB5C9A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C120F32A23786900DB5C9A /* SearchViewController.swift */; };
+		A0C120F62A23789300DB5C9A /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C120F52A23789300DB5C9A /* SearchPresenter.swift */; };
+		A0C120F82A2378B100DB5C9A /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C120F72A2378B100DB5C9A /* SearchModel.swift */; };
+		A0C120FA2A2378D100DB5C9A /* ConfigureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C120F92A2378D100DB5C9A /* ConfigureViewController.swift */; };
+		A0C120FC2A2378E500DB5C9A /* ConfigurePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C120FB2A2378E500DB5C9A /* ConfigurePresenter.swift */; };
+		A0C120FE2A2378FF00DB5C9A /* ConfigureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C120FD2A2378FF00DB5C9A /* ConfigureModel.swift */; };
+		A0C121002A23791600DB5C9A /* NetworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C120FF2A23791600DB5C9A /* NetworkCell.swift */; };
+		A0C121022A23793600DB5C9A /* WiFiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C121012A23793600DB5C9A /* WiFiManager.swift */; };
+		A0C121072A23E78E00DB5C9A /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C121062A23E78E00DB5C9A /* CreateViewController.swift */; };
 		A0EFD1C329E340C70048C249 /* SmartLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C229E340C70048C249 /* SmartLightViewController.swift */; };
 		A0EFD1C529E341C20048C249 /* SmartLightPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C429E341C20048C249 /* SmartLightPresenter.swift */; };
 		A0EFD1CA29E345440048C249 /* MQTTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C929E345440048C249 /* MQTTModel.swift */; };
@@ -67,7 +79,6 @@
 /* Begin PBXFileReference section */
 		4D0CDDBC1BB55DDD6E0FEB25 /* Pods-ITS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITS.debug.xcconfig"; path = "Target Support Files/Pods-ITS/Pods-ITS.debug.xcconfig"; sourceTree = "<group>"; };
 		55CCD278E298D50A4C92E33B /* Pods_ITS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A014DCA62A0E974F000DB1DE /* dots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = dots.json; path = ../../../../../../../Downloads/dots.json; sourceTree = "<group>"; };
 		A0160F4C29D220D9005662E1 /* MqttTestPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttTestPresenter.swift; sourceTree = "<group>"; };
 		A0160F4E29D22110005662E1 /* MqttTestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MqttTestModel.swift; sourceTree = "<group>"; };
 		A0160F5029D22138005662E1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -84,6 +95,19 @@
 		A06AD70E2A12A3EF00517D50 /* AirControlPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirControlPresenter.swift; sourceTree = "<group>"; };
 		A06AD7102A12A84200517D50 /* AirControlFunctionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirControlFunctionCell.swift; sourceTree = "<group>"; };
 		A0BFDE8429FD3EEC0033C30D /* SmartLightModeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLightModeCell.swift; sourceTree = "<group>"; };
+		A0C120EB2A23781800DB5C9A /* dots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = dots.json; path = ../../../../../../../Downloads/dots.json; sourceTree = "<group>"; };
+		A0C120ED2A23782600DB5C9A /* wifi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = wifi.json; path = ../../../../../../../Downloads/wifi.json; sourceTree = "<group>"; };
+		A0C120EF2A23782E00DB5C9A /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = success.json; path = ../../../../../../../Downloads/success.json; sourceTree = "<group>"; };
+		A0C120F02A23782E00DB5C9A /* load.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = load.json; path = ../../../../../../../Downloads/load.json; sourceTree = "<group>"; };
+		A0C120F32A23786900DB5C9A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		A0C120F52A23789300DB5C9A /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		A0C120F72A2378B100DB5C9A /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		A0C120F92A2378D100DB5C9A /* ConfigureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureViewController.swift; sourceTree = "<group>"; };
+		A0C120FB2A2378E500DB5C9A /* ConfigurePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurePresenter.swift; sourceTree = "<group>"; };
+		A0C120FD2A2378FF00DB5C9A /* ConfigureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureModel.swift; sourceTree = "<group>"; };
+		A0C120FF2A23791600DB5C9A /* NetworkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCell.swift; sourceTree = "<group>"; };
+		A0C121012A23793600DB5C9A /* WiFiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiManager.swift; sourceTree = "<group>"; };
+		A0C121062A23E78E00DB5C9A /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		A0EFD1C229E340C70048C249 /* SmartLightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLightViewController.swift; sourceTree = "<group>"; };
 		A0EFD1C429E341C20048C249 /* SmartLightPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLightPresenter.swift; sourceTree = "<group>"; };
 		A0EFD1C929E345440048C249 /* MQTTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTModel.swift; sourceTree = "<group>"; };
@@ -167,6 +191,7 @@
 		A04FFF292913034400BC96A7 /* ITS */ = {
 			isa = PBXGroup;
 			children = (
+				A0C120EA2A23780600DB5C9A /* Animations */,
 				E1004FD029C59C0200EE45B9 /* CustomComponents */,
 				E128A745292912D40005011A /* ViewControllers */,
 				E1F277D429A7A8D1009F3237 /* Presenters */,
@@ -188,6 +213,17 @@
 				CABA6EBE88E717B96C3A5747 /* Pods-ITS.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A0C120EA2A23780600DB5C9A /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				A0C120EB2A23781800DB5C9A /* dots.json */,
+				A0C120ED2A23782600DB5C9A /* wifi.json */,
+				A0C120F02A23782E00DB5C9A /* load.json */,
+				A0C120EF2A23782E00DB5C9A /* success.json */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		D55BBE8329B4C33E002441D1 /* Helpers */ = {
@@ -224,6 +260,7 @@
 				E1DC0CA1295A9CFD0090FDAE /* StorageManager.swift */,
 				A0160F5229D2216D005662E1 /* MQTTManager.swift */,
 				A0EFD1CD29E4B73D0048C249 /* DevicesManager.swift */,
+				A0C121012A23793600DB5C9A /* WiFiManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -231,7 +268,6 @@
 		E128A744292912B30005011A /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				A014DCA62A0E974F000DB1DE /* dots.json */,
 				A04FFF2A2913034400BC96A7 /* AppDelegate.swift */,
 				A04FFF2C2913034400BC96A7 /* SceneDelegate.swift */,
 				A04FFF332913034400BC96A7 /* Assets.xcassets */,
@@ -257,6 +293,9 @@
 				A0EFD1C229E340C70048C249 /* SmartLightViewController.swift */,
 				A0EFD1CF29E4CA6C0048C249 /* AddDeviceAlertController.swift */,
 				A06AD70C2A12A3D800517D50 /* AirControlViewController.swift */,
+				A0C120F32A23786900DB5C9A /* SearchViewController.swift */,
+				A0C120F92A2378D100DB5C9A /* ConfigureViewController.swift */,
+				A0C121062A23E78E00DB5C9A /* CreateViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -282,6 +321,7 @@
 				E1DC0C9D2958E9F40090FDAE /* DeviceInGroupCell.swift */,
 				A0BFDE8429FD3EEC0033C30D /* SmartLightModeCell.swift */,
 				A06AD7102A12A84200517D50 /* AirControlFunctionCell.swift */,
+				A0C120FF2A23791600DB5C9A /* NetworkCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -305,6 +345,8 @@
 				A0160F4E29D22110005662E1 /* MqttTestModel.swift */,
 				E19F7B4A29AA006000E9A45B /* DevicesAndGroupsModel.swift */,
 				A0EFD1C929E345440048C249 /* MQTTModel.swift */,
+				A0C120F72A2378B100DB5C9A /* SearchModel.swift */,
+				A0C120FD2A2378FF00DB5C9A /* ConfigureModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -318,6 +360,8 @@
 				E17633D829AB2B1B0080CD99 /* GroupPresenter.swift */,
 				A0EFD1C429E341C20048C249 /* SmartLightPresenter.swift */,
 				A06AD70E2A12A3EF00517D50 /* AirControlPresenter.swift */,
+				A0C120F52A23789300DB5C9A /* SearchPresenter.swift */,
+				A0C120FB2A2378E500DB5C9A /* ConfigurePresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -389,9 +433,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D563495229EE813500BE67F4 /* tulenDarck.gif in Resources */,
-				A014DCA72A0E9750000DB1DE /* dots.json in Resources */,
+				A0C120EC2A23781800DB5C9A /* dots.json in Resources */,
 				A04FFF372913034400BC96A7 /* LaunchScreen.storyboard in Resources */,
 				A04FFF342913034400BC96A7 /* Assets.xcassets in Resources */,
+				A0C120F22A23782F00DB5C9A /* load.json in Resources */,
+				A0C120EE2A23782600DB5C9A /* wifi.json in Resources */,
+				A0C120F12A23782F00DB5C9A /* success.json in Resources */,
 				D563495029EE813100BE67F4 /* tulenLight.gif in Resources */,
 				D5E4A516293C85F400F0E9F8 /* GoogleService-Info.plist in Resources */,
 			);
@@ -449,6 +496,7 @@
 				E1F277D629A7A8F6009F3237 /* AllDevicesPresenter.swift in Sources */,
 				D55BBE8729B4C593002441D1 /* UIColor+RGB.swift in Sources */,
 				A06AD7112A12A84200517D50 /* AirControlFunctionCell.swift in Sources */,
+				A0C120F82A2378B100DB5C9A /* SearchModel.swift in Sources */,
 				E1DC0C9E2958E9F40090FDAE /* DeviceInGroupCell.swift in Sources */,
 				A0EFD1CE29E4B73D0048C249 /* DevicesManager.swift in Sources */,
 				A04FFF2F2913034400BC96A7 /* AllDevicesViewController.swift in Sources */,
@@ -458,8 +506,10 @@
 				D560D7E929573E2900C2BE5E /* ProfileViewController.swift in Sources */,
 				A0EFD1D029E4CA6C0048C249 /* AddDeviceAlertController.swift in Sources */,
 				E15DC1D9292A04D100FE1818 /* FunctionCellViewObject.swift in Sources */,
+				A0C120FC2A2378E500DB5C9A /* ConfigurePresenter.swift in Sources */,
 				D5DDBA4029C7836D00572762 /* ExtensionsGif.swift in Sources */,
 				E1DC0CA02958EA360090FDAE /* GroupViewController.swift in Sources */,
+				A0C121072A23E78E00DB5C9A /* CreateViewController.swift in Sources */,
 				E158EB6A29375E4500597A08 /* RootTabBarViewController.swift in Sources */,
 				E15DC1D1292A045600FE1818 /* GroupCellViewObject.swift in Sources */,
 				E15DC1D7292A04BB00FE1818 /* FunctionCell.swift in Sources */,
@@ -469,11 +519,13 @@
 				A04FFF2B2913034400BC96A7 /* AppDelegate.swift in Sources */,
 				D511F79A295A1B2D005862AA /* UserViewObject.swift in Sources */,
 				E1004FD529C59CE300EE45B9 /* ErrorView.swift in Sources */,
+				A0C120FE2A2378FF00DB5C9A /* ConfigureModel.swift in Sources */,
 				E17633D929AB2B1B0080CD99 /* GroupPresenter.swift in Sources */,
 				A0BFDE8529FD3EEC0033C30D /* SmartLightModeCell.swift in Sources */,
 				A0160F4D29D220D9005662E1 /* MqttTestPresenter.swift in Sources */,
 				E14CC47E2933ADD50061F262 /* UIColorExtensions.swift in Sources */,
 				D5E4A518293C954B00F0E9F8 /* RegistrationController.swift in Sources */,
+				A0C120FA2A2378D100DB5C9A /* ConfigureViewController.swift in Sources */,
 				A04BB57129D2203B00A8B11B /* MqttTestViewController.swift in Sources */,
 				A0EFD1C529E341C20048C249 /* SmartLightPresenter.swift in Sources */,
 				D55BBE8529B4C375002441D1 /* Color.swift in Sources */,
@@ -487,9 +539,13 @@
 				E15DC1DD292A050300FE1818 /* DeviceViewController.swift in Sources */,
 				E15DC1D5292A04A000FE1818 /* GroupCell.swift in Sources */,
 				E1004FD229C59C2E00EE45B9 /* CustomViewController.swift in Sources */,
+				A0C120F62A23789300DB5C9A /* SearchPresenter.swift in Sources */,
+				A0C121002A23791600DB5C9A /* NetworkCell.swift in Sources */,
 				E15DC1E0292A089A00FE1818 /* UIViewExtensions.swift in Sources */,
+				A0C120F42A23786900DB5C9A /* SearchViewController.swift in Sources */,
 				E10A716D2931E88400653EA3 /* DeviceCell.swift in Sources */,
 				E10A716F2931E90100653EA3 /* DeviceCellViewObject.swift in Sources */,
+				A0C121022A23793600DB5C9A /* WiFiManager.swift in Sources */,
 				A0EFD1CA29E345440048C249 /* MQTTModel.swift in Sources */,
 				E10A71732931EA0E00653EA3 /* GroupsViewController.swift in Sources */,
 				A0160F5329D2216D005662E1 /* MQTTManager.swift in Sources */,
