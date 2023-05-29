@@ -26,13 +26,17 @@ class RootTabBarViewController: UITabBarController, RootTabBarDelegate {
     func addClick() {
         if (self.tabBar.selectedItem?.title == "All devices") {
             
-            let alertController = AddDeviceAlertController()
+//            let alertController = AddDeviceAlertController()
+//
+//            alertController.onAddAction(completion: { name, type, id in
+//                AllDevicesViewController().addDeviceCell(with: CreateDeviceData(name: name, type: type, deviceID: id))
+//            })
             
-            alertController.onAddAction(completion: { name, type, id in
-                AllDevicesViewController().addDeviceCell(with: CreateDeviceData(name: name, type: type, deviceID: id))
-            })
+            let searchViewController = SearchViewController()
+            let navigationController = UINavigationController(rootViewController: searchViewController)
             
-            present(alertController, animated: true)
+            navigationController.modalPresentationStyle = .fullScreen
+            present(navigationController, animated: true)
             
         } else {
             let alertController  = UIAlertController(title: "Add group", message: "Input group`s name", preferredStyle: .alert)

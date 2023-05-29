@@ -25,6 +25,7 @@ class AllDevicesPresenter {
     
     func didLoadView() {
         loadDevices()
+        WiFiManager.shared.start()
         MQTTManager.shared.start()
         DevicesManager.shared.loadDevicesData()
     }
