@@ -26,15 +26,21 @@ final class AirControlFunctionCell: UICollectionViewCell {
     }
     
     private func setup() {
-        backgroundColor = .customBlue
+        backgroundColor = .white
         
+        layer.borderWidth = 2
+        layer.borderColor = UIColor.systemGray4.cgColor
         layer.cornerRadius = 14
+        layer.shadowColor = UIColor.systemGray5.cgColor
+        layer.shadowOpacity = 1.0
+        layer.shadowRadius = 0.0
+        layer.shadowOffset = CGSize(width: 5.0, height: 10.0)
         
-        functionLabel.font = UIFont(name: "Menlo-Bold", size: 18)
+        functionLabel.font = UIFont.boldSystemFont(ofSize: 18)
         functionLabel.textColor = .customGrey
         functionLabel.textAlignment = .left
         
-        valueLabel.font = UIFont(name: "Menlo-Bold", size: 30)
+        valueLabel.font = UIFont.boldSystemFont(ofSize: 30)
         valueLabel.textColor = .customGrey
         valueLabel.textAlignment = .right
         

@@ -8,7 +8,7 @@
 import UIKit
 import PinLayout
 
-class GroupViewController: CustomViewController {
+class GroupViewController: CustomViewController, AddDevicesToGroupViewControllerOutput {
     
     private lazy var presenter = GroupPresenter(output: self)
     
@@ -138,27 +138,18 @@ class GroupViewController: CustomViewController {
         presenter.delDeviceCell(with: name, group: groupTitle)
     }
     
+    func addDeviceCells(devices: Set<String>) {
+        presenter.addDeviceCells(devices: devices, group: groupTitle)
+    }
+    
     @objc
     private func didTapAddButton() {
         
-        let alertController  = UIAlertController(title: "Add device", message: "Input device`s name", preferredStyle: .alert)
+        let addDeviceToGroupViewController = AddDevicesToGroupViewController(output: self, name: groupTitle, existDevices: deviceCellViewObjects)
+        let navigationController = UINavigationController(rootViewController: addDeviceToGroupViewController)
         
-        alertController.addTextField()
-        
-        let okAction = UIAlertAction(title: "Add", style: .default) { _ in
-            guard let text = alertController.textFields?.first?.text else {
-                return
-            }
-    
-            self.addDeviceCell(with: text)
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
-        
-        alertController.addAction(okAction)
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true)
         
     }
 

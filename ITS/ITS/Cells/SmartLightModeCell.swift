@@ -24,7 +24,7 @@ final class SmartLightModeCell: UICollectionViewCell {
     }
     
     private func setup() {
-        name.font = UIFont(name: "Marker Felt", size: 20)
+        name.font = UIFont.boldSystemFont(ofSize: 20)
         name.textAlignment = .center
         layer.cornerRadius = frame.height / 2
         addSubview(name)
