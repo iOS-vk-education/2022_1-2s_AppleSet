@@ -34,7 +34,7 @@ struct SmartLight {
     enum Mode: String, CaseIterable {
         case light
         case multicolor
-//        case rainbow
+        case rainbow
     }
     
     enum Function: String, CaseIterable {
@@ -89,6 +89,7 @@ protocol DevicesManagerDescription {
     func getTempDevice() -> DeviceData?
     func updateTempDevice(with name: String, completion: @escaping (Bool) -> Void)
     func finishCreate()
+    func getDevices() -> [(name: String, type: CreateDeviceData.DeviceType)]
 }
 
 
@@ -225,5 +226,13 @@ final class DevicesManager: DevicesManagerDescription {
         }
         
         self.tempDevice = nil
+    }
+    
+    func getDevices() -> [(name: String, type: CreateDeviceData.DeviceType)] {
+        var devices: [(String, CreateDeviceData.DeviceType)]  = []
+        for (name, type) in deviceTypes {
+            devices.append((name, type))
+        }
+        return devices
     }
 }

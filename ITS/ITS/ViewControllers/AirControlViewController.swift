@@ -18,7 +18,7 @@ final class AirControlViewController: UIViewController {
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 8
+        layout.minimumLineSpacing = 20
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(AirControlFunctionCell.self, forCellWithReuseIdentifier: "AirControlFunctionCell")

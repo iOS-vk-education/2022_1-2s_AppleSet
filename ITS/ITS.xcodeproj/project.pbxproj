@@ -21,6 +21,7 @@
 		A06AD70D2A12A3D800517D50 /* AirControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06AD70C2A12A3D800517D50 /* AirControlViewController.swift */; };
 		A06AD70F2A12A3EF00517D50 /* AirControlPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06AD70E2A12A3EF00517D50 /* AirControlPresenter.swift */; };
 		A06AD7112A12A84200517D50 /* AirControlFunctionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06AD7102A12A84200517D50 /* AirControlFunctionCell.swift */; };
+		A08BEB812A2586A000D51950 /* rainbow.json in Resources */ = {isa = PBXBuildFile; fileRef = A08BEB7F2A2586A000D51950 /* rainbow.json */; };
 		A0BFDE8529FD3EEC0033C30D /* SmartLightModeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BFDE8429FD3EEC0033C30D /* SmartLightModeCell.swift */; };
 		A0C120F42A23786900DB5C9A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C120F32A23786900DB5C9A /* SearchViewController.swift */; };
 		A0C120F62A23789300DB5C9A /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C120F52A23789300DB5C9A /* SearchPresenter.swift */; };
@@ -35,6 +36,8 @@
 		A0C121442A24F5E300DB5C9A /* load.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C121402A24F5E300DB5C9A /* load.json */; };
 		A0C121452A24F5E300DB5C9A /* dots.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C121412A24F5E300DB5C9A /* dots.json */; };
 		A0C121462A24F5E300DB5C9A /* wifi.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C121422A24F5E300DB5C9A /* wifi.json */; };
+		A0C121482A24F7B500DB5C9A /* AddDevicesToGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C121472A24F7B500DB5C9A /* AddDevicesToGroupViewController.swift */; };
+		A0C1214A2A24FB0F00DB5C9A /* DeviceToGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C121492A24FB0F00DB5C9A /* DeviceToGroupCell.swift */; };
 		A0EFD1C329E340C70048C249 /* SmartLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C229E340C70048C249 /* SmartLightViewController.swift */; };
 		A0EFD1C529E341C20048C249 /* SmartLightPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C429E341C20048C249 /* SmartLightPresenter.swift */; };
 		A0EFD1CA29E345440048C249 /* MQTTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EFD1C929E345440048C249 /* MQTTModel.swift */; };
@@ -94,6 +97,7 @@
 		A06AD70C2A12A3D800517D50 /* AirControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirControlViewController.swift; sourceTree = "<group>"; };
 		A06AD70E2A12A3EF00517D50 /* AirControlPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirControlPresenter.swift; sourceTree = "<group>"; };
 		A06AD7102A12A84200517D50 /* AirControlFunctionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirControlFunctionCell.swift; sourceTree = "<group>"; };
+		A08BEB7F2A2586A000D51950 /* rainbow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rainbow.json; sourceTree = "<group>"; };
 		A0BFDE8429FD3EEC0033C30D /* SmartLightModeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLightModeCell.swift; sourceTree = "<group>"; };
 		A0C120F32A23786900DB5C9A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A0C120F52A23789300DB5C9A /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 		A0C121402A24F5E300DB5C9A /* load.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = load.json; sourceTree = "<group>"; };
 		A0C121412A24F5E300DB5C9A /* dots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dots.json; sourceTree = "<group>"; };
 		A0C121422A24F5E300DB5C9A /* wifi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wifi.json; sourceTree = "<group>"; };
+		A0C121472A24F7B500DB5C9A /* AddDevicesToGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDevicesToGroupViewController.swift; sourceTree = "<group>"; };
+		A0C121492A24FB0F00DB5C9A /* DeviceToGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceToGroupCell.swift; sourceTree = "<group>"; };
 		A0EFD1C229E340C70048C249 /* SmartLightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLightViewController.swift; sourceTree = "<group>"; };
 		A0EFD1C429E341C20048C249 /* SmartLightPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLightPresenter.swift; sourceTree = "<group>"; };
 		A0EFD1C929E345440048C249 /* MQTTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTModel.swift; sourceTree = "<group>"; };
@@ -219,6 +225,7 @@
 		A0C1213E2A24F5D600DB5C9A /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				A08BEB7F2A2586A000D51950 /* rainbow.json */,
 				A0C121412A24F5E300DB5C9A /* dots.json */,
 				A0C121402A24F5E300DB5C9A /* load.json */,
 				A0C1213F2A24F5E300DB5C9A /* success.json */,
@@ -298,6 +305,7 @@
 				A0C120F32A23786900DB5C9A /* SearchViewController.swift */,
 				A0C120F92A2378D100DB5C9A /* ConfigureViewController.swift */,
 				A0C121062A23E78E00DB5C9A /* CreateViewController.swift */,
+				A0C121472A24F7B500DB5C9A /* AddDevicesToGroupViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -324,6 +332,7 @@
 				A0BFDE8429FD3EEC0033C30D /* SmartLightModeCell.swift */,
 				A06AD7102A12A84200517D50 /* AirControlFunctionCell.swift */,
 				A0C120FF2A23791600DB5C9A /* NetworkCell.swift */,
+				A0C121492A24FB0F00DB5C9A /* DeviceToGroupCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -442,6 +451,7 @@
 				A04FFF342913034400BC96A7 /* Assets.xcassets in Resources */,
 				D563495029EE813100BE67F4 /* tulenLight.gif in Resources */,
 				D5E4A516293C85F400F0E9F8 /* GoogleService-Info.plist in Resources */,
+				A08BEB812A2586A000D51950 /* rainbow.json in Resources */,
 				A0C121432A24F5E300DB5C9A /* success.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,6 +517,7 @@
 				E17633D729AB1BF60080CD99 /* GroupsPresenter.swift in Sources */,
 				D560D7E929573E2900C2BE5E /* ProfileViewController.swift in Sources */,
 				A0EFD1D029E4CA6C0048C249 /* AddDeviceAlertController.swift in Sources */,
+				A0C121482A24F7B500DB5C9A /* AddDevicesToGroupViewController.swift in Sources */,
 				E15DC1D9292A04D100FE1818 /* FunctionCellViewObject.swift in Sources */,
 				A0C120FC2A2378E500DB5C9A /* ConfigurePresenter.swift in Sources */,
 				D5DDBA4029C7836D00572762 /* ExtensionsGif.swift in Sources */,
@@ -548,6 +559,7 @@
 				E10A716D2931E88400653EA3 /* DeviceCell.swift in Sources */,
 				E10A716F2931E90100653EA3 /* DeviceCellViewObject.swift in Sources */,
 				A0C121022A23793600DB5C9A /* WiFiManager.swift in Sources */,
+				A0C1214A2A24FB0F00DB5C9A /* DeviceToGroupCell.swift in Sources */,
 				A0EFD1CA29E345440048C249 /* MQTTModel.swift in Sources */,
 				E10A71732931EA0E00653EA3 /* GroupsViewController.swift in Sources */,
 				A0160F5329D2216D005662E1 /* MQTTManager.swift in Sources */,

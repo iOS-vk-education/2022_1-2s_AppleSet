@@ -18,6 +18,7 @@ final class SmartLightViewController: UIViewController {
     private lazy var presenter = SmartLightPresenter(output: self)
     
     private let animationView = LottieAnimationView(name: "dots")
+    private let rainbowView = LottieAnimationView(name: "rainbow")
     
     private var mode: SmartLight.Mode? = nil
     private let modesCollectionView: UICollectionView = {
@@ -36,7 +37,9 @@ final class SmartLightViewController: UIViewController {
 
     private let button = UIButton()
     private let brightSlider = UISlider()
-    let colorSlider = ColorSlider(orientation: .horizontal, previewSide: .top)
+    private let colorSlider = ColorSlider(orientation: .horizontal, previewSide: .top)
+    private let lightView = UIImageView()
+    private let colorView = UIView()
     
     
     init(name: String) {
@@ -63,20 +66,61 @@ final class SmartLightViewController: UIViewController {
         
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .loop
+        animationView.isHidden = true
+        
+        rainbowView.contentMode = .scaleAspectFit
+        rainbowView.loopMode = .loop
+        rainbowView.isHidden = true
         
         modesCollectionView.delegate = self
         modesCollectionView.dataSource = self
         modesCollectionView.showsHorizontalScrollIndicator = false
+        modesCollectionView.isHidden = true
         
-        colorSlider.addTarget(self, action: #selector(didColorSliderValueChanged), for: .touchUpInside)
+        lightView.image = UIImage(systemName: "light.beacon.max")
+        lightView.contentMode = .scaleAspectFill
+        lightView.tintColor = .customDarkBlue
+        lightView.layer.cornerRadius = view.frame.width / 4
+        lightView.isHidden = true
+        
+        colorView.layer.cornerRadius = view.frame.width / 4
+        colorView.isHidden = true
+        
+        colorSlider.addTarget(self, action: #selector(didColorSliderValueChangeStopped), for: .touchUpInside)
+        colorSlider.addTarget(self, action: #selector(didColorValueChanged), for: .valueChanged)
+        colorSlider.isHidden = true
         
         brightSlider.minimumValue = 0
         brightSlider.maximumValue = 255
-        brightSlider.addTarget(self, action: #selector(didBrightSliderValueChanged), for: .touchUpInside)
+        brightSlider.minimumTrackTintColor = .systemYellow
+        brightSlider.minimumValueImage = UIImage(systemName: "sun.min.fill")
+        brightSlider.tintColor = .systemYellow
+        brightSlider.maximumValueImage = UIImage(systemName: "sun.max.fill")
+        brightSlider.addTarget(self, action: #selector(didBrightSliderValueChangeStopped), for: .touchUpInside)
+        brightSlider.addTarget(self, action: #selector(didBrightSliderValueChanged), for: .valueChanged)
+        brightSlider.isHidden = true
         
-        button.layer.borderWidth = 2
-        button.layer.cornerRadius = 8
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.systemGray6.cgColor
+        button.layer.cornerRadius = 24
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 32)
+        button.setTitleColor(.customDarkBlue, for: .normal)
+        button.layer.borderColor = UIColor.systemGray6.cgColor
+        button.layer.backgroundColor = UIColor.white.cgColor
+        button.layer.shadowColor = UIColor.systemGray5.cgColor
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowRadius = 0.0
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        button.isHidden = true
+        
+        view.addSubview(animationView)
+        view.addSubview(modesCollectionView)
+        view.addSubview(lightView)
+        view.addSubview(colorView)
+        view.addSubview(rainbowView)
+        view.addSubview(button)
+        view.addSubview(colorSlider)
+        view.addSubview(brightSlider)
     }
     
     override func viewDidLayoutSubviews() {
@@ -93,10 +137,31 @@ final class SmartLightViewController: UIViewController {
             .horizontally()
             .height(50)
         
+        lightView.pin
+            .below(of: modesCollectionView)
+            .marginTop(80)
+            .width(view.frame.width / 2)
+            .height(view.frame.width / 2)
+            .hCenter()
+        
+        colorView.pin
+            .below(of: modesCollectionView)
+            .marginTop(80)
+            .width(view.frame.width / 2)
+            .height(view.frame.width / 2)
+            .hCenter()
+        
+        rainbowView.pin
+            .below(of: modesCollectionView)
+            .marginTop(80)
+            .width(view.frame.width)
+            .height(view.frame.width)
+            .hCenter()
+        
         button.pin
-            .bottom(50)
-            .height(32)
-            .horizontally(32)
+            .bottom(100)
+            .height(64)
+            .horizontally(120)
         
         colorSlider.pin
             .above(of: button)
@@ -107,19 +172,27 @@ final class SmartLightViewController: UIViewController {
         brightSlider.pin
             .above(of: button)
             .marginBottom(50)
-            .horizontally(32)
+            .horizontally(10)
     }
     
     @objc func didTapButton() {
         presenter.didStateChanged()
     }
     
-    @objc func didBrightSliderValueChanged() {
+    @objc func didBrightSliderValueChangeStopped() {
         presenter.didBrightnessChanged(brightness: brightSlider.value)
     }
     
-    @objc func didColorSliderValueChanged() {
+    @objc func didBrightSliderValueChanged() {
+        lightView.backgroundColor = .systemYellow.withAlphaComponent(CGFloat(brightSlider.value) / 255)
+    }
+    
+    @objc func didColorSliderValueChangeStopped() {
         presenter.didColorChanged(color: colorSlider.color)
+    }
+    
+    @objc func didColorValueChanged() {
+        colorView.backgroundColor = colorSlider.color
     }
 }
 
@@ -129,11 +202,28 @@ extension SmartLightViewController: SmartLightPresenterOutput {
         self.mode = mode
         switch mode {
         case .light:
-            colorSlider.removeFromSuperview()
-            view.addSubview(brightSlider)
+            rainbowView.stop()
+            rainbowView.isHidden = true
+            colorSlider.isHidden = true
+            colorView.isHidden = true
+            brightSlider.isHidden = false
+            lightView.isHidden = false
+            
         case .multicolor:
-            brightSlider.removeFromSuperview()
-            view.addSubview(colorSlider)
+            rainbowView.stop()
+            rainbowView.isHidden = true
+            lightView.isHidden = true
+            brightSlider.isHidden = true
+            colorSlider.isHidden = false
+            colorView.isHidden = false
+            
+        case .rainbow:
+            colorSlider.isHidden = true
+            colorView.isHidden = true
+            brightSlider.isHidden = true
+            lightView.isHidden = true
+            rainbowView.isHidden = false
+            rainbowView.play()
         }
     }
     
@@ -141,37 +231,44 @@ extension SmartLightViewController: SmartLightPresenterOutput {
         switch state {
         case .off:
             button.setTitle("ON", for: .normal)
-            button.setTitleColor(.systemBlue.withAlphaComponent(0.8), for: .normal)
             button.isUserInteractionEnabled = true
+            button.layer.shadowOffset = CGSize(width: 0.0, height: 10.0)
+            brightSlider.isUserInteractionEnabled = false
+            colorSlider.isUserInteractionEnabled = false
+            
         case .on:
             button.setTitle("OFF", for: .normal)
-            button.setTitleColor(.systemRed.withAlphaComponent(0.8), for: .normal)
+            button.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
             button.isUserInteractionEnabled = true
+            brightSlider.isUserInteractionEnabled = true
+            colorSlider.isUserInteractionEnabled = true
+            
         case .disconnected:
             button.setTitle("CHECKING...", for: .normal)
             button.setTitleColor(.systemGray3, for: .normal)
             button.isUserInteractionEnabled = false
         }
-        button.layer.borderColor = button.currentTitleColor.cgColor
     }
     
     func setupBrightness(brightness: UInt8) {
         brightSlider.value = Float(brightness)
+        lightView.backgroundColor = .systemYellow.withAlphaComponent(CGFloat(brightness) / 255)
     }
     
     func setupColor(color: String) {
         colorSlider.color = UIColor(hex: color)
+        colorView.backgroundColor = UIColor(hex: color)
     }
     
     func setConnected() {
         animationView.stop()
-        animationView.removeFromSuperview()
-        view.addSubview(modesCollectionView)
-        view.addSubview(button)
+        animationView.isHidden = true
+        modesCollectionView.isHidden = false
+        button.isHidden = false
     }
     
     func setConnecting() {
-        view.addSubview(animationView)
+        animationView.isHidden = false
         animationView.play()
     }
     

@@ -5,6 +5,8 @@
 //  Created by Natalia on 26.02.2023.
 //
 
+import UIKit
+
 protocol GroupPresenterOutput: AnyObject {
     func reloadData()
     func errorMessage(error: String)
@@ -29,77 +31,35 @@ extension GroupPresenter {
     
     private func loadDevices(group: String) {
         
-        guard let output = self.output else {
-            print("!delegate is nil!")
-            return
-        }
-        
-        model.loadDevicesInGroup(group: group) { result in
+        model.loadDevicesInGroup(group: group) { [weak self] result in
             switch result {
             case .success(let devices):
-                self.deviceCellViewObjects = devices
-                output.reloadData()
+                print("load")
+                self?.deviceCellViewObjects = devices
+                DispatchQueue.main.async {
+                    self?.output?.reloadData()
+                }
             case .failure(let error):
                 print(error)
             }
         }
     }
     
+    func addDeviceCells(devices: Set<String>, group: String) {
+        devices.forEach { device in
+            print(device)
+            addDeviceCell(with: device, group: group)
+        }
+    }
+    
     func addDeviceCell(with name: String, group: String) {
         
-        guard let output = self.output else {
-            print("!delegate is nil!")
-            return
-        }
-        
-        model.seeDevicesInGroup(group: group) { result in
+        model.addDeviceToGroup(group: group, device: CreateDeviceData(name: name, type: nil, deviceID: nil)) { result in
             switch result {
-            case .success(let devices):
-                self.deviceCellViewObjects = devices
-                
-                for device in self.deviceCellViewObjects {
-                    if device.name == name {
-                        output.errorMessage(error: "This device was already add to this group")
-                        return
-                    }
-                }
-                
-                self.model.seeAllDevices { result in
-                    switch result {
-                    case .success(let allDevices):
-                        
-                        var is_dev = false
-                        
-                        for dev in allDevices {
-                            if dev.name == name {
-                                is_dev = true
-                                break
-                            }
-                        }
-                        
-                        if (!is_dev) {
-                            output.errorMessage(error: "Ther is not this device")
-                            return
-                        }
-                        
-                        self.model.addDeviceToGroup(group: group, device: CreateDeviceData(name: name, type: nil, deviceID: nil)) { result in
-                            switch result {
-                            case .success:
-                                break
-                            case .failure(let error):
-                                print(error)
-                            }
-                        }
-                        
-                    case .failure(let error):
-                        print(error)
-                        return
-                    }
-                }
-                
+            case .success:
+                print("success")
             case .failure(let error):
                 print(error)
-                return
             }
         }
     }

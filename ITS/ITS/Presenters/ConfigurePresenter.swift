@@ -66,11 +66,11 @@ final class ConfigurePresenter {
                         print(response.status)
                         if response.status != .connecting {
                             self?.stopPing()
-                            if response.status != .connected {
+                            if response.status == .connected {
+                                self?.output?.goToCreate()
+                            } else {
                                 self?.output?.enableSetup()
                                 self?.showAlert(of: response.status)
-                            } else {
-                                self?.output?.goToCreate()
                             }
                         }
                     case .failure(let configError):

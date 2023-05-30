@@ -340,8 +340,13 @@ class DatabaseManager: DatabaseManagerDescription {
                 }
             }
             
-            db.collection("users").document(user).collection("allGroups").document(group).updateData(["devices": devicesList])
-            
+            db.collection("users").document(user).collection("allGroups").document(group).updateData(["devices": devicesList]) { error in
+                if error != nil {
+                    print(error as Any)
+                } else {
+                    completion(.success(()))
+                }
+            }
         }
 
     }

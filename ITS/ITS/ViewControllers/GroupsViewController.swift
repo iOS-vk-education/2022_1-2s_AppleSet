@@ -174,7 +174,7 @@ extension GroupsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let groupViewController = GroupViewController(title: groupCellViewObjects[indexPath.row].name)
-        groupViewController.title = groupCellViewObjects[indexPath.row].name
+//        groupViewController.title = groupCellViewObjects[indexPath.row].name
 
         self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(groupViewController, animated: true)
