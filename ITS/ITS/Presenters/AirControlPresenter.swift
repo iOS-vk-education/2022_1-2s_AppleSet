@@ -124,6 +124,7 @@ extension AirControlPresenter: MQTTModelOutput {
         airController?.humidity = humidity
         airController?.pressure = pressure
         airController?.height = height
+        airController?.state = .connected
         
         guard let airController else {
             return

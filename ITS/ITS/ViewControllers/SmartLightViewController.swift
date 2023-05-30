@@ -223,7 +223,10 @@ extension SmartLightViewController: SmartLightPresenterOutput {
             brightSlider.isHidden = true
             lightView.isHidden = true
             rainbowView.isHidden = false
-            rainbowView.play()
+            let state = presenter.getSmartLightState()
+            if state == .on {
+                rainbowView.play()
+            }
         }
     }
     
@@ -235,6 +238,10 @@ extension SmartLightViewController: SmartLightPresenterOutput {
             button.layer.shadowOffset = CGSize(width: 0.0, height: 10.0)
             brightSlider.isUserInteractionEnabled = false
             colorSlider.isUserInteractionEnabled = false
+            let mode = presenter.getSmartLightMode()
+            if mode == .rainbow {
+                rainbowView.stop()
+            }
             
         case .on:
             button.setTitle("OFF", for: .normal)
@@ -242,6 +249,10 @@ extension SmartLightViewController: SmartLightPresenterOutput {
             button.isUserInteractionEnabled = true
             brightSlider.isUserInteractionEnabled = true
             colorSlider.isUserInteractionEnabled = true
+            let mode = presenter.getSmartLightMode()
+            if mode == .rainbow {
+                rainbowView.play()
+            }
             
         case .disconnected:
             button.setTitle("CHECKING...", for: .normal)

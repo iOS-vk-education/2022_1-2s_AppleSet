@@ -184,13 +184,28 @@ extension GroupViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     // Переход в контроллер ячейки
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        let deviceViewController = DeviceViewController()
-        deviceViewController.title = deviceCellViewObjects[indexPath.row].name
-
-        self.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(deviceViewController, animated: true)
-        self.hidesBottomBarWhenPushed = true
+        
+        let name = deviceCellViewObjects[indexPath.row].name
+        let type = DevicesManager.shared.getTypeByName(name: name)
+        
+        switch type {
+        case .SmartLight:
+            let deviceViewController = SmartLightViewController(name: name)
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(deviceViewController, animated: true)
+            self.hidesBottomBarWhenPushed = false
+        case .AirControl:
+            let deviceViewController = AirControlViewController(name: name)
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(deviceViewController, animated: true)
+            self.hidesBottomBarWhenPushed = false
+        default:
+            let deviceViewController = DeviceViewController()
+            deviceViewController.title = name
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(deviceViewController, animated: true)
+            self.hidesBottomBarWhenPushed = false
+        }
 
     }
     

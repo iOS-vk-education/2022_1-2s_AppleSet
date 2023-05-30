@@ -115,6 +115,8 @@ final class SmartLightPresenter {
         
         model.send(message: String(Int(brightness)), to: topic)
         
+        smartLight?.brightness = UInt8(brightness)
+        
         guard let smartLight else {
             return
         }
@@ -123,6 +125,10 @@ final class SmartLightPresenter {
     
     func getSmartLightMode() -> SmartLight.Mode {
         return smartLight?.mode ?? .light
+    }
+    
+    func getSmartLightState() -> SmartLight.State {
+        return smartLight?.state ?? .disconnected
     }
 
     
